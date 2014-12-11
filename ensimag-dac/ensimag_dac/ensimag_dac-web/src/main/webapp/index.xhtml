@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="./WEB-INF/templates/default.xhtml"
+                xmlns:h="http://java.sun.com/jsf/html">
+
+    <ui:define name="title">
+        Index
+    </ui:define>
+
+    <ui:define name="top">
+        top
+    </ui:define>
+
+    <ui:define name="content">
+        <div class="container">
+            <h:form class="form-signin" role="form">
+                <h2 class="form-signin-heading">Resgister</h2>
+                
+                <label for="inputUsername" class="sr-only">Username</label>
+                <input type="email" id="inputUsername" class="form-control" value="#{accountBean.username}"
+                       placeholder="Email address" required="true" autofocus="true"></input>
+                <label for="inputPassword" class="sr-only">Password</label>
+                <input type="password" id="inputPassword" class="form-control" value="#{accountBean.password}"
+                       placeholder="Password" required="true"></input>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value="remember-me"> Remember me</input>
+                    </label>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">#{accountBean.register()}</button>
+                
+            </h:form>
+
+        </div> <!-- /container -->
+    </ui:define>
+
+</ui:composition>
