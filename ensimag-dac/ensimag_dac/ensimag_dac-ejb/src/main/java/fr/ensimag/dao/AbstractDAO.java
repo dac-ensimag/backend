@@ -39,7 +39,7 @@ public abstract class AbstractDAO<T> {
 
         } finally {
             if (em != null) {
-                em.close();
+                //em.close();
             }
         }
     }
@@ -48,14 +48,14 @@ public abstract class AbstractDAO<T> {
         EntityManager em = null;
         try {
             em = getEntityManager();
-            em.getTransaction().begin();
+            //em.getTransaction().begin();
 
             entity = em.merge(entity);
 
-            em.getTransaction().commit();
+            //em.getTransaction().commit();
         } finally {
             if (em != null) {
-                em.close();
+                //em.close();
             }
         }
     }
@@ -64,14 +64,14 @@ public abstract class AbstractDAO<T> {
         EntityManager em = null;
         try {
             em = getEntityManager();
-            em.getTransaction().begin();
+            //em.getTransaction().begin();
 
             em.remove(em.merge(entity));
 
-            em.getTransaction().commit();
+            //em.getTransaction().commit();
         } finally {
             if (em != null) {
-                em.close();
+                //em.close();
             }
         }
     }
@@ -83,7 +83,7 @@ public abstract class AbstractDAO<T> {
 
             return em.find(entityClass, id);
         } finally {
-            em.close();
+            //em.close();
         }
     }
 
@@ -95,7 +95,7 @@ public abstract class AbstractDAO<T> {
             Query q = em.createQuery(cq);
             return q.getResultList();
         } finally {
-            em.close();
+            //em.close();
         }
     }
 
