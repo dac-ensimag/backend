@@ -1,10 +1,13 @@
 package fr.ensimag;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+
 public class Debug {
 	public static String defaultFile = "DAC_log.txt";
 
 	public static void w(String fileName, String message) {
-		String adressedufichier = System.getProperty("user.dir") + "/"+ nomFic;
+		String adressedufichier = System.getProperty("user.dir") + "/"+ fileName;
 
 		//on met try si jamais il y a une exception
 		try
@@ -21,7 +24,7 @@ public class Debug {
 			BufferedWriter output = new BufferedWriter(fw);
 
 			//on marque dans le fichier ou plutot dans le BufferedWriter qui sert comme un tampon(stream)
-			output.write(texte);
+			output.write(message);
 			//on peut utiliser plusieurs fois methode write
 
 			output.flush();
@@ -30,14 +33,12 @@ public class Debug {
 			output.close();
 			//et on le ferme
 		}
-		catch(IOException ioe){
-			System.out.print("Erreur : ");
-			ioe.printStackTrace();
+		catch(Exception e){
 		}
 	}
 
 	public static void w(String message) {
-		this.w(this.defaultFile, message);
+		Debug.w(Debug.defaultFile, message);
 	}
 }
 

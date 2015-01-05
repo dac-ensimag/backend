@@ -45,19 +45,10 @@
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>2.0.2</version>
-        <configuration>
-          <source>1.5</source>
-          <target>1.5</target>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-ear-plugin</artifactId>
-        <version>2.6</version>
+        <version>2.9.1</version>
         <configuration>
-            <version>5</version>
+            <version>7</version>
             <defaultLibBundleDir>lib</defaultLibBundleDir>
             <modules>
               <ejbModule>
@@ -93,15 +84,19 @@
                         <id>gf-deploy</id>
                         <goals>
                             <goal>deploy</goal>
+                            <goal>stop-domain</goal>
+                            <goal>start-domain</goal>
                         </goals>
                         <phase>package</phase>
                     </execution>
                 </executions>
                 <configuration>
-                    <user>anonymous</user>
-                    <adminPassword>admin</adminPassword>
+                    <user>admin</user>
+                    <adminPassword>adminadmin</adminPassword>
                     <glassfishDirectory>${glassfish.directory}</glassfishDirectory>
                     <domainDirectory>${glassfish.directory}/glassfish/domains/</domainDirectory>
+                    <passwordFile>/opt/glassfish4/glassfish/domains/domain_dac/config/master-password</passwordFile>
+                    <passFile>/opt/glassfish4/glassfish/domains/domain_dac/config/master-password</passFile>
                     <echo>true</echo>
                     <domain>
                         <name>domain_dac</name>
