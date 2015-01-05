@@ -6,7 +6,7 @@
     <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
-            <from-action>#{register.login()}</from-action>
+            <from-action>#{accountBean.register()}</from-action>
             <from-outcome>index</from-outcome>
             <to-view-id>/index.xhtml</to-view-id>
         </navigation-case>      
