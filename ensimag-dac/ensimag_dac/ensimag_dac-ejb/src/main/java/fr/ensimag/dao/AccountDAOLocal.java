@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package fr.ensimag.dao;
 
 import fr.ensimag.entity.Account;
@@ -17,16 +11,16 @@ import javax.ejb.Local;
 @Local
 public interface AccountDAOLocal {
 
-    void create(Account account);
+    void create(Account account) throws Exception;
 
-    void edit(Account account);
+    void edit(Account account) throws Exception;
 
-    void remove(Account account);
+    void remove(Account account) throws Exception;
 
-    Account find(Object id);
+    Account find(Object id) throws Exception;
 
-    List<Account> findAll();
+    List<Account> findAll() throws Exception;
 
-    int count();
-    
+    int count() throws Exception;
+
 }

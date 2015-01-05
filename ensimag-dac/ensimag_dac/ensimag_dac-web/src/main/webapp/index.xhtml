@@ -1,32 +1,48 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 template="./WEB-INF/templates/default.xhtml"
-                xmlns:h="http://java.sun.com/jsf/html">
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui">
 
     <ui:define name="title">
         Index
     </ui:define>
 
-    <ui:define name="top">
-        top
-    </ui:define>
-
     <ui:define name="content">
         <div class="container">
-            <h:form class="form-signin" role="form">
-                <h2 class="form-signin-heading">Register</h2>
+            <h:form id="signUpForm" styleClass="form-signin span6" role="form">
+                <h2 class="form-signin-heading">Sign Up</h2>
                 
                 <label for="inputUsername" class="sr-only">Username</label>
-		<h:inputText value="#{accountBean.username}" styleClass="form-control" required="true" id="inputUsername" />
+		<h:inputText value="#{accountBean.username}" styleClass="form-control" required="true" 
+			requiredMessage="Value is required" id="inputUsername" />
+		<p:message id="usernameMessage" for="inputUsername" />
                 <label for="inputPassword" class="sr-only">Password</label>
-		<h:inputSecret value="#{accountBean.password}" styleClass="form-control" required="true" id="inputPassword" />
+		<h:inputSecret value="#{accountBean.password}" styleClass="form-control" required="true" 
+			requiredMessage="Value is required" id="inputPassword" />
+		<p:message id="passwordMessage" for="inputPassword" />
+                <h:commandButton styleClass="btn btn-lg btn-primary btn-block" action="#{accountBean.register()}" value="submit" />
+                
+            </h:form>
+            <h:form id="loginForm" styleClass="form-signin span6" role="form">
+                <h2 class="form-signin-heading">Login</h2>
+                
+                <label for="inputUsername" class="sr-only">Username</label>
+		<h:inputText value="#{accountBean.username}" styleClass="form-control" required="true"
+			requiredMessage="Value is required" id="inputUsername" />
+                <p:message id="usernameMessage" for="inputUsername" />
+                <label for="inputPassword" class="sr-only">Password</label>
+		<h:inputSecret value="#{accountBean.password}" styleClass="form-control" required="true"
+			requiredMessage="Value is required" id="inputPassword" />
+                <p:message id="passwordMessage" for="inputPassword" />
                 <div class="checkbox">
                     <label>
                         <input type="checkbox" value="remember-me"> Remember me</input>
                     </label>
                 </div>
-		<h:commandButton styleClass="btn btn-lg btn-primary btn-block" action="#{accountBean.register()}" value="submit" />
+                <h:commandButton styleClass="btn btn-lg btn-primary btn-block" action="#{accountBean.login()}" value="submit" />
                 
             </h:form>
 

@@ -1,6 +1,5 @@
 package fr.ensimag.dao;
 
-import fr.ensimag.entity.IEntity;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -10,9 +9,8 @@ import javax.transaction.UserTransaction;
 /**
  *
  * @author Edward
- * @param <T> The type of Entity for this DAO
  */
-public abstract class AbstractDAO<T extends IEntity> {
+public abstract class AbstractDAO<T> {
 
     private Class<T> entityClass;       
 
@@ -26,7 +24,7 @@ public abstract class AbstractDAO<T extends IEntity> {
 
     protected abstract EntityManager getEntityManager();
 
-    protected abstract UserTransaction getUserTransaction();
+    protected UserTransaction getUserTransaction();
 
     public void create(T entity) throws Exception {
 

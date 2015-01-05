@@ -1,10 +1,10 @@
 package fr.ensimag.logic;
 
-import javax.ejb.EJB;
-import javax.ejb.Stateless;
-
 import fr.ensimag.dao.AccountDAOLocal;
 import fr.ensimag.entity.Account;
+import fr.ensimag.vo.AccountVO;
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
 
 /**
  *
@@ -13,14 +13,37 @@ import fr.ensimag.entity.Account;
 @Stateless
 public class AccountService implements AccountServiceLocal {
 
-	@EJB
-	AccountDAOLocal accountDBAcces;
-
-	public void register(final String username, final String password) {
-		final Account account = new Account();
-		account.setUsername(username);
-		account.setPassword(password);
-		this.accountDBAcces.create(account);
+    @EJB
+    AccountDAOLocal accountDBAcces;
+    
+    @Override
+    public void register(AccountVO accountVO) {
+        Account account = new Account();
+        account.setUsername(accountVO.getUsername());
+        account.setPassword(accountVO.getPassword());
+        try {
+	    accountDBAcces.create(account);
+	} catch (Exception e) {
+            //TODO
+            e.printStackTrace();
 	}
+    }
+
+    @Override
+    public AccountVO login(AccountVO accountVO) {
+        Account account = new Account();
+        account.setUsername(accountVO.getUsername());
+        account.setPassword(accountVO.getPassword());
+        try {
+            Account login = accountDBAcces.find(account.getUsername());
+            if (login != null && login.getPassword().equals(account.getPassword())) {
+                return login.toVO();
+            } else {
+                return null;
+            }
+	} catch (Exception e) {
+            return null;
+	}
+    }
 
 }

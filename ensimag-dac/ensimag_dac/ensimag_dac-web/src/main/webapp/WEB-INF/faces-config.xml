@@ -9,6 +9,22 @@
             <from-action>#{accountBean.register()}</from-action>
             <from-outcome>index</from-outcome>
             <to-view-id>/index.xhtml</to-view-id>
-        </navigation-case>      
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{accountBean.login()}</from-action>
+            <from-outcome>welcome</from-outcome>
+            <to-view-id>/welcome.xhtml</to-view-id>
+        </navigation-case> 
+        <navigation-case>
+            <from-action>#{accountBean.login()}</from-action>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>       
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>logout</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
     </navigation-rule>
 </faces-config>

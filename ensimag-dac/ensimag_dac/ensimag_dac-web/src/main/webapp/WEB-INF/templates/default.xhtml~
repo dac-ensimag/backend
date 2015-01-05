@@ -6,9 +6,9 @@
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources/bootstrap/css/bootstrap.css"/>
-        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources/css/default.css"/>
-        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources/css/signin.css"/>
+        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/static/bootstrap/css/bootstrap.css"/>
+        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/static/css/default.css"/>
+        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/static/css/signin.css"/>
 
         <link href="#{request.contextPath}/static/bootstrap/css/bootstrap-responsive.css" rel="stylesheet" type="text/css"/>
         <h:outputScript library="primefaces" name="jquery/jquery.js" />
@@ -47,7 +47,7 @@
                                         <ul class="dropdown-menu">
                                             <li>
                                                 <h:form class="navbar-form">
-                                                    <h:commandLink action="#{userBean.logOut()}" value="LogOut" />
+                                                    <h:commandLink action="#{userBean.logOut()}" value="Deconnexion" />
                                                 </h:form>
                                             </li>
                                         </ul>
