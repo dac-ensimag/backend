@@ -44,6 +44,8 @@ public class AccountBean {
         this.password = password;
     }
     
-    
+    public String toString(){
+        return getUsername() + ";" + getPassword();
+    }
     
 }

@@ -31,6 +31,7 @@ public class Account implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "username")
     private String username;
+
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
