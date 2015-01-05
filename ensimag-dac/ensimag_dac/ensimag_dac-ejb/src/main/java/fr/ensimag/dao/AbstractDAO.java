@@ -1,107 +1,55 @@
 package fr.ensimag.dao;
 
 import java.util.List;
+
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
 
-/**
- *
- * @author Edward
- */
 public abstract class AbstractDAO<T> {
 
-    private Class<T> entityClass;
+	private Class<T> entityClass;
+	private EntityManager em;
 
-    public AbstractDAO() {
+	public AbstractDAO() {
 
-    }
+	}
 
-    public AbstractDAO(Class<T> entityClass) {
-        this.entityClass = entityClass;        
-    }
+	public AbstractDAO(final Class<T> entityClass) {
+		this.entityClass = entityClass;
+		this.em = this.getEntityManager();
+	}
 
-    protected abstract EntityManager getEntityManager();
+	protected abstract EntityManager getEntityManager();
 
-    public void create(T entity) {
-        EntityManager em = null;
-        try {
+	public void create(final T entity) {
+		this.em.persist(entity);
+	}
 
-            em = getEntityManager();
+	public void edit(T entity) {
+		this.em = this.getEntityManager();
+		entity = this.em.merge(entity);
+	}
 
-//            em.getTransaction().begin();
+	public void remove(final T entity) {
+		this.em = this.getEntityManager();
+		this.em.remove(this.em.merge(entity));
+	}
 
-            em.persist(entity);
+	public T find(final Object id) {
+		return this.em.find(this.entityClass, id);
+	}
 
-  //          em.getTransaction().commit();
+	public List<T> findAll() {
+		final CriteriaQuery<T> cq = this.em.getCriteriaBuilder().createQuery(
+				this.entityClass);
+		cq.select(cq.from(this.entityClass));
+		final Query q = this.em.createQuery(cq);
+		return q.getResultList();
+	}
 
-        } finally {
-            if (em != null) {
-                //em.close();
-            }
-        }
-    }
+	public int count() {
+		return this.findAll().size();
+	}
 
-    public void edit(T entity) {
-        EntityManager em = null;
-        try {
-            em = getEntityManager();
-            //em.getTransaction().begin();
-
-            entity = em.merge(entity);
-
-            //em.getTransaction().commit();
-        } finally {
-            if (em != null) {
-                //em.close();
-            }
-        }
-    }
-
-    public void remove(T entity) {
-        EntityManager em = null;
-        try {
-            em = getEntityManager();
-            //em.getTransaction().begin();
-
-            em.remove(em.merge(entity));
-
-            //em.getTransaction().commit();
-        } finally {
-            if (em != null) {
-                //em.close();
-            }
-        }
-    }
-
-    public T find(Object id) {
-        EntityManager em = null;
-        em = getEntityManager();
-        try {
-
-            return em.find(entityClass, id);
-        } finally {
-            //em.close();
-        }
-    }
-
-    public List<T> findAll() {
-        EntityManager em = getEntityManager();
-        try {
-            CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            cq.select(cq.from(entityClass));
-            Query q = em.createQuery(cq);
-            return q.getResultList();
-        } finally {
-            //em.close();
-        }
-    }
-
-
-    public int count() {
-        return findAll().size();
-    }
-    
 }
