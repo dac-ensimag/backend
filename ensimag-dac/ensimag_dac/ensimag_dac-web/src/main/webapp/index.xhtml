@@ -15,20 +15,18 @@
     <ui:define name="content">
         <div class="container">
             <h:form class="form-signin" role="form">
-                <h2 class="form-signin-heading">Resgister</h2>
+                <h2 class="form-signin-heading">Register</h2>
                 
                 <label for="inputUsername" class="sr-only">Username</label>
-                <input type="email" id="inputUsername" class="form-control" value="#{accountBean.username}"
-                       placeholder="Email address" required="true" autofocus="true"></input>
+		<h:inputText value="#{accountBean.username}" styleClass="form-control" required="true" id="inputUsername" />
                 <label for="inputPassword" class="sr-only">Password</label>
-                <input type="password" id="inputPassword" class="form-control" value="#{accountBean.password}"
-                       placeholder="Password" required="true"></input>
+		<h:inputSecret value="#{accountBean.password}" styleClass="form-control" required="true" id="inputPassword" />
                 <div class="checkbox">
                     <label>
                         <input type="checkbox" value="remember-me"> Remember me</input>
                     </label>
                 </div>
-                <button class="btn btn-lg btn-primary btn-block" type="submit">#{accountBean.register()}</button>
+		<h:commandButton styleClass="btn btn-lg btn-primary btn-block" action="#{accountBean.register()}" value="submit" />
                 
             </h:form>
 

@@ -26,17 +26,16 @@ public abstract class AbstractDAO<T> {
     protected abstract EntityManager getEntityManager();
 
     public void create(T entity) {
-
         EntityManager em = null;
         try {
 
             em = getEntityManager();
 
-            em.getTransaction().begin();
+//            em.getTransaction().begin();
 
             em.persist(entity);
 
-            em.getTransaction().commit();
+  //          em.getTransaction().commit();
 
         } finally {
             if (em != null) {

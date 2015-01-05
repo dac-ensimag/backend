@@ -102,7 +102,7 @@
                     <adminPassword>admin</adminPassword>
                     <glassfishDirectory>${glassfish.directory}</glassfishDirectory>
                     <domainDirectory>${glassfish.directory}/glassfish/domains/</domainDirectory>
-                    <!--<passwordFile>${basedir}/glassfishpasswordfile</passwordFile>-->
+                    <echo>true</echo>
                     <domain>
                         <name>domain_dac</name>
                         <host>localhost</host>
