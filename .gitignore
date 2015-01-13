@@ -11,5 +11,5 @@ release.properties
 .*.swp
 .*.swo
 *~
-idea/
+.idea/
 *.iml
