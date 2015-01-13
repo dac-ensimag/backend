@@ -1,8 +1,5 @@
 package fr.ensimag.vo;
 
-/**
- * @author Edward
- */
 public class AccountVO implements IValueObject {
 
 	private String username;

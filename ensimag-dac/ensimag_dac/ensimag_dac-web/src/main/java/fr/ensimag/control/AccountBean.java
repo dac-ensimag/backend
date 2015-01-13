@@ -10,9 +10,6 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import java.io.Serializable;
 
-/**
- * @author Edward
- */
 @ManagedBean
 @RequestScoped
 public class AccountBean implements Serializable {

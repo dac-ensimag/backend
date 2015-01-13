@@ -5,9 +5,6 @@ import fr.ensimag.entity.Account;
 import javax.ejb.Local;
 import java.util.List;
 
-/**
- * @author Edward
- */
 @Local
 public interface AccountDAOLocal {
 

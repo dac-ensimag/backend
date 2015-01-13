@@ -12,9 +12,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.UserTransaction;
 
-/**
- * @author Edward
- */
 @Stateless(name = "accountDAO")
 @TransactionManagement(TransactionManagementType.BEAN)
 public class AccountDAO extends AbstractDAO<Account> implements AccountDAOLocal {

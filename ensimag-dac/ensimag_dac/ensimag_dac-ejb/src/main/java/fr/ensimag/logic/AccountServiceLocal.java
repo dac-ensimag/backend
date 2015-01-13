@@ -4,9 +4,6 @@ import fr.ensimag.vo.AccountVO;
 
 import javax.ejb.Local;
 
-/**
- * @author Edward
- */
 @Local
 public interface AccountServiceLocal {
 

@@ -7,9 +7,6 @@ import fr.ensimag.vo.AccountVO;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
-/**
- * @author Edward
- */
 @Stateless
 public class AccountService implements AccountServiceLocal {
 

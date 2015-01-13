@@ -10,7 +10,6 @@ import java.util.List;
 
 /**
  * @param <T> The type of Entity for this DAO
- * @author Edward
  */
 public abstract class AbstractDAO<T extends IEntity> {
 
