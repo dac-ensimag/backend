@@ -1,7 +1,11 @@
 package fr.ensimag.entity;
 
+import fr.ensimag.vo.CommandeVO;
+import fr.ensimag.vo.FactureVO;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,7 +25,7 @@ import javax.validation.constraints.NotNull;
  */
 @Entity
 @Table(name = "FACTURE")
-public class Facture implements Serializable {
+public class Facture implements Serializable, IEntity<FactureVO> {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -149,6 +153,21 @@ public class Facture implements Serializable {
     @Override
     public String toString() {
         return "fr.ensimag.entity.Facture[ factureId=" + factureId + " ]";
+    }
+    
+    @Override
+    public FactureVO toVO() {
+        FactureVO vo = new FactureVO();
+        vo.setFactureId(getFactureId());
+        vo.setFactureDate(getFactureDate());
+        vo.setFacturePrixht(getFacturePrixht());
+        vo.setFactureTotalht(getFactureTotalht());
+        vo.setFactureTotalttc(getFactureTotalttc());
+        vo.setFactureTva(getFactureTva());
+        
+        vo.setCommande(getCommande().toVO());
+        
+        return vo;
     }
     
 }

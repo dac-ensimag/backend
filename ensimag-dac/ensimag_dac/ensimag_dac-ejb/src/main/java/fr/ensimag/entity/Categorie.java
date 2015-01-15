@@ -1,6 +1,9 @@
 package fr.ensimag.entity;
 
+import fr.ensimag.vo.ArticleVO;
+import fr.ensimag.vo.CategorieVO;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -20,7 +23,7 @@ import javax.validation.constraints.NotNull;
  */
 @Entity
 @Table(name = "CATEGORIE")
-public class Categorie implements Serializable {
+public class Categorie implements Serializable, IEntity<CategorieVO> {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -95,6 +98,21 @@ public class Categorie implements Serializable {
     @Override
     public String toString() {
         return "fr.ensimag.entity.Categorie[ categorieId=" + categorieId + " ]";
+    }
+    
+    @Override
+    public CategorieVO toVO() {
+        CategorieVO vo = new CategorieVO();
+        vo.setCategorieId(getCategorieId());
+        vo.setCategorieLibele(getCategorieLibele());
+        
+        List<ArticleVO> articleVOList = new ArrayList<>();        
+        for (Article article : getArticleList()) {
+            articleVOList.add(article.toVO());
+        }
+        vo.setArticleList(articleVOList);
+        
+        return vo;
     }
     
 }

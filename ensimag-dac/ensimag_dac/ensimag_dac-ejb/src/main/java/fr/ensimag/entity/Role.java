@@ -1,6 +1,9 @@
 package fr.ensimag.entity;
 
+import fr.ensimag.vo.RoleVO;
+import fr.ensimag.vo.UtilisateurVO;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -20,7 +23,7 @@ import javax.validation.constraints.NotNull;
  */
 @Entity
 @Table(name = "ROLE")
-public class Role implements Serializable {
+public class Role implements Serializable, IEntity<RoleVO> {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -109,6 +112,22 @@ public class Role implements Serializable {
     @Override
     public String toString() {
         return "fr.ensimag.entity.Role[ roleId=" + roleId + " ]";
+    }
+    
+    @Override
+    public RoleVO toVO() {
+        RoleVO vo = new RoleVO();
+        vo.setRoleId(getRoleId());
+        vo.setRoleLibele(getRoleLibele());
+        vo.setRoleDescription(getRoleDescription());
+        
+        List<UtilisateurVO> utilisateurVOList = new ArrayList<>();
+        for (Utilisateur utilisateur : getUtilisateurList()) {
+            utilisateurVOList.add(utilisateur.toVO());
+        }
+        vo.setUtilisateurList(utilisateurVOList);
+        
+        return vo;
     }
     
 }

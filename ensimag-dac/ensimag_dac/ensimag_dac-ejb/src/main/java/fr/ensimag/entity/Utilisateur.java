@@ -1,6 +1,9 @@
 package fr.ensimag.entity;
 
+import fr.ensimag.vo.CommandeVO;
+import fr.ensimag.vo.UtilisateurVO;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -22,7 +25,7 @@ import javax.validation.constraints.NotNull;
  */
 @Entity
 @Table(name = "UTILISATEUR")
-public class Utilisateur implements Serializable {
+public class Utilisateur implements Serializable, IEntity<UtilisateurVO> {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -197,6 +200,29 @@ public class Utilisateur implements Serializable {
     @Override
     public String toString() {
         return "fr.ensimag.entity.Utilisateur[ utilisateurId=" + utilisateurId + " ]";
+    }
+    
+    @Override
+    public UtilisateurVO toVO() {
+        UtilisateurVO vo = new UtilisateurVO();
+        vo.setUtilisateurId(getUtilisateurId());
+        vo.setUtilisateurAdresse(getUtilisateurAdresse());
+        vo.setUtilisateurCp(getUtilisateurCp());
+        vo.setUtilisateurLogin(getUtilisateurLogin());
+        vo.setUtilisateurMail(getUtilisateurMail());
+        vo.setUtilisateurNom(getUtilisateurNom());
+        vo.setUtilisateurPass(getUtilisateurPass());
+        vo.setUtilisateurPrenom(getUtilisateurPrenom());
+        vo.setUtilisateurTel(getUtilisateurTel());
+        vo.setRole(getRole().toVO());
+        
+        List<CommandeVO> commandVOList = new ArrayList<>();
+        for (Commande commande : getCommandeList()) {
+            commandVOList.add(commande.toVO());
+        }
+        vo.setCommandeList(commandVOList);
+        
+        return vo;
     }
     
 }

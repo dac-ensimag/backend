@@ -1,6 +1,9 @@
 package fr.ensimag.entity;
 
+import fr.ensimag.vo.ArticleVO;
+import fr.ensimag.vo.CommandeVO;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -22,7 +25,7 @@ import javax.validation.constraints.NotNull;
  */
 @Entity
 @Table(name = "ARTICLE")
-public class Article implements Serializable {
+public class Article implements Serializable, IEntity<ArticleVO> {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -151,6 +154,24 @@ public class Article implements Serializable {
     @Override
     public String toString() {
         return "fr.ensimag.entity.Article[ articleId=" + articleId + " ]";
+    }
+
+    @Override
+    public ArticleVO toVO() {
+        ArticleVO vo = new ArticleVO();
+        vo.setArticleId(getArticleId());
+        vo.setArticleDescription(getArticleDescription());
+        vo.setArticleDisponibilite(getArticleDisponibilite());
+        vo.setArticleLibele(getArticleLibele());
+        vo.setArticlePrix(getArticlePrix());
+        
+        List<CommandeVO> commandVOList = new ArrayList<>();
+        for (Commande commande : getCommandeList()) {
+            commandVOList.add(commande.toVO());
+        }
+        vo.setCommandeList(commandVOList);
+        
+        return vo;
     }
   
 }
