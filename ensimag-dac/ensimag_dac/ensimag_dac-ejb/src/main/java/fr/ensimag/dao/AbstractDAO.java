@@ -28,7 +28,7 @@ public abstract class AbstractDAO<T extends IEntity> {
 
     protected abstract UserTransaction getUserTransaction();
 
-    public void create(T entity) throws Exception {
+    public T create(T entity) throws Exception {
 
         EntityManager em = null;
         UserTransaction utx = null;
@@ -39,6 +39,7 @@ public abstract class AbstractDAO<T extends IEntity> {
             em.persist(entity);
             em.flush();
             utx.commit();
+            return entity;
         } catch (Exception e) {
             if (utx != null) {
                 utx.rollback();
