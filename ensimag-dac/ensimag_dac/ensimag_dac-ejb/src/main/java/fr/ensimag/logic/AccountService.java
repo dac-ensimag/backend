@@ -1,16 +1,11 @@
 package fr.ensimag.logic;
 
-import fr.ensimag.dao.AccountDAOLocal;
-import fr.ensimag.entity.Account;
-import fr.ensimag.vo.AccountVO;
-
-import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 @Stateless
-public class AccountService implements AccountServiceLocal {
+public class AccountService /*implements AccountServiceLocal*/ {
 
-	@EJB
+	/*@EJB
 	AccountDAOLocal accountDBAcces;
 
 	@Override
@@ -41,6 +36,6 @@ public class AccountService implements AccountServiceLocal {
 		} catch (Exception e) {
 			return null;
 		}
-	}
+	}*/
 
 }
