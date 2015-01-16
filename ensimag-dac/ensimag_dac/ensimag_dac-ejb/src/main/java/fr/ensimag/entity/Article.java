@@ -167,4 +167,13 @@ public class Article implements Serializable, IEntity<ArticleVO> {
 		return vo;
 	}
 
+	public static List<ArticleVO> toVo(List<Article> articles) {
+		List<ArticleVO> vo = new ArrayList<>();
+
+		for (Article a : articles) {
+			vo.add(a.toVO());
+		}
+
+		return vo;
+	}
 }
