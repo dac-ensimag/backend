@@ -29,15 +29,15 @@
         </div>
 
         <div class="container">
-            <ui:repeat value="{#catalog.products}" var="product">
+            <ui:repeat value="#{catalogBean.products}" var="product">
                 <div class="col-sm-6 col-md-3">
                     <div class="thumbnail">
                         <img src="img/cats/thumb-1.png" alt="" class="img-rounded" />
                         <div class="caption text-center">
-                            <h3>#{product.title}</h3>
-                            <p>#{product.description}</p>
-                            <h:commandButton styleClass="btn btn-default" action="#{product.view()}" value="View item" />
-                            <h:commandButton styleClass="btn btn-default" action="#{product.addToCart()}" value="Add to cart" />
+                            <h3>#{product.articleLibele}</h3>
+                            <p>#{product.articleDescription}</p>
+                            <h:commandButton styleClass="btn btn-default" action="#{catalogBean.view()}" value="View item" />
+                            <h:commandButton styleClass="btn btn-default" action="#{catalogBean.addToCart()}" value="Add to cart" />
                         </div>
                     </div>
                 </div>
