@@ -2,7 +2,7 @@ package fr.ensimag.logic;
 
 import javax.ejb.Stateless;
 
-@Stateless
+//@Stateless
 public class AccountService /*implements AccountServiceLocal*/ {
 
 	/*@EJB
