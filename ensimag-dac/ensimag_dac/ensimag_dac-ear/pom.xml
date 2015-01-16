@@ -1,73 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>fr.ensimag</groupId>
-  <artifactId>ensimag_dac-ear</artifactId>
-  <version>1.0-SNAPSHOT</version>
-  <name>ensimag_dac-ear</name>
-  
-  <packaging>ear</packaging>
-
-  <parent>
-    <artifactId>ensimag_dac</artifactId>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
     <groupId>fr.ensimag</groupId>
+    <artifactId>ensimag_dac-ear</artifactId>
     <version>1.0-SNAPSHOT</version>
-  </parent>
-  
-  <!-- The absolute path to the Glassfish Server, please change this... -->
+    <name>ensimag_dac-ear</name>
+
+    <packaging>ear</packaging>
+
+    <parent>
+        <artifactId>ensimag_dac</artifactId>
+        <groupId>fr.ensimag</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <!-- The absolute path to the Glassfish Server, please change this... -->
     <properties>
         <glassfish.directory>/opt/glassfish4/</glassfish.directory>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-  
-  <dependencies>
-    <dependency>
-      <groupId>fr.ensimag</groupId>
-      <artifactId>ensimag_dac-ejb</artifactId>
-      <version>1.0-SNAPSHOT</version>
-      <type>ejb</type> 
-    </dependency>
-    <dependency>
-      <groupId>fr.ensimag</groupId>
-      <artifactId>ensimag_dac-web</artifactId>
-      <version>1.0-SNAPSHOT</version>
-      <type>war</type>
-    </dependency>
-	<dependency>
-      <groupId>fr.ensimag</groupId>
-      <artifactId>ensimag_dac-api</artifactId>
-      <version>1.0-SNAPSHOT</version>
-      <type>jar</type>
-    </dependency>
-  </dependencies>
 
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-ear-plugin</artifactId>
-        <version>2.9.1</version>
-        <configuration>
-            <version>7</version>
-            <defaultLibBundleDir>lib</defaultLibBundleDir>
-            <modules>
-              <ejbModule>
-                <groupId>fr.ensimag</groupId>
-                <artifactId>ensimag_dac-ejb</artifactId>
-              </ejbModule>
-              <webModule>
-                <groupId>fr.ensimag</groupId>
-                <artifactId>ensimag_dac-web</artifactId>
-                <context-root>/ensimac_dac-web</context-root>
-              </webModule>
-              <jarModule>
-                <groupId>fr.ensimag</groupId>
-                <artifactId>ensimag_dac-api</artifactId>
-              </jarModule>
-            </modules>
-        </configuration>
-      </plugin>
-	  <!-- Glassfish App Server -->
+    <dependencies>
+        <dependency>
+            <groupId>fr.ensimag</groupId>
+            <artifactId>ensimag_dac-ejb</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <type>ejb</type>
+        </dependency>
+        <dependency>
+            <groupId>fr.ensimag</groupId>
+            <artifactId>ensimag_dac-web</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <type>war</type>
+        </dependency>
+        <dependency>
+            <groupId>fr.ensimag</groupId>
+            <artifactId>ensimag_dac-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <type>jar</type>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-ear-plugin</artifactId>
+                <version>2.9.1</version>
+                <configuration>
+                    <version>7</version>
+                    <defaultLibBundleDir>lib</defaultLibBundleDir>
+                    <modules>
+                        <ejbModule>
+                            <groupId>fr.ensimag</groupId>
+                            <artifactId>ensimag_dac-ejb</artifactId>
+                        </ejbModule>
+                        <webModule>
+                            <groupId>fr.ensimag</groupId>
+                            <artifactId>ensimag_dac-web</artifactId>
+                            <context-root>/ensimac_dac-web</context-root>
+                        </webModule>
+                        <jarModule>
+                            <groupId>fr.ensimag</groupId>
+                            <artifactId>ensimag_dac-api</artifactId>
+                        </jarModule>
+                    </modules>
+                </configuration>
+            </plugin>
+            <!-- Glassfish App Server -->
             <plugin>
                 <groupId>org.glassfish.maven.plugin</groupId>
                 <artifactId>maven-glassfish-plugin</artifactId>
@@ -96,7 +97,6 @@
                     <glassfishDirectory>${glassfish.directory}</glassfishDirectory>
                     <domainDirectory>${glassfish.directory}/glassfish/domains/</domainDirectory>
                     <passwordFile>/opt/glassfish4/glassfish/domains/domain_dac/config/master-password</passwordFile>
-                    <passFile>/opt/glassfish4/glassfish/domains/domain_dac/config/master-password</passFile>
                     <echo>true</echo>
                     <domain>
                         <name>domain_dac</name>
@@ -113,7 +113,7 @@
                     </components>
                 </configuration>
             </plugin>
-    </plugins>
-  </build>
+        </plugins>
+    </build>
 
 </project>

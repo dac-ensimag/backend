@@ -2,6 +2,7 @@ package fr.ensimag.dao;
 
 import fr.ensimag.entity.Role;
 import fr.ensimag.foundation.INames;
+
 import javax.annotation.Resource;
 import javax.ejb.EJBContext;
 import javax.ejb.Stateless;
@@ -9,30 +10,26 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.UserTransaction;
 
-/**
- *
- * @author dac
- */
 @Stateless
 public class RoleDAO extends AbstractDAO<Role> implements RoleDAOLocal {
 
-    @PersistenceContext(unitName = INames.PU_NAME)
-    private EntityManager em;
+	@PersistenceContext(unitName = INames.PU_NAME)
+	private EntityManager em;
 
-    @Resource
-    private EJBContext ctx;
+	@Resource
+	private EJBContext ctx;
 
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
-    }
+	public RoleDAO() {
+		super(Role.class);
+	}
 
-    @Override
-    protected UserTransaction getUserTransaction() {
-        return ctx.getUserTransaction();
-    }
+	@Override
+	protected EntityManager getEntityManager() {
+		return em;
+	}
 
-    public RoleDAO() {
-        super(Role.class);
-    }
+	@Override
+	protected UserTransaction getUserTransaction() {
+		return ctx.getUserTransaction();
+	}
 }

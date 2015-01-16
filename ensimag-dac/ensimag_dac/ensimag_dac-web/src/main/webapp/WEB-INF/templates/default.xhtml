@@ -1,70 +1,71 @@
-<?xml version='1.0' encoding='UTF-8' ?> 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
 
-    <h:head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources/bootstrap/css/bootstrap.css"/>
-        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources/css/default.css"/>
-        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources/css/signin.css"/>
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources/bootstrap/css/bootstrap.css"/>
+    <link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources/css/default.css"/>
+    <link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources/css/signin.css"/>
 
-        <link href="#{request.contextPath}/static/bootstrap/css/bootstrap-responsive.css" rel="stylesheet" type="text/css"/>
-        <h:outputScript library="primefaces" name="jquery/jquery.js" />
-        <script type="text/javascript" src="#{request.contextPath}/static/bootstrap/js/bootstrap.min.js"></script>
-        <script type="text/javascript">
-            $('.collapse').collapse();
-        </script>
+    <link href="#{request.contextPath}/static/bootstrap/css/bootstrap-responsive.css" rel="stylesheet" type="text/css"/>
+    <h:outputScript library="primefaces" name="jquery/jquery.js"/>
+    <script type="text/javascript" src="#{request.contextPath}/static/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $('.collapse').collapse();
+    </script>
 
-        <title>Projet DAC - <ui:insert name="title">Title</ui:insert></title>
-    </h:head>
+    <title>Projet DAC - <ui:insert name="title">Title</ui:insert></title>
+</h:head>
 
-    <h:body>
+<h:body>
 
-        <div id="top">
-            <!--navbar-->
-            <div class="navbar navbar-fixed-top">
-                <div class="navbar-inner " id="navbar-top">
-                    <div class="container">
+    <div id="top">
+        <!--navbar-->
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner " id="navbar-top">
+                <div class="container">
 
-                        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </a>
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
 
-                        <a class="brand" href="#{request.contextPath}/index.xhtml">Project DAC</a>
+                    <a class="brand" href="#{request.contextPath}/index.xhtml">Project DAC</a>
 
-                        <div class="nav-collapse"> 
-                            <ui:fragment rendered="#{userBean.loggedIn}">
-                                <ul class="nav pull-right">
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                            <h:outputText value="#{userBean.username}" />
-                                            <b class="caret"></b>
-                                        </a>
-                                        <ul class="dropdown-menu">
-                                            <li>
-                                                <h:form class="navbar-form">
-                                                    <h:commandLink action="#{userBean.logOut()}" value="LogOut" />
-                                                </h:form>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </ui:fragment>  
-                        </div>
+                    <div class="nav-collapse">
+                        <ui:fragment rendered="#{userBean.loggedIn}">
+                            <ul class="nav pull-right">
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        <h:outputText value="#{userBean.username}"/>
+                                        <b class="caret"></b>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <h:form class="navbar-form">
+                                                <h:commandLink action="#{userBean.logOut()}" value="LogOut"/>
+                                            </h:form>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </ui:fragment>
                     </div>
                 </div>
             </div>
-            <!--end navbar-->
         </div>
+        <!--end navbar-->
+    </div>
 
-        <div id="content" class="center_content">
-            <ui:insert name="content">Content</ui:insert>
-        </div>
+    <div id="content" class="center_content">
+        <ui:insert name="content">Content</ui:insert>
+    </div>
 
-    </h:body>
+</h:body>
 
 </html>

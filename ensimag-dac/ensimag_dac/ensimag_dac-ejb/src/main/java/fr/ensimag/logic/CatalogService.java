@@ -1,11 +1,30 @@
 package fr.ensimag.logic;
 
+import fr.ensimag.dao.ArticleDAOLocal;
+import fr.ensimag.entity.Article;
+import fr.ensimag.vo.ArticleVO;
+
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import java.util.List;
 
 @Stateless
-public class AccountService /*implements AccountServiceLocal*/ {
+public class CatalogService implements CatalogServiceLocal {
 
-	/*@EJB
+	@EJB
+	ArticleDAOLocal articleDAO;
+
+	@Override
+	public List<ArticleVO> getAllProducts() throws Exception {
+		try {
+			List<Article> articles = articleDAO.findAll();
+			return Article.toVo(articles);
+		} catch (Exception e) {
+			throw new Exception();
+		}
+	}
+
+/*@EJB
 	AccountDAOLocal accountDBAcces;
 
 	@Override
