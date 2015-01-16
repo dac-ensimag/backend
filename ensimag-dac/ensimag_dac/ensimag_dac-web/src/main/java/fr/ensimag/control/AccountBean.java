@@ -10,15 +10,15 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import java.io.Serializable;
 
-@ManagedBean
-@RequestScoped
+//@ManagedBean
+//@RequestScoped
 public class AccountBean implements Serializable {
 
-	@EJB
+	//@EJB
 	private fr.ensimag.logic.AccountServiceLocal accountService;
 	private String                               username;
 	private String                               password;
-	@ManagedProperty(value = "#{userBean}")
+	//@ManagedProperty(value = "#{userBean}")
 	private UserBean                             user;
 
 	public AccountBean() {
