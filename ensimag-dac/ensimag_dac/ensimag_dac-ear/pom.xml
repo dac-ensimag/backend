@@ -97,7 +97,6 @@
                     <glassfishDirectory>${glassfish.directory}</glassfishDirectory>
                     <domainDirectory>${glassfish.directory}/glassfish/domains/</domainDirectory>
                     <passwordFile>/opt/glassfish4/glassfish/domains/domain_dac/config/master-password</passwordFile>
-                    <passFile>/opt/glassfish4/glassfish/domains/domain_dac/config/master-password</passFile>
                     <echo>true</echo>
                     <domain>
                         <name>domain_dac</name>
