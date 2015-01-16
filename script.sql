@@ -1,0 +1,243 @@
+-- MySQL dump 10.13  Distrib 5.5.40, for debian-linux-gnu (x86_64)
+--
+-- Host: localhost    Database: ENSIMAG_DAC_DB
+-- ------------------------------------------------------
+-- Server version	5.5.40-0ubuntu1
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `ARTICLE`
+--
+
+DROP TABLE IF EXISTS `ARTICLE`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ARTICLE` (
+  `ARTICLE_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `ARTICLE_DESCRIPTION` longtext,
+  `ARTICLE_DISPONIBILITE` tinyint(1) DEFAULT '0',
+  `ARTICLE_LIBELE` longtext,
+  `ARTICLE_PRIX` float DEFAULT NULL,
+  `CATEGORIE_ID` int(11) DEFAULT NULL,
+  PRIMARY KEY (`ARTICLE_ID`),
+  KEY `FK_ARTICLE_CATEGORIE_ID` (`CATEGORIE_ID`),
+  CONSTRAINT `FK_ARTICLE_CATEGORIE_ID` FOREIGN KEY (`CATEGORIE_ID`) REFERENCES `CATEGORIE` (`CATEGORIE_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ARTICLE`
+--
+
+LOCK TABLES `ARTICLE` WRITE;
+/*!40000 ALTER TABLE `ARTICLE` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ARTICLE` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ARTICLECOMMANDE`
+--
+
+DROP TABLE IF EXISTS `ARTICLECOMMANDE`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ARTICLECOMMANDE` (
+  `ARTICLE_ID` int(11) NOT NULL,
+  `COMMANDE_ID` int(11) NOT NULL,
+  PRIMARY KEY (`ARTICLE_ID`,`COMMANDE_ID`),
+  KEY `FK_ARTICLECOMMANDE_COMMANDE_ID` (`COMMANDE_ID`),
+  CONSTRAINT `FK_ARTICLECOMMANDE_COMMANDE_ID` FOREIGN KEY (`COMMANDE_ID`) REFERENCES `COMMANDE` (`COMMANDE_ID`),
+  CONSTRAINT `FK_ARTICLECOMMANDE_ARTICLE_ID` FOREIGN KEY (`ARTICLE_ID`) REFERENCES `ARTICLE` (`ARTICLE_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ARTICLECOMMANDE`
+--
+
+LOCK TABLES `ARTICLECOMMANDE` WRITE;
+/*!40000 ALTER TABLE `ARTICLECOMMANDE` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ARTICLECOMMANDE` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `CATEGORIE`
+--
+
+DROP TABLE IF EXISTS `CATEGORIE`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `CATEGORIE` (
+  `CATEGORIE_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `CATEGORIE_LIBELE` longtext,
+  PRIMARY KEY (`CATEGORIE_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `CATEGORIE`
+--
+
+LOCK TABLES `CATEGORIE` WRITE;
+/*!40000 ALTER TABLE `CATEGORIE` DISABLE KEYS */;
+/*!40000 ALTER TABLE `CATEGORIE` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `COMMANDE`
+--
+
+DROP TABLE IF EXISTS `COMMANDE`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `COMMANDE` (
+  `COMMANDE_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `COMMANDE_DATE` date DEFAULT NULL,
+  `COMMANDE_DESCRIPTION` longtext,
+  `COMMANDE_TOTALE` double DEFAULT NULL,
+  `UTILISATEUR_ID` int(11) DEFAULT NULL,
+  PRIMARY KEY (`COMMANDE_ID`),
+  KEY `FK_COMMANDE_UTILISATEUR_ID` (`UTILISATEUR_ID`),
+  CONSTRAINT `FK_COMMANDE_UTILISATEUR_ID` FOREIGN KEY (`UTILISATEUR_ID`) REFERENCES `UTILISATEUR` (`UTILISATEUR_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `COMMANDE`
+--
+
+LOCK TABLES `COMMANDE` WRITE;
+/*!40000 ALTER TABLE `COMMANDE` DISABLE KEYS */;
+/*!40000 ALTER TABLE `COMMANDE` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `FACTURE`
+--
+
+DROP TABLE IF EXISTS `FACTURE`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `FACTURE` (
+  `FACTURE_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `FACTURE_DATE` date DEFAULT NULL,
+  `FACTURE_PRIXHT` float DEFAULT NULL,
+  `FACTURE_TOTALHT` float DEFAULT NULL,
+  `FACTURE_TOTALTTC` float DEFAULT NULL,
+  `FACTURE_TVA` float DEFAULT NULL,
+  `COMMANDE_ID` int(11) DEFAULT NULL,
+  PRIMARY KEY (`FACTURE_ID`),
+  KEY `FK_FACTURE_COMMANDE_ID` (`COMMANDE_ID`),
+  CONSTRAINT `FK_FACTURE_COMMANDE_ID` FOREIGN KEY (`COMMANDE_ID`) REFERENCES `COMMANDE` (`COMMANDE_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `FACTURE`
+--
+
+LOCK TABLES `FACTURE` WRITE;
+/*!40000 ALTER TABLE `FACTURE` DISABLE KEYS */;
+/*!40000 ALTER TABLE `FACTURE` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ROLE`
+--
+
+DROP TABLE IF EXISTS `ROLE`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ROLE` (
+  `ROLE_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `ROLE_DESCRIPTION` longtext,
+  `ROLE_LIBELE` longtext,
+  PRIMARY KEY (`ROLE_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ROLE`
+--
+
+LOCK TABLES `ROLE` WRITE;
+/*!40000 ALTER TABLE `ROLE` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ROLE` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `UTILISATEUR`
+--
+
+DROP TABLE IF EXISTS `UTILISATEUR`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `UTILISATEUR` (
+  `UTILISATEUR_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `UTILISATEUR_ADRESSE` longtext,
+  `UTILISATEUR_CP` longtext,
+  `UTILISATEUR_LOGIN` longtext,
+  `UTILISATEUR_MAIL` longtext,
+  `UTILISATEUR_NOM` longtext,
+  `UTILISATEUR_PASS` longtext,
+  `UTILISATEUR_PRENOM` longtext,
+  `UTILISATEUR_TEL` longtext,
+  `ROLE_ID` int(11) DEFAULT NULL,
+  PRIMARY KEY (`UTILISATEUR_ID`),
+  KEY `FK_UTILISATEUR_ROLE_ID` (`ROLE_ID`),
+  CONSTRAINT `FK_UTILISATEUR_ROLE_ID` FOREIGN KEY (`ROLE_ID`) REFERENCES `ROLE` (`ROLE_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `UTILISATEUR`
+--
+
+LOCK TABLES `UTILISATEUR` WRITE;
+/*!40000 ALTER TABLE `UTILISATEUR` DISABLE KEYS */;
+/*!40000 ALTER TABLE `UTILISATEUR` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `account`
+--
+
+DROP TABLE IF EXISTS `account`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `account` (
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `account`
+--
+
+LOCK TABLES `account` WRITE;
+/*!40000 ALTER TABLE `account` DISABLE KEYS */;
+/*!40000 ALTER TABLE `account` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2015-01-16 15:50:02
