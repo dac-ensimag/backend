@@ -15,6 +15,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -24,6 +26,11 @@ import javax.validation.constraints.NotNull;
  * @author dac
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(
+    name="Utilisateur.findByLogin", query="SELECT OBJECT(user) FROM Utilisateur user WHERE user.utilisateurLogin = :login"
+)})
+
 @Table(name = "UTILISATEUR")
 public class Utilisateur implements Serializable, IEntity<UtilisateurVO> {
     private static final long serialVersionUID = 1L;
@@ -41,7 +48,7 @@ public class Utilisateur implements Serializable, IEntity<UtilisateurVO> {
     @Basic(optional = false)
     @NotNull
     @Lob
-    @Column(name = "UTILISATEUR_LOGIN")
+    @Column(name = "UTILISATEUR_LOGIN", unique = true)
     private String utilisateurLogin;
     @Basic(optional = false)
     @NotNull
@@ -74,6 +81,7 @@ public class Utilisateur implements Serializable, IEntity<UtilisateurVO> {
     private Role role;
 
     public Utilisateur() {
+        this.utilisateurId = 0;
     }
 
     public Utilisateur(Integer utilisateurId) {
@@ -211,10 +219,12 @@ public class Utilisateur implements Serializable, IEntity<UtilisateurVO> {
         vo.setUtilisateurLogin(getUtilisateurLogin());
         vo.setUtilisateurMail(getUtilisateurMail());
         vo.setUtilisateurNom(getUtilisateurNom());
-        vo.setUtilisateurPass(getUtilisateurPass());
+//        vo.setUtilisateurPass(getUtilisateurPass());
         vo.setUtilisateurPrenom(getUtilisateurPrenom());
         vo.setUtilisateurTel(getUtilisateurTel());
-        vo.setRole(getRole().toVO());
+        if (getRole() != null) {
+            vo.setRoleId(getRole().getRoleId());
+        }
         
         List<CommandeVO> commandVOList = new ArrayList<>();
         for (Commande commande : getCommandeList()) {

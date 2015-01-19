@@ -6,17 +6,17 @@
     <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
-            <from-action>#{accountBean.register()}</from-action>
+            <from-action>#{utilisateurBean.register()}</from-action>
             <from-outcome>index</from-outcome>
             <to-view-id>/index.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
-            <from-action>#{accountBean.login()}</from-action>
+            <from-action>#{loginBean.login()}</from-action>
             <from-outcome>welcome</from-outcome>
             <to-view-id>/welcome.xhtml</to-view-id>
         </navigation-case> 
         <navigation-case>
-            <from-action>#{accountBean.login()}</from-action>
+            <from-action>#{loginBean.login()}</from-action>
             <from-outcome>failure</from-outcome>
             <to-view-id>/index.xhtml</to-view-id>
         </navigation-case>       
@@ -25,6 +25,7 @@
         <navigation-case>
             <from-outcome>logout</from-outcome>
             <to-view-id>/index.xhtml</to-view-id>
+            <redirect/>
         </navigation-case>
     </navigation-rule>
 </faces-config>

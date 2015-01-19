@@ -18,7 +18,7 @@ public class UtilisateurVO implements IValueObject {
     private String utilisateurAdresse;
     private String utilisateurCp;
     private List<CommandeVO> commandeList;
-    private RoleVO role;
+    private Integer roleId;
 
     public UtilisateurVO() {
     }
@@ -103,12 +103,12 @@ public class UtilisateurVO implements IValueObject {
         this.commandeList = commandeList;
     }
 
-    public RoleVO getRole() {
-        return role;
+    public Integer getRoleId() {
+        return roleId;
     }
 
-    public void setRole(RoleVO role) {
-        this.role = role;
+    public void setRoleId(Integer roleId) {
+        this.roleId = roleId;
     }
 
 }

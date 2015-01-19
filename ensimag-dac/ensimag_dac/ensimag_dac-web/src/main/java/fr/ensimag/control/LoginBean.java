@@ -1,6 +1,6 @@
 package fr.ensimag.control;
 
-import fr.ensimag.vo.AccountVO;
+import fr.ensimag.vo.UtilisateurVO;
 import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
@@ -9,45 +9,33 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
-/**
- *
- * @author Edward
- */
-@ManagedBean
+@ManagedBean(name="loginBean")
 @RequestScoped
-public class AccountBean implements Serializable {
+public class LoginBean implements Serializable {
     
     @EJB
-    private fr.ensimag.logic.AccountServiceLocal accountService;
+    private fr.ensimag.logic.UtilisateurServiceLocal utilisateurService;
     private String username;
     private String password;
-    @ManagedProperty(value = "#{userBean}")
-    private UserBean user;
+    @ManagedProperty(value = "#{utilisateurBean}")
+    private UtilisateurBean utilisateur;
     
-    public AccountBean() {
-    }
-    
-    public String register() {
-        AccountVO accountVO = new AccountVO();
-        accountVO.setUsername(getUsername());
-        accountVO.setPassword(getPassword());
-        accountService.register(accountVO);
-        return "index";
-    }
+    public LoginBean() {
+    }        
     
     public String login() {
-        AccountVO accountVO = new AccountVO();
-        accountVO.setUsername(getUsername());
-        accountVO.setPassword(getPassword());
-        AccountVO login = accountService.login(accountVO);
+        UtilisateurVO utilisateurVO = new UtilisateurVO();
+        utilisateurVO.setUtilisateurLogin(getUsername());
+        utilisateurVO.setUtilisateurPass(getPassword());
+        UtilisateurVO login = utilisateurService.logIn(utilisateurVO);
         if (login != null) {
-            user.setUsername(login.getUsername());
-            user.setLoggedIn(true);
+            utilisateur.setUser(login);
+            utilisateur.setLoggedIn(true);
             return "welcome";
         } else {
             FacesContext.getCurrentInstance().addMessage(
                     "loginForm:inputUsername", new FacesMessage(
-                    "Invalid Username or Password"));
+                            "Invalid Username or Password"));
             FacesContext.getCurrentInstance().addMessage(
                     "loginForm:inputPassword", new FacesMessage(
                     "Invalid Username or Password"));
@@ -72,12 +60,12 @@ public class AccountBean implements Serializable {
         this.password = password;
     }
 
-    public UserBean getUser() {
-        return user;
+    public UtilisateurBean getUtilisateur() {
+        return utilisateur;
     }
 
-    public void setUser(UserBean user) {
-        this.user = user;
+    public void setUtilisateur(UtilisateurBean utilisateur) {
+        this.utilisateur = utilisateur;
     }
     
     public String toString(){

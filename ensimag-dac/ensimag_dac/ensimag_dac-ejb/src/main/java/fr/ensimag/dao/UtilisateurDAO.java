@@ -5,15 +5,15 @@ import fr.ensimag.foundation.INames;
 import javax.annotation.Resource;
 import javax.ejb.EJBContext;
 import javax.ejb.Stateless;
+import javax.ejb.TransactionManagement;
+import javax.ejb.TransactionManagementType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.transaction.UserTransaction;
 
-/**
- *
- * @author dac
- */
 @Stateless
+@TransactionManagement(TransactionManagementType.BEAN)
 public class UtilisateurDAO extends AbstractDAO<Utilisateur> implements UtilisateurDAOLocal {
 
     @PersistenceContext(unitName = INames.PU_NAME)
@@ -35,5 +35,19 @@ public class UtilisateurDAO extends AbstractDAO<Utilisateur> implements Utilisat
     public UtilisateurDAO() {
         super(Utilisateur.class);
     }
-    
+
+    @Override
+    public Utilisateur findByLogin(Utilisateur entity) {
+        EntityManager em = getEntityManager();
+        try {
+            Query loginQuery = em.createNamedQuery("Utilisateur.findByLogin");
+            loginQuery.setParameter("login", entity.getUtilisateurLogin());
+            Utilisateur utilisateur = (Utilisateur) loginQuery.getSingleResult();
+
+            return utilisateur;
+        } catch (Exception ex) {
+            throw ex;
+        }
+    }
+
 }
