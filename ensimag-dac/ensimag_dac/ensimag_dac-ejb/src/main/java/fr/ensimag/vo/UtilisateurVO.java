@@ -2,10 +2,6 @@ package fr.ensimag.vo;
 
 import java.util.List;
 
-/**
- *
- * @author dac
- */
 public class UtilisateurVO implements IValueObject {
     
     private Integer utilisateurId;

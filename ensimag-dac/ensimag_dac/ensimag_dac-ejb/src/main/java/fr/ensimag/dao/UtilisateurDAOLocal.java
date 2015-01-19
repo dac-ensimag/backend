@@ -1,6 +1,7 @@
 package fr.ensimag.dao;
 
 import fr.ensimag.entity.Utilisateur;
+
 import javax.ejb.Local;
 
 @Local

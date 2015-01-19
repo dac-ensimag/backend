@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>fr.ensimag</groupId>
-  <artifactId>ensimag_dac</artifactId>
-  <version>1.0-SNAPSHOT</version>  
-  <name>ensimag_dac</name>
-  
-  <packaging>pom</packaging>
-  
-  <parent>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
     <groupId>fr.ensimag</groupId>
-    <artifactId>ensimag-dac</artifactId>
-    <version>1.0-SNAPSHOT</version>  
-  </parent>
-  
-  <modules>
-    <module>ensimag_dac-ejb</module>
-    <module>ensimag_dac-api</module>
-    <module>ensimag_dac-web</module>
-    <module>ensimag_dac-ear</module>
-  </modules>
+    <artifactId>ensimag_dac</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>ensimag_dac</name>
+
+    <packaging>pom</packaging>
+
+    <parent>
+        <groupId>fr.ensimag</groupId>
+        <artifactId>ensimag-dac</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <modules>
+        <module>ensimag_dac-ejb</module>
+        <module>ensimag_dac-api</module>
+        <module>ensimag_dac-web</module>
+        <module>ensimag_dac-ear</module>
+    </modules>
 </project>
