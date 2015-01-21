@@ -14,8 +14,6 @@ Factures : 0 (elles doivent être générés après quelques calculs à partir d
 Commandes : 200 articles aléatoires ont été répartis aléatoirement entre les 53 commandes existantes.
 */
 
-USE ENSIMAG_DAC_DB;
-
 /*Rôles des utilisateurs*/
 INSERT INTO ROLE VALUES ('1', "Administrateur","Role principal, possédant tous les droits. Ce compte est principalement présent pour la maintenance du système.");
 
