@@ -3,108 +3,108 @@ package fr.ensimag.vo;
 import java.util.List;
 
 public class UtilisateurVO implements IValueObject {
+    
+    private Integer utilisateurId;
+    private String utilisateurMail;
+    private String utilisateurLogin;
+    private String utilisateurPass;
+    private String utilisateurNom;
+    private String utilisateurPrenom;
+    private String utilisateurTel;
+    private String utilisateurAdresse;
+    private String utilisateurCp;
+    private List<CommandeVO> commandeList;
+    private Integer roleId;
 
-	private Integer          utilisateurId;
-	private String           utilisateurMail;
-	private String           utilisateurLogin;
-	private String           utilisateurPass;
-	private String           utilisateurNom;
-	private String           utilisateurPrenom;
-	private String           utilisateurTel;
-	private String           utilisateurAdresse;
-	private String           utilisateurCp;
-	private List<CommandeVO> commandeList;
-	private RoleVO           role;
+    public UtilisateurVO() {
+    }
 
-	public UtilisateurVO() {
-	}
+    public Integer getUtilisateurId() {
+        return utilisateurId;
+    }
 
-	public Integer getUtilisateurId() {
-		return utilisateurId;
-	}
+    public void setUtilisateurId(Integer utilisateurId) {
+        this.utilisateurId = utilisateurId;
+    }
 
-	public void setUtilisateurId(Integer utilisateurId) {
-		this.utilisateurId = utilisateurId;
-	}
+    public String getUtilisateurMail() {
+        return utilisateurMail;
+    }
 
-	public String getUtilisateurMail() {
-		return utilisateurMail;
-	}
+    public void setUtilisateurMail(String utilisateurMail) {
+        this.utilisateurMail = utilisateurMail;
+    }
 
-	public void setUtilisateurMail(String utilisateurMail) {
-		this.utilisateurMail = utilisateurMail;
-	}
+    public String getUtilisateurLogin() {
+        return utilisateurLogin;
+    }
 
-	public String getUtilisateurLogin() {
-		return utilisateurLogin;
-	}
+    public void setUtilisateurLogin(String utilisateurLogin) {
+        this.utilisateurLogin = utilisateurLogin;
+    }
 
-	public void setUtilisateurLogin(String utilisateurLogin) {
-		this.utilisateurLogin = utilisateurLogin;
-	}
+    public String getUtilisateurPass() {
+        return utilisateurPass;
+    }
 
-	public String getUtilisateurPass() {
-		return utilisateurPass;
-	}
+    public void setUtilisateurPass(String utilisateurPass) {
+        this.utilisateurPass = utilisateurPass;
+    }
 
-	public void setUtilisateurPass(String utilisateurPass) {
-		this.utilisateurPass = utilisateurPass;
-	}
+    public String getUtilisateurNom() {
+        return utilisateurNom;
+    }
 
-	public String getUtilisateurNom() {
-		return utilisateurNom;
-	}
+    public void setUtilisateurNom(String utilisateurNom) {
+        this.utilisateurNom = utilisateurNom;
+    }
 
-	public void setUtilisateurNom(String utilisateurNom) {
-		this.utilisateurNom = utilisateurNom;
-	}
+    public String getUtilisateurPrenom() {
+        return utilisateurPrenom;
+    }
 
-	public String getUtilisateurPrenom() {
-		return utilisateurPrenom;
-	}
+    public void setUtilisateurPrenom(String utilisateurPrenom) {
+        this.utilisateurPrenom = utilisateurPrenom;
+    }
 
-	public void setUtilisateurPrenom(String utilisateurPrenom) {
-		this.utilisateurPrenom = utilisateurPrenom;
-	}
+    public String getUtilisateurTel() {
+        return utilisateurTel;
+    }
 
-	public String getUtilisateurTel() {
-		return utilisateurTel;
-	}
+    public void setUtilisateurTel(String utilisateurTel) {
+        this.utilisateurTel = utilisateurTel;
+    }
 
-	public void setUtilisateurTel(String utilisateurTel) {
-		this.utilisateurTel = utilisateurTel;
-	}
+    public String getUtilisateurAdresse() {
+        return utilisateurAdresse;
+    }
 
-	public String getUtilisateurAdresse() {
-		return utilisateurAdresse;
-	}
+    public void setUtilisateurAdresse(String utilisateurAdresse) {
+        this.utilisateurAdresse = utilisateurAdresse;
+    }
 
-	public void setUtilisateurAdresse(String utilisateurAdresse) {
-		this.utilisateurAdresse = utilisateurAdresse;
-	}
+    public String getUtilisateurCp() {
+        return utilisateurCp;
+    }
 
-	public String getUtilisateurCp() {
-		return utilisateurCp;
-	}
+    public void setUtilisateurCp(String utilisateurCp) {
+        this.utilisateurCp = utilisateurCp;
+    }
 
-	public void setUtilisateurCp(String utilisateurCp) {
-		this.utilisateurCp = utilisateurCp;
-	}
+    public List<CommandeVO> getCommandeList() {
+        return commandeList;
+    }
 
-	public List<CommandeVO> getCommandeList() {
-		return commandeList;
-	}
+    public void setCommandeList(List<CommandeVO> commandeList) {
+        this.commandeList = commandeList;
+    }
 
-	public void setCommandeList(List<CommandeVO> commandeList) {
-		this.commandeList = commandeList;
-	}
+    public Integer getRoleId() {
+        return roleId;
+    }
 
-	public RoleVO getRole() {
-		return role;
-	}
-
-	public void setRole(RoleVO role) {
-		this.role = role;
-	}
+    public void setRoleId(Integer roleId) {
+        this.roleId = roleId;
+    }
 
 }

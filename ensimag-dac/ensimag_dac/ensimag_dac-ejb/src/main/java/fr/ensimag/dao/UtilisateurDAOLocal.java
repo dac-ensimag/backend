@@ -7,4 +7,6 @@ import javax.ejb.Local;
 @Local
 public interface UtilisateurDAOLocal extends AbstractLocal<Utilisateur> {
 
+    public Utilisateur findByLogin(Utilisateur entity);
+    
 }

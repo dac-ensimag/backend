@@ -1,6 +1,6 @@
 package fr.ensimag.control;
 
-import fr.ensimag.logic.CatalogService;
+import fr.ensimag.logic.CatalogServiceLocal;
 import fr.ensimag.vo.ArticleVO;
 
 import javax.annotation.PostConstruct;
@@ -15,7 +15,8 @@ import java.util.List;
 public class CatalogBean implements Serializable {
 
 	@EJB
-	private CatalogService catalog;
+	private CatalogServiceLocal catalog;
+        
 
 	private List<ArticleVO> products;
 
