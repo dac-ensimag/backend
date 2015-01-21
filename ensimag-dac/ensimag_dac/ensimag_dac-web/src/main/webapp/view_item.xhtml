@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./WEB-INF/templates/default.xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui">
+
+    <div class="col-md-offset-3 col-md-6">
+        <div class="jumbotron">
+            <div class="jumbotron-photo">
+                <img src="img/cats/thumb-1.png" alt=""/>
+            </div>
+            <div class="jumbotron-contents">
+                <h1>#{articleBean.getArticleLibele()}</h1>
+                <h2>Description</h2>
+                <p>
+                    #{articleBean.getArticleDescription()}
+                </p>
+                <!--<h2>An other title here</h2>-->
+                <!--<p>-->
+                    <!--Suspendisse elementum leo sit amet turpis ornare tristique. Phasellus placerat lacus a velit blandit porttitor. Pellentesque auctor a ex ac blandit. Morbi faucibus, velit in scelerisque gravida, orci mi luctus ex, ac tincidunt ex mauris quis ante. Maecenas vulputate, sem consequat scelerisque commodo, purus velit porttitor mi, eget condimentum arcu metus ac odio. Maecenas vitae nulla nulla. Praesent vitae elementum arcu, ac vehicula eros. Cras ipsum enim, pulvinar non libero nec, semper mattis leo.-->
+                <!--</p>-->
+            </div>
+        </div>
+    </div>
+
+
+
+</ui:composition>
