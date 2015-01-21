@@ -7,15 +7,14 @@ public class Debug {
 	public static String defaultFile = "DAC_log.txt";
 
 	public static void w(String fileName, String message) {
-		String adressedufichier = System.getProperty("user.dir") + "/"+ fileName;
+		String adressedufichier = System.getProperty("user.dir") + "/" + fileName;
 
 		//on met try si jamais il y a une exception
-		try
-		{
+		try {
 			/**
-			 * BufferedWriter a besoin d un FileWriter, 
+			 * BufferedWriter a besoin d un FileWriter,
 			 * les 2 vont ensemble, on donne comme argument le nom du fichier
-			 * true signifie qu on ajoute dans le fichier (append), on ne marque pas par dessus 
+			 * true signifie qu on ajoute dans le fichier (append), on ne marque pas par dessus
 
 			 */
 			FileWriter fw = new FileWriter(adressedufichier, true);
@@ -32,8 +31,7 @@ public class Debug {
 
 			output.close();
 			//et on le ferme
-		}
-		catch(Exception e){
+		} catch (Exception e) {
 		}
 	}
 

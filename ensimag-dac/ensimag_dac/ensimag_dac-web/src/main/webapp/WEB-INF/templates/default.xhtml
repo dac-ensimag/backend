@@ -10,9 +10,9 @@
         <link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources/css/default.css"/>
         <link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources/css/signin.css"/>
 
-        <link href="#{request.contextPath}/static/bootstrap/css/bootstrap-responsive.css" rel="stylesheet" type="text/css"/>
+        <link href="#{request.contextPath}/resources/bootstrap/css/bootstrap-responsive.css" rel="stylesheet" type="text/css"/>
         <h:outputScript library="primefaces" name="jquery/jquery.js" />
-        <script type="text/javascript" src="#{request.contextPath}/static/bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="#{request.contextPath}/resources/bootstrap/js/bootstrap.min.js"></script>
         <script type="text/javascript">
             $('.collapse').collapse();
         </script>
@@ -37,17 +37,17 @@
                         <a class="brand" href="#{request.contextPath}/index.xhtml">Project DAC</a>
 
                         <div class="nav-collapse"> 
-                            <ui:fragment rendered="#{userBean.loggedIn}">
+                            <ui:fragment rendered="#{utilisateurBean.loggedIn}">
                                 <ul class="nav pull-right">
                                     <li class="dropdown">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                            <h:outputText value="#{userBean.username}" />
+                                            <h:outputText value="#{utilisateurBean.user.utilisateurLogin}" />
                                             <b class="caret"></b>
                                         </a>
                                         <ul class="dropdown-menu">
                                             <li>
                                                 <h:form class="navbar-form">
-                                                    <h:commandLink action="#{userBean.logOut()}" value="LogOut" />
+                                                    <h:commandLink action="#{utilisateurBean.logOut()}" value="LogOut" />
                                                 </h:form>
                                             </li>
                                         </ul>
