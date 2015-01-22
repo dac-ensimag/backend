@@ -4,23 +4,22 @@
 
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-               template="./WEB-INF/templates/default.xhtml"
-                xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:p="http://primefaces.org/ui">
-			
-			
-	<ui:define name="title">
+                template="./WEB-INF/templates/default.xhtml"
+                xmlns:h="http://java.sun.com/jsf/html">
+
+
+    <ui:define name="title">
         Paiement effectue
-    </ui:define>	
-    
-   <ui:define name="content">
+    </ui:define>
+
+    <ui:define name="content">
         <div class="container">
-         <h2> <h:outputText value="Paiement effectué avec succès."/></h2>
-        <h:outputLink value="telechargement.xhtml">
-             <h2> <h:outputText value="Procedez au telechargement"/></h2>
-                </h:outputLink>
-		 
-     </div> <!-- /container -->
+            <h2><h:outputText value="Paiement effectué avec succès."/></h2>
+            <h:outputLink value="telechargement.xhtml">
+                <h2><h:outputText value="Procedez au telechargement"/></h2>
+            </h:outputLink>
+        </div>
+        <!-- /container -->
     </ui:define>
 
 </ui:composition>

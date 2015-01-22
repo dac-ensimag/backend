@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 template="./WEB-INF/templates/default.xhtml"
@@ -14,64 +15,69 @@
         <div class="container">
             <h:form id="signUpForm" styleClass="form-signin span6" role="form">
                 <h2 class="form-signin-heading">S'inscrire</h2>
-                
+
                 <label for="inputLastname" class="sr-only">Nom</label>
-                <h:inputText value="#{utilisateurBean.user.utilisateurNom}" styleClass="form-control" required="true" 
-			requiredMessage="Veuillez compléter ce champ" id="inputLastname" />
-                <p:message id="lastnameMessage" for="inputLastname" />
+                <h:inputText value="#{utilisateurBean.user.utilisateurNom}" styleClass="form-control" required="true"
+                             requiredMessage="Veuillez compléter ce champ" id="inputLastname"/>
+                <p:message id="lastnameMessage" for="inputLastname"/>
                 <label for="inputFirstname" class="sr-only">Prenom</label>
-                <h:inputText value="#{utilisateurBean.user.utilisateurPrenom}" styleClass="form-control" required="true" 
-			requiredMessage="Veuillez compléter ce champ" id="inputFirstname" />
-		<p:message id="firstnameMessage" for="inputFirstname" />
+                <h:inputText value="#{utilisateurBean.user.utilisateurPrenom}" styleClass="form-control" required="true"
+                             requiredMessage="Veuillez compléter ce champ" id="inputFirstname"/>
+                <p:message id="firstnameMessage" for="inputFirstname"/>
                 <label for="inputMail" class="sr-only">Mail</label>
-                <h:inputText value="#{utilisateurBean.user.utilisateurMail}" styleClass="form-control" required="true" 
-			requiredMessage="Veuillez compléter ce champ" id="inputMail" />
-		<p:message id="mailMessage" for="inputMail" />
+                <h:inputText value="#{utilisateurBean.user.utilisateurMail}" styleClass="form-control" required="true"
+                             requiredMessage="Veuillez compléter ce champ" id="inputMail"/>
+                <p:message id="mailMessage" for="inputMail"/>
                 <label for="inputTel" class="sr-only">Téléphone</label>
-                <h:inputText value="#{utilisateurBean.user.utilisateurTel}" styleClass="form-control" required="true" 
-			requiredMessage="Veuillez compléter ce champ" id="inputTel" />
-		<p:message id="telMessage" for="inputTel" />
+                <h:inputText value="#{utilisateurBean.user.utilisateurTel}" styleClass="form-control" required="true"
+                             requiredMessage="Veuillez compléter ce champ" id="inputTel"/>
+                <p:message id="telMessage" for="inputTel"/>
                 <label for="inputAdress" class="sr-only">Adresse</label>
-                <h:inputText value="#{utilisateurBean.user.utilisateurAdresse}" styleClass="form-control" required="true" 
-			requiredMessage="Veuillez compléter ce champ" id="inputAdress" />
-		<p:message id="adressMessage" for="inputAdress" />
+                <h:inputText value="#{utilisateurBean.user.utilisateurAdresse}" styleClass="form-control"
+                             required="true"
+                             requiredMessage="Veuillez compléter ce champ" id="inputAdress"/>
+                <p:message id="adressMessage" for="inputAdress"/>
                 <label for="inputCP" class="sr-only">CP</label>
-                <h:inputText value="#{utilisateurBean.user.utilisateurCp}" styleClass="form-control" required="true" 
-			requiredMessage="Veuillez compléter ce champ" id="inputCP" />
-		<p:message id="cpMessage" for="inputCP" />
-                
+                <h:inputText value="#{utilisateurBean.user.utilisateurCp}" styleClass="form-control" required="true"
+                             requiredMessage="Veuillez compléter ce champ" id="inputCP"/>
+                <p:message id="cpMessage" for="inputCP"/>
+
                 <label for="inputUsername" class="sr-only">Login</label>
-                <h:inputText value="#{utilisateurBean.user.utilisateurLogin}" styleClass="form-control" required="true" 
-			requiredMessage="Veuillez compléter ce champ" id="inputUsername" />
-		<p:message id="usernameMessage" for="inputUsername" />
+                <h:inputText value="#{utilisateurBean.user.utilisateurLogin}" styleClass="form-control" required="true"
+                             requiredMessage="Veuillez compléter ce champ" id="inputUsername"/>
+                <p:message id="usernameMessage" for="inputUsername"/>
                 <label for="inputPassword" class="sr-only">Mot de Pass</label>
-                <h:inputSecret value="#{utilisateurBean.user.utilisateurPass}" styleClass="form-control" required="true" 
-			requiredMessage="Veuillez compléter ce champ" id="inputPassword" />
-		<p:message id="passwordMessage" for="inputPassword" />
-                <h:commandButton styleClass="btn btn-lg btn-primary btn-block" action="#{utilisateurBean.register()}" value="submit" />
-                
+                <h:inputSecret value="#{utilisateurBean.user.utilisateurPass}" styleClass="form-control" required="true"
+                               requiredMessage="Veuillez compléter ce champ" id="inputPassword"/>
+                <p:message id="passwordMessage" for="inputPassword"/>
+                <h:commandButton styleClass="btn btn-lg btn-primary btn-block" action="#{utilisateurBean.register()}"
+                                 value="submit"/>
+
             </h:form>
             <h:form id="loginForm" styleClass="form-signin span6" role="form">
                 <h2 class="form-signin-heading">Identification</h2>
-                
+
                 <label for="inputUsername" class="sr-only">Username</label>
-		<h:inputText value="#{loginBean.username}" styleClass="form-control" required="true"
-			requiredMessage="Value is required" id="inputUsername" />
-                <p:message id="usernameMessage" for="inputUsername" />
+                <h:inputText value="#{loginBean.username}" styleClass="form-control" required="true"
+                             requiredMessage="Value is required" id="inputUsername"/>
+                <p:message id="usernameMessage" for="inputUsername"/>
                 <label for="inputPassword" class="sr-only">Password</label>
-		<h:inputSecret value="#{loginBean.password}" styleClass="form-control" required="true"
-			requiredMessage="Value is required" id="inputPassword" />
-                <p:message id="passwordMessage" for="inputPassword" />
+                <h:inputSecret value="#{loginBean.password}" styleClass="form-control" required="true"
+                               requiredMessage="Value is required" id="inputPassword"/>
+                <p:message id="passwordMessage" for="inputPassword"/>
+
                 <div class="checkbox">
                     <label>
                         <input type="checkbox" value="remember-me"> Remember me</input>
                     </label>
                 </div>
-                <h:commandButton styleClass="btn btn-lg btn-primary btn-block" action="#{loginBean.login()}" value="submit" />
-                
+                <h:commandButton styleClass="btn btn-lg btn-primary btn-block" action="#{loginBean.login()}"
+                                 value="submit"/>
+
             </h:form>
 
-        </div> <!-- /container -->
+        </div>
+        <!-- /container -->
     </ui:define>
 
 </ui:composition>
