@@ -102,4 +102,14 @@ public class CatalogBean implements Serializable {
 		return getProducts().toString();
 	}
 
+	public ArticleBean getArticleBean() {
+		return articleBean;
+	}
+
+	public void setArticleBean(ArticleBean articleBean) {
+		this.articleBean = articleBean;
+	}
+
+
+
 }

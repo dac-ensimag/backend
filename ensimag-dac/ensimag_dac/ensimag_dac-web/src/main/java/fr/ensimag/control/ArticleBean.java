@@ -5,12 +5,13 @@ import fr.ensimag.logic.ArticleServiceLocal;
 import fr.ensimag.vo.ArticleVO;
 
 import javax.ejb.EJB;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import java.io.Serializable;
 
-@ManagedBean(name="articleBean")
-@RequestScoped
+@ManagedBean(name = "articleBean")
+@SessionScoped
 public class ArticleBean implements Serializable {
 
 	@EJB
