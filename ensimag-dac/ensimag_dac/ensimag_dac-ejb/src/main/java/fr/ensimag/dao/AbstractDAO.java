@@ -4,7 +4,10 @@ import fr.ensimag.entity.IEntity;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import javax.transaction.UserTransaction;
 import java.util.List;
 
@@ -96,10 +99,12 @@ public abstract class AbstractDAO<T extends IEntity> {
 	public List<T> findAll() throws Exception {
 		EntityManager em = getEntityManager();
 		try {
-			CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-			cq.select(cq.from(entityClass));
-			Query q = em.createQuery(cq);
-			return q.getResultList();
+			CriteriaBuilder cb = em.getCriteriaBuilder();
+			CriteriaQuery<T> cq = cb.createQuery(entityClass);
+			Root<T> rootEntry = cq.from(entityClass);
+			CriteriaQuery<T> all = cq.select(rootEntry);
+			TypedQuery<T> allQuery = em.createQuery(all);
+			return allQuery.getResultList();
 		} catch (Exception e) {
 			throw e;
 		}

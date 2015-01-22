@@ -5,8 +5,7 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 template="./WEB-INF/templates/default.xhtml"
-                xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:p="http://primefaces.org/ui">
+                xmlns:h="http://java.sun.com/jsf/html">
 
     <ui:define name="content">
         <div class="container">
@@ -29,29 +28,36 @@
         </div>
 
         <div class="container">
-        
-            <h4> <h:outputText id="cartSize" value="Vous avez #{CartBean.cartCount} article(s) dans votre panier"/> </h4> <br/><br/> 
-             <h:outputLink value="panier.xhtml">
-             <h4> <h:outputText value="Consulter le panier"/></h4>
-                </h:outputLink>
-         
-               <ui:repeat value="#{catalogBean.products}" var="product">
+
+            <h4><h:outputText id="cartSize" value="Vous avez #{CartBean.cartCount} article(s) dans votre panier"/></h4>
+            <br/><br/>
+            <h:outputLink value="panier.xhtml">
+                <h4><h:outputText value="Consulter le panier"/></h4>
+            </h:outputLink>
+
+            <ui:repeat value="#{catalogBean.products}" var="product">
                 <div class="col-sm-6 col-md-3">
                     <div class="thumbnail">
-                        <img src="img/cats/thumb-1.png" alt="" class="img-rounded" />
+                        <img src="img/cats/thumb-1.png" alt="" class="img-rounded"/>
+
                         <div class="caption text-center">
                             <h3>#{product.articleLibele}</h3>
+
                             <p>#{product.articleDescription}</p>
-                          <h:form>
-                          	<h:commandButton styleClass="btn btn-default" action="#{catalogBean.view(product)}" value="View item" />
-             				<h:commandButton styleClass="btn btn-default" value="Add to cart" action ="#{CartBean.add(product)}"/>           
-         				</h:form>
+
+                            <h:form>
+                                <h:commandButton styleClass="btn btn-default" action="#{catalogBean.view(product)}"
+                                                 value="View item"/>
+                                <h:commandButton styleClass="btn btn-default" value="Add to cart"
+                                                 action="#{CartBean.add(product)}"/>
+                            </h:form>
+
                         </div>
                     </div>
                 </div>
             </ui:repeat>
-            
-            
+
+
         </div>
     </ui:define>
 

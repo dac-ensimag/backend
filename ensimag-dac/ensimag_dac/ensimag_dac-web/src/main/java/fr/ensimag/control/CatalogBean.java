@@ -1,6 +1,9 @@
 package fr.ensimag.control;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -24,6 +27,8 @@ public class CatalogBean implements Serializable {
 
 	private List<ArticleVO> products;
 
+	private String error;
+
 	/*
 	 * Des articles pour tester
 	 *
@@ -40,36 +45,42 @@ public class CatalogBean implements Serializable {
 	public void init() {
 		try {
 			products = catalog.getAllProducts();
-			/*
-			 * Ajouter d'articles pour tester
-			 * 
-			 * art = new ArticleVO();
-			 * 
-			 * art2 = new
-			 * 
-			 * ArticleVO(); art3 = new ArticleVO();
-			 * 
-			 * art.setArticleId(1);
-			 * 
-			 * art2.setArticleId(2);
-			 * 
-			 * art3.setArticleId(3);
-			 * 
-			 * art.setArticleLibele("Projet A");
-			 * art2.setArticleLibele("Projet B");
-			 * art3.setArticleLibele("Projet C");
-			 * 
-			 * art.setArticlePrix(100);
-			 * 
-			 * art2.setArticlePrix(200); art3.setArticlePrix(300);
-			 * 
-			 * products.add(art);
-			 * 
-			 * products.add(art2); p
-			 * 
-			 * roducts.add(art3);
-			 */
+
+			// Ajouter d'articles pour tester
+
+			ArticleVO art = new ArticleVO();
+
+			ArticleVO art2 = new ArticleVO();
+
+			ArticleVO art3 = new ArticleVO();
+
+			art.setArticleId(1);
+
+			art2.setArticleId(2);
+
+			art3.setArticleId(3);
+
+			art.setArticleLibele("Projet A");
+			art2.setArticleLibele("Projet B");
+			art3.setArticleLibele("Projet C");
+
+			art.setArticlePrix(100);
+
+			art2.setArticlePrix(200);
+			art3.setArticlePrix(300);
+
+			products.add(art);
+			products.add(art2);
+			products.add(art3);
 		} catch (Exception e) {
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			PrintStream ps = new PrintStream(baos);
+			e.printStackTrace(ps);
+			try {
+				this.error = baos.toString("UTF-8");
+			} catch (UnsupportedEncodingException e1) {
+				e1.printStackTrace();
+			}
 		}
 	}
 
