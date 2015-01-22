@@ -1,12 +1,9 @@
 package fr.ensimag.logic;
 
 import fr.ensimag.dao.ArticleDAOLocal;
-import fr.ensimag.entity.Article;
-import fr.ensimag.vo.ArticleVO;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import java.util.List;
 
 @Stateless
 public class ArticleService implements ArticleServiceLocal {
@@ -15,8 +12,12 @@ public class ArticleService implements ArticleServiceLocal {
 	ArticleDAOLocal articleDAO;
 
 	@Override
-	public void deleteArticle() {
-
+	public void deleteArticle(Integer articleId) {
+		try {
+			articleDAO.remove(articleDAO.find(articleId));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	/*@Override

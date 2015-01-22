@@ -2,15 +2,12 @@ package fr.ensimag.control;
 
 import fr.ensimag.entity.Article;
 import fr.ensimag.logic.ArticleServiceLocal;
-import fr.ensimag.logic.CatalogServiceLocal;
 import fr.ensimag.vo.ArticleVO;
 
-import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import java.io.Serializable;
-import java.util.List;
 
 @ManagedBean(name="articleBean")
 @RequestScoped
@@ -19,7 +16,7 @@ public class ArticleBean implements Serializable {
 	@EJB
 	private ArticleServiceLocal articleService;
 
-	private Article product;
+	private ArticleVO product;
 
 	public ArticleBean() {
 
@@ -41,9 +38,10 @@ public class ArticleBean implements Serializable {
 		return product.getCategorie().getCategorieLibele();
 	}
 
-	public void setProduct(Article product) {
+	public void setProduct(ArticleVO product) {
 		this.product = product;
 	}
 
+	public void deleteArticle() {this.articleService.deleteArticle(this.product.getArticleId());}
 
 }

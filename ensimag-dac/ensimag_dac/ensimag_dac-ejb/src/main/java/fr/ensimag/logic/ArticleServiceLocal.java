@@ -8,6 +8,6 @@ import java.util.List;
 @Local
 public interface ArticleServiceLocal {
 
-	void deleteArticle();
+	void deleteArticle(Integer articleId);
 
 }

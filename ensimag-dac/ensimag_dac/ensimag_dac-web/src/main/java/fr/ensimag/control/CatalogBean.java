@@ -6,6 +6,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 
 import fr.ensimag.logic.CatalogServiceLocal;
@@ -17,6 +18,9 @@ public class CatalogBean implements Serializable {
 
 	@EJB
 	private CatalogServiceLocal catalog;
+
+	@ManagedProperty(value = "#{articleBean}")
+	private ArticleBean articleBean;
 
 	private List<ArticleVO> products;
 
@@ -73,7 +77,8 @@ public class CatalogBean implements Serializable {
 		return products;
 	}
 
-	public String view() {
+	public String view(ArticleVO article) {
+		articleBean.setProduct(article);
 		return "failure";
 	}
 
