@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+               template="./WEB-INF/templates/default.xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui">
+			
+			
+	<ui:define name="title">
+        Téléchargement
+    </ui:define>	
+    
+   <ui:define name="content">
+        <div class="container">
+        <h2> <h:outputText value="Liens de téléchargements :"/></h2> <br/><br/> 
+         
+         <ui:repeat value="#{CartBean.cartContents.entrySet().toArray()}" var="p">
+         Nom is : #{p.key.articleLibele}, Prix : #{p.key.articlePrix}
+    	<h:outputLink value="#{p.key.articleLibele}.zip">
+			<h4> <h:outputText value="#{p.key.articleLibele}"/></h4>
+        </h:outputLink>
+         <br/>
+         </ui:repeat>
+         
+		
+		 
+     </div> <!-- /container -->
+    </ui:define>
+
+</ui:composition>
+
+
+
+
+
