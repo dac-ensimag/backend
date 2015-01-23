@@ -47,10 +47,10 @@
                             <p>#{product.articleDescription}</p>
 
                             <h:form>
-                                <h:commandButton styleClass="btn btn-default" action="#{catalogBean.view()}"
+                                <h:link styleClass="btn btn-default" action="#{catalogBean.view()}"
                                 value="View item">
                                     <f:param value="#{product.articleId}" name="id"/>
-                                </h:commandButton>
+                                </h:link>
                                 <h:commandButton styleClass="btn btn-default" value="Add to cart"
                                                  action="#{CartBean.add(product)}"/>
                             </h:form>
