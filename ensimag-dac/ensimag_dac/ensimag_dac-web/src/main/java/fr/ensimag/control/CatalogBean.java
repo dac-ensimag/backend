@@ -5,6 +5,7 @@ import java.io.PrintStream;
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
+import java.util.ArrayList;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -44,7 +45,7 @@ public class CatalogBean implements Serializable {
 	@PostConstruct
 	public void init() {
 		try {
-			products = catalog.getAllProducts();
+            products = new ArrayList<ArticleVO>();
 
 			// Ajouter d'articles pour tester
 
@@ -72,6 +73,7 @@ public class CatalogBean implements Serializable {
 			products.add(art);
 			products.add(art2);
 			products.add(art3);
+			products = catalog.getAllProducts();
 		} catch (Exception e) {
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
 			PrintStream ps = new PrintStream(baos);
@@ -109,6 +111,14 @@ public class CatalogBean implements Serializable {
 	public void setArticleBean(ArticleBean articleBean) {
 		this.articleBean = articleBean;
 	}
+
+    public void setError(String error) {
+        this.error = error;
+    }
+
+    public String getError() {
+        return this.error;
+    }
 
 
 

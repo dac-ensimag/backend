@@ -151,7 +151,9 @@ public class Commande implements Serializable, IEntity<CommandeVO> {
 		vo.setCommandeDate(getCommandeDate());
 		vo.setCommandeDescription(getCommandeDescription());
 		vo.setCommandeTotale(getCommandeTotale());
-		vo.setFacture(getFacture().toVO());
+        if (getFacture() != null) {
+            vo.setFacture(getFacture().toVO());
+        }
 		vo.setUtilisateur(getUtilisateur().toVO());
 
 		List<ArticleVO> articleVOList = new ArrayList<>();
