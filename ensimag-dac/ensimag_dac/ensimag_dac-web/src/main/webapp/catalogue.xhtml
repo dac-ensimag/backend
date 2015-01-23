@@ -10,36 +10,33 @@
 
     <ui:define name="content">
         <div class="container">
-            <div class="rows pull-right">
-                <div class="col-md-12">
-                    <ul class="pagination">
-                            <h:form>
-                             <h:commandButton value="&lt; Précédent" styleClass="btn btn-default" action="#{catalogBean.paginator.prev}"/>
-        <h:outputText value="#{catalogBean.paginator.pageIndex} / #{catalogBean.paginator.pages}"/>
-        <h:commandButton value="Suivant &gt;" styleClass="btn btn-default" action="#{catalogBean.paginator.next}"/>
-        <h:inputHidden value="#{catalogBean.paginator.pageIndex}"/>
-       
-       
-    </h:form>
-                    </ul>
-                </div>
-            </div>
-        </div>
-		
-
-		
-        <div class="container">
-
-
-            <h4><h:outputText id="cartSize" value="Vous avez #{cartBean.cartCount} article(s) dans votre panier"/></h4>
-            <br/><br/>
+            <h5><h:outputText id="cartSize" value="Vous avez #{cartBean.cartCount} article(s) dans votre panier"/></h5>
+            <br/>
             <h:outputLink value="panier.xhtml">
                 <h4><h:outputText value="Consulter le panier"/></h4>
             </h:outputLink>
+        </div>
+        
+        <div class="container">
+            	<div class="rows pull-right">
+               	 	<div class="col-md-12">
+                    	<ul class="pagination">
+                            <h:form>
+                             <h:commandButton value="&lt; Précédent" styleClass="btn btn-default" action="#{catalogBean.paginator.prev}"/>
+       						 <h:outputText value="#{catalogBean.paginator.pageIndex} / #{catalogBean.paginator.pages}"/>
+   						     <h:commandButton value="Suivant &gt;" styleClass="btn btn-default" action="#{catalogBean.paginator.next}"/>
+     						   <h:inputHidden value="#{catalogBean.paginator.pageIndex}"/>
+       						</h:form>
+                    	</ul>
+                	</div>
+            	</div>
+        </div>
 
 
- <ui:repeat value="#{catalogBean.paginator.model}" var="product">
-            <div class="col-sm-6 col-md-3">
+
+        <div class="container">
+ 			<ui:repeat value="#{catalogBean.paginator.model}" var="product">
+            	<div class="col-sm-6 col-md-3">
                     <div class="thumbnail">
                         <img src="img/cats/thumb-1.png" alt="" class="img-rounded"/>
 
@@ -60,7 +57,7 @@
                         </div>
                     </div>
                 </div>
-        </ui:repeat>
+        	</ui:repeat>
 
         
 
