@@ -30,7 +30,7 @@
 
         <div class="container">
 
-            <h4><h:outputText id="cartSize" value="Vous avez #{CartBean.cartCount} article(s) dans votre panier"/></h4>
+            <h4><h:outputText id="cartSize" value="Vous avez #{cartBean.cartCount} article(s) dans votre panier"/></h4>
             <br/><br/>
             <h:outputLink value="panier.xhtml">
                 <h4><h:outputText value="Consulter le panier"/></h4>
@@ -51,8 +51,8 @@
                                 value="View item">
                                     <f:param value="#{product.articleId}" name="id"/>
                                 </h:link>
-                                <h:commandButton styleClass="btn btn-default" value="Add to cart"
-                                                 action="#{CartBean.add(product)}"/>
+                                <h:link styleClass="btn btn-default" value="Add to cart"
+                                                 outcome="#{cartBean.add(product)}"/>
                             </h:form>
 
                         </div>
