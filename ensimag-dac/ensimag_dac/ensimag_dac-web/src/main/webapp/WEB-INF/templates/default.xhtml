@@ -8,12 +8,12 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources/frontend/bootflat/css/bootstrap.min.css"/>
         <link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources/frontend/bootflat/bootflat/css/bootflat.css"/>
-        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources/css/style.css"/>
+        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/static/frontend/css/style.css"/>
 
         <h:outputScript library="primefaces" name="jquery/jquery.js" />
         <script type="text/javascript" src="#{request.contextPath}/static/bootstrap/js/bootstrap.min.js"></script>
-        <script type="text/javascript">
-        </script>
+        <script type="text/javascript" src="#{request.contextPath}/static/frontend/bootflat/bootflat/js/icheck.min.js"></script>
+        <script type="text/javascript" src="#{request.contextPath}/static/frontend/js/script.js"></script>
 
         <title>Projet DAC - <ui:insert name="title">Title</ui:insert></title>
     </h:head>
@@ -57,17 +57,21 @@
                     </div>
                 </form>-->
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Link</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
-                        </ul>
-                    </li>
+                    <ui:fragment rendered="#{utilisateurBean.loggedIn}">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                <h:outputText value="#{utilisateurBean.user.utilisateurLogin}" />
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <h:form class="navbar-form">
+                                        <h:commandLink action="#{utilisateurBean.logOut()}" value="LogOut" />
+                                    </h:form>
+                                </li>
+                            </ul>
+                        </li>
+                    </ui:fragment>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
@@ -110,9 +114,7 @@
             </div>
         </div>-->
 
-        <div id="content" class="center_content">
-            <ui:insert name="content">Content</ui:insert>
-        </div>
+        <ui:insert name="content">Content</ui:insert>
 
         <div class="container-fluid">
             <div class="row">
