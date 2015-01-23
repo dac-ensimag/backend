@@ -51,8 +51,8 @@
                                 value="View item">
                                     <f:param value="#{product.articleId}" name="id"/>
                                 </h:link>
-                                <h:link styleClass="btn btn-default" value="Add to cart"
-                                                 outcome="#{cartBean.add(product)}"/>
+                                <h:commandButton styleClass="btn btn-default" value="Add to cart"
+                                                 action="#{cartBean.add(product)}"/>
                             </h:form>
 
                         </div>
