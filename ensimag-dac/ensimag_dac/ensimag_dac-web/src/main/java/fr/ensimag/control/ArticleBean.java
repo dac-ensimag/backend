@@ -8,6 +8,7 @@ import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -15,13 +16,13 @@ import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 
 @ManagedBean(name = "articleBean")
-@ViewScoped
+@RequestScoped
 public class ArticleBean implements Serializable {
 
 	@EJB
 	private ArticleServiceLocal articleService;
 
-//    @ManagedProperty("#{param.id}")
+    @ManagedProperty("#{param.id}")
     private Integer id;
 
 	private ArticleVO product;
