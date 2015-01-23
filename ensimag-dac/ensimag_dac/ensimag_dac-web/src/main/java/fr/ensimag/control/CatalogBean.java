@@ -23,9 +23,6 @@ public class CatalogBean implements Serializable {
 	@EJB
 	private CatalogServiceLocal catalog;
 
-	@ManagedProperty(value = "#{articleBean}")
-	private ArticleBean articleBean;
-
 	private List<ArticleVO> products;
 
 	private String error;
@@ -90,9 +87,8 @@ public class CatalogBean implements Serializable {
 		return products;
 	}
 
-	public String view(ArticleVO article) {
-		articleBean.setProduct(article);
-		return "failure";
+	public String view() {
+		return "view_item";
 	}
 
 	public String addToCart() {
@@ -102,14 +98,6 @@ public class CatalogBean implements Serializable {
 	@Override
 	public String toString() {
 		return getProducts().toString();
-	}
-
-	public ArticleBean getArticleBean() {
-		return articleBean;
-	}
-
-	public void setArticleBean(ArticleBean articleBean) {
-		this.articleBean = articleBean;
 	}
 
     public void setError(String error) {
