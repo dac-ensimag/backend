@@ -10,9 +10,8 @@ public class CommandeVO implements IValueObject {
 	private String              commandeDescription;
 	private double              commandeTotale;
 	private List<ArticleVO>     articleList;
-	private UtilisateurVO       utilisateur;
+	private Integer             utilisateurId;
 	private FactureVO           facture;
-	private List<UtilisateurVO> utilisateurList;
 
 	public CommandeVO() {
 	}
@@ -57,12 +56,12 @@ public class CommandeVO implements IValueObject {
 		this.articleList = articleList;
 	}
 
-	public UtilisateurVO getUtilisateur() {
-		return utilisateur;
+	public Integer getUtilisateurId() {
+		return utilisateurId;
 	}
 
-	public void setUtilisateur(UtilisateurVO utilisateur) {
-		this.utilisateur = utilisateur;
+	public void setUtilisateurId(Integer utilisateurId) {
+		this.utilisateurId = utilisateurId;
 	}
 
 	public FactureVO getFacture() {
@@ -71,14 +70,6 @@ public class CommandeVO implements IValueObject {
 
 	public void setFacture(FactureVO facture) {
 		this.facture = facture;
-	}
-
-	public List<UtilisateurVO> getUtilisateurList() {
-		return utilisateurList;
-	}
-
-	public void setUtilisateurList(List<UtilisateurVO> utilisateurList) {
-		this.utilisateurList = utilisateurList;
 	}
 
 }

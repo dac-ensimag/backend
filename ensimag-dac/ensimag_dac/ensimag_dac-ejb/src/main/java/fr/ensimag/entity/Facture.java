@@ -156,7 +156,7 @@ public class Facture implements Serializable, IEntity<FactureVO> {
 		vo.setFactureTotalttc(getFactureTotalttc());
 		vo.setFactureTva(getFactureTva());
 
-		vo.setCommande(getCommande().toVO());
+		vo.setCommandeId(getCommande().getCommandeId());
 
 		return vo;
 	}

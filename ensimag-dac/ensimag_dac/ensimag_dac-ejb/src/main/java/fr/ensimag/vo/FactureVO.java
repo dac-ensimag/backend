@@ -10,7 +10,7 @@ public class FactureVO implements IValueObject {
 	private float      factureTva;
 	private float      factureTotalht;
 	private float      factureTotalttc;
-	private CommandeVO commande;
+	private Integer    commandeId;
 
 	public FactureVO() {
 	}
@@ -63,12 +63,12 @@ public class FactureVO implements IValueObject {
 		this.factureTotalttc = factureTotalttc;
 	}
 
-	public CommandeVO getCommande() {
-		return commande;
+	public Integer getCommandeId() {
+		return commandeId;
 	}
 
-	public void setCommande(CommandeVO commande) {
-		this.commande = commande;
+	public void setCommandeId(Integer commandeId) {
+		this.commandeId = commandeId;
 	}
 
 }
