@@ -68,14 +68,6 @@ public class ArticleBean implements Serializable {
 		return product.getArticlePrix();
 	}
 
-	public String getCategorieName() {
-		return product.getCategorie().getCategorieLibele();
-	}
-
-	public void setProduct(ArticleVO product) {
-		this.product = product;
-	}
-
 	public void deleteArticle() {this.articleService.deleteArticle(this.product.getArticleId());}
 
     public Integer getId() {
