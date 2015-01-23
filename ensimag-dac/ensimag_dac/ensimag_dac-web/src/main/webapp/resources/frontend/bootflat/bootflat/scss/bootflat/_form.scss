@@ -40,7 +40,7 @@ $search-icon-line-height:          30px !default;
           @include box-shadow($value: none);
       }
       &:focus {
-          border-color: $form-primary;
+          border-color: $form-success;
       }
       &::-moz-placeholder,
       &:-ms-input-placeholder,

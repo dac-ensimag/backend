@@ -1,14 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE composition>
-<html xmlns="http://www.w3.org/1999/xhtml"><head><link type="text/css" rel="stylesheet" href="/javax.faces.resource/theme.css.xhtml?ln=primefaces-bootstrap" /><link type="text/css" rel="stylesheet" href="/javax.faces.resource/primefaces.css.xhtml?ln=primefaces&amp;v=5.1" />
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <link type="text/css" rel="stylesheet" href="/resources/frontend/bootflat/css/bootstrap.min.css" />
-        <link type="text/css" rel="stylesheet" href="/resources/frontend/bootflat/bootflat/css/bootflat.css" />
-        <link type="text/css" rel="stylesheet" href="/resources/css/style.css" /><script type="text/javascript" src="/javax.faces.resource/jquery/jquery.js.xhtml?ln=primefaces&amp;v=5.1"></script>
-        <script type="text/javascript" src="/static/bootstrap/js/bootstrap.min.js"></script>
-        <script type="text/javascript">
-        </script>
-
+        <link type="text/css" rel="stylesheet" href="./bootflat/css/bootstrap.min.css" />
+        <link type="text/css" rel="stylesheet" href="./bootflat/bootflat/css/bootflat.css" />
+        <link type="text/css" rel="stylesheet" href="./css/style.css" />
+        <script type="text/javascript" src="./bootflat/js/jquery-1.10.1.min.js"></script>
+        <script type="text/javascript" src="./bootflat/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="./bootflat/bootflat/js/icheck.min.js"></script>
+        <script type="text/javascript" src="./js/script.js"></script>
         <title>Projet DAC - 
         Index
     </title></head><body>
@@ -43,92 +44,79 @@
                         </ul>
                     </li>
                 </ul>
-                <!--&lt;form class="navbar-form navbar-left" role="search"&gt;
-                    &lt;div class="form-search search-only"&gt;
-                        &lt;i class="search-icon glyphicon glyphicon-search"&gt;&lt;/i&gt;
-                        &lt;input type="text" class="form-control search-query"&gt;
-                    &lt;/div&gt;
-                &lt;/form&gt;-->
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Link</a></li>
+                <!--<form class="navbar-form navbar-left" role="search">
+                    <div class="form-search search-only">
+                        <i class="search-icon glyphicon glyphicon-search"></i>
+                        <input type="text" class="form-control search-query">
+                    </div>
+                </form>-->
+                  <ul class="nav navbar-nav pull-right">
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown<span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
+                            <li>
+                                <a href="#">Logout</a>
+                            </li>
                         </ul>
                     </li>
                 </ul>
-            </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-    </nav>
-    <!--
-        &lt;div id="top"&gt;
-            &lt;div class="navbar navbar-fixed-top"&gt;
-                &lt;div class="navbar-inner " id="navbar-top"&gt;
-                    &lt;div class="container"&gt;
-
-                        &lt;a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"&gt;
-                            &lt;span class="icon-bar"&gt;&lt;/span&gt;
-                            &lt;span class="icon-bar"&gt;&lt;/span&gt;
-                            &lt;span class="icon-bar"&gt;&lt;/span&gt;
-                        &lt;/a&gt;
-
-                        &lt;a class="brand" href="/index.xhtml"&gt;Project DAC&lt;/a&gt;
-
-                        &lt;div class="nav-collapse"&gt; 
-                            &lt;ui:fragment rendered="false"&gt;
-                                &lt;ul class="nav pull-right"&gt;
-                                    &lt;li class="dropdown"&gt;
-                                        &lt;a href="#" class="dropdown-toggle" data-toggle="dropdown"&gt;
-                                            &lt;h:outputText value="" /&gt;
-                                            &lt;b class="caret"&gt;&lt;/b&gt;
-                                        &lt;/a&gt;
-                                        &lt;ul class="dropdown-menu"&gt;
-                                            &lt;li&gt;
-                                                &lt;h:form class="navbar-form"&gt;
-                                                    &lt;h:commandLink action="logout" value="LogOut" /&gt;
-                                                &lt;/h:form&gt;
-                                            &lt;/li&gt;
-                                        &lt;/ul&gt;
-                                    &lt;/li&gt;
-                                &lt;/ul&gt;
-                            &lt;/ui:fragment&gt;  
-                        &lt;/div&gt;
-                    &lt;/div&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;-->
-
-        <div id="content" class="center_content">
-        <div class="container">
-<form id="signUpForm" name="signUpForm" method="post" action="/index.xhtml" class="form-signin span6" enctype="application/x-www-form-urlencoded" role="form">
-<input type="hidden" name="signUpForm" value="signUpForm" />
-
-                <h2 class="form-signin-heading">Sign Up</h2>
-                
-                <label for="inputUsername" class="sr-only">Username</label><input id="signUpForm:inputUsername" type="text" name="signUpForm:inputUsername" class="form-control" /><div id="signUpForm:usernameMessage" aria-live="polite" class="ui-message"></div>
-                <label for="inputPassword" class="sr-only">Password</label><input id="signUpForm:inputPassword" type="password" name="signUpForm:inputPassword" value="" class="form-control" /><div id="signUpForm:passwordMessage" aria-live="polite" class="ui-message"></div><input type="submit" name="signUpForm:j_idt13" value="submit" class="btn btn-lg btn-primary btn-block" /><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:0" value="-3752479826015524996:6160485856796096563" autocomplete="off" />
-</form>
-<form id="loginForm" name="loginForm" method="post" action="/index.xhtml" class="form-signin span6" enctype="application/x-www-form-urlencoded" role="form">
-<input type="hidden" name="loginForm" value="loginForm" />
-
-                <h2 class="form-signin-heading">Login</h2>
-                
-                <label for="inputUsername" class="sr-only">Username</label><input id="loginForm:inputUsername" type="text" name="loginForm:inputUsername" class="form-control" /><div id="loginForm:usernameMessage" aria-live="polite" class="ui-message"></div>
-                <label for="inputPassword" class="sr-only">Password</label><input id="loginForm:inputPassword" type="password" name="loginForm:inputPassword" value="" class="form-control" /><div id="loginForm:passwordMessage" aria-live="polite" class="ui-message"></div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" value="remember-me"> Remember me</input>
-                    </label>
-                </div><input type="submit" name="loginForm:j_idt17" value="submit" class="btn btn-lg btn-primary btn-block" /><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:0" value="-3752479826015524996:6160485856796096563" autocomplete="off" />
-</form>
-
-        </div> <!-- /container -->
+            </div>
         </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-6">
+                <h2>Sign Up</h2>
+                <form id="signUpForm" name="signUpForm" method="post" action="/index.xhtml" enctype="application/x-www-form-urlencoded" role="form">
+                    <input type="hidden" name="signUpForm" value="signUpForm" />      
+                        <div class="form-group">
+                            <label for="inputUsername" class="contol-label">Username</label>
+                            <input id="signUpForm:inputUsername" type="text" name="signUpForm:inputUsername" class="form-control has-success" />
+                            <div id="signUpForm:usernameMessage" aria-live="polite" class="ui-message"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword" class="control-label">Password</label>
+                            <input id="signUpForm:inputPassword" type="password" name="signUpForm:inputPassword" value="" class="form-control" />
+                            <div id="signUpForm:passwordMessage" aria-live="polite" class="ui-message"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" name="signUpForm:j_idt13" value="submit" class="btn btn-success btn-block" />
+                        </div>
+                        <input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:0" value="-3752479826015524996:6160485856796096563" autocomplete="off" />
+
+                </form>
+            </div>
+            <div class="col-xs-12 col-md-6">
+                <h2 class="form-signin-heading">Login</h2>
+                <form id="loginForm" name="loginForm" method="post" action="/index.xhtml" class="form-signin span6" enctype="application/x-www-form-urlencoded" role="form">
+                    <input type="hidden" name="loginForm" value="loginForm" />
+                    <div class="form-group">
+                        <label for="inputPassword">Password</label>
+                        <input id="loginForm:inputPassword" type="password" name="loginForm:inputPassword" value="" class="form-control" />
+                        <div id="loginForm:passwordMessage" aria-live="polite" class="ui-message"></div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="btn btn-link btn-block">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" value="remember-me"> Remember me</input>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <input type="submit" name="loginForm:j_idt17" value="submit" class="btn btn-success btn-block" />
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:0" value="-3752479826015524996:6160485856796096563" autocomplete="off" />
+                </form>
+            </div>
+        </div>
+    </div> <!-- /container -->
 
         <div class="container-fluid">
             <div class="row">
