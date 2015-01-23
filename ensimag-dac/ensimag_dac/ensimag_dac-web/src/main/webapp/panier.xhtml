@@ -15,11 +15,11 @@
 
     <ui:define name="content">
         <div class="container">
-            <h2><h:outputText id="cartSize" value="Dans votre panier, vous avez #{CartBean.cartCount} article(s)"/></h2>
+            <h2><h:outputText id="cartSize" value="Dans votre panier, vous avez #{cartBean.cartCount} article(s)"/></h2>
             <br/><br/>
 
 
-            <ui:repeat value="#{CartBean.cartContents.entrySet().toArray()}" var="p">
+            <ui:repeat value="#{cartBean.cartContents.entrySet().toArray()}" var="p">
                 <div class="col-sm-6 col-md-3">
                     <div class="thumbnail">
                         <img src="img/cats/thumb-1.png" alt="" class="img-rounded"/>
@@ -29,7 +29,7 @@
 
                             <p>Prix : #{p.key.articlePrix} euros</p>
                             <h:form>
-                                <h:commandButton value="Supprimer" action="#{CartBean.remove(p.key)}"/>
+                                <h:commandButton value="Supprimer" action="#{cartBean.remove(p.key)}"/>
 
                             </h:form>
                         </div>
@@ -38,7 +38,7 @@
             </ui:repeat>
 
 
-            <h4><h:outputText id="cartTotal" value="Le total à payer (TTC) est #{CartBean.cartTotalPrice} euros"/> <br/><br/>
+            <h4><h:outputText id="cartTotal" value="Le total à payer (TTC) est #{cartBean.cartTotalPrice} euros"/> <br/><br/>
             </h4>
 
             <h:outputLink value="paiement.xhtml">

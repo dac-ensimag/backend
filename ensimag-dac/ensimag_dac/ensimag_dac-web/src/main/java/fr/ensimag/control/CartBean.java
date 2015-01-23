@@ -12,7 +12,7 @@ import javax.faces.bean.SessionScoped;
 
 import fr.ensimag.vo.ArticleVO;
 
-@ManagedBean(name = "CartBean")
+@ManagedBean(name = "cartBean")
 @SessionScoped
 public class CartBean implements Serializable {
 	private List<ArticleVO> articles = new ArrayList<ArticleVO>();

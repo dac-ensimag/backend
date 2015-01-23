@@ -16,12 +16,8 @@ public class CatalogService implements CatalogServiceLocal {
 
 	@Override
 	public List<ArticleVO> getAllProducts() throws Exception {
-		try {
-			List<Article> articles = articleDAO.findAll();
-			return Article.toVo(articles);
-		} catch (Exception e) {
-			throw new Exception();
-		}
+        List<Article> articles = articleDAO.findAll();
+        return Article.toVo(articles);
 	}
 
 /*@EJB

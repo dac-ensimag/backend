@@ -159,10 +159,12 @@ public class Article implements Serializable, IEntity<ArticleVO> {
 		vo.setArticlePrix(getArticlePrix());
 
 		List<CommandeVO> commandVOList = new ArrayList<>();
-		for (Commande commande : getCommandeList()) {
-			commandVOList.add(commande.toVO());
-		}
+//		for (Commande commande : getCommandeList()) {
+//			commandVOList.add(commande.toVO());
+//		}
 		vo.setCommandeList(commandVOList);
+                
+                vo.setCategorieId(getCategorie().getCategorieId());
 
 		return vo;
 	}

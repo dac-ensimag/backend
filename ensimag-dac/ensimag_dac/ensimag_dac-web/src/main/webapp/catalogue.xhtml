@@ -5,7 +5,8 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 template="./WEB-INF/templates/default.xhtml"
-                xmlns:h="http://java.sun.com/jsf/html">
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core">
 
     <ui:define name="content">
         <div class="container">
@@ -29,7 +30,7 @@
 
         <div class="container">
 
-            <h4><h:outputText id="cartSize" value="Vous avez #{CartBean.cartCount} article(s) dans votre panier"/></h4>
+            <h4><h:outputText id="cartSize" value="Vous avez #{cartBean.cartCount} article(s) dans votre panier"/></h4>
             <br/><br/>
             <h:outputLink value="panier.xhtml">
                 <h4><h:outputText value="Consulter le panier"/></h4>
@@ -44,12 +45,16 @@
                             <h3>#{product.articleLibele}</h3>
 
                             <p>#{product.articleDescription}</p>
+
                             <h:form>
-                                <h:commandButton styleClass="btn btn-default" action="#{catalogBean.view()}"
-                                                 value="View item"/>
+                                <h:link styleClass="btn btn-default" outcome="#{catalogBean.view()}" includeViewParams="true"
+                                value="View item">
+                                    <f:param value="#{product.articleId}" name="id"/>
+                                </h:link>
                                 <h:commandButton styleClass="btn btn-default" value="Add to cart"
-                                                 action="#{CartBean.add(product)}"/>
+                                                 action="#{cartBean.add(product)}"/>
                             </h:form>
+
                         </div>
                     </div>
                 </div>
