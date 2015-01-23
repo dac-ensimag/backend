@@ -10,6 +10,7 @@
                 xmlns:p="http://primefaces.org/ui">
 
     <f:metadata>
+        <f:viewParam name="id" value="#{articleBean.id}"/>
         <f:event type="preRenderView" listener="#{articleBean.setArticle()}"/>
     </f:metadata>
 

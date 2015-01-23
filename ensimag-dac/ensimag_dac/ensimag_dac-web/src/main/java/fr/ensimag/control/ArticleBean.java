@@ -18,7 +18,7 @@ public class ArticleBean implements Serializable {
 	@EJB
 	private ArticleServiceLocal articleService;
 
-    @ManagedProperty("#{param.id}")
+//    @ManagedProperty("#{param.id}")
     private Integer id;
 
 	private ArticleVO product;
