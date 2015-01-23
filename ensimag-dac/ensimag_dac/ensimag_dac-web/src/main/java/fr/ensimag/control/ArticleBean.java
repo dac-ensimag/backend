@@ -9,7 +9,10 @@ import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
 
 @ManagedBean(name = "articleBean")
 @ViewScoped
@@ -23,6 +26,16 @@ public class ArticleBean implements Serializable {
 
 	private ArticleVO product;
 
+	public String getError() {
+		return error;
+	}
+
+	public void setError(String error) {
+		this.error = error;
+	}
+
+	private String error;
+
 	public ArticleBean() {
 
 	}
@@ -31,6 +44,14 @@ public class ArticleBean implements Serializable {
         try{ 
             this.product = articleService.getArticle(id);
         } catch (Exception e) {
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			PrintStream ps = new PrintStream(baos);
+			e.printStackTrace(ps);
+			try {
+				this.error = baos.toString("UTF-8");
+			} catch (UnsupportedEncodingException e1) {
+				e1.printStackTrace();
+			}
         }
     }
 
