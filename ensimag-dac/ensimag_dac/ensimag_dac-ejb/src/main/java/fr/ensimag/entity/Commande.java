@@ -154,7 +154,7 @@ public class Commande implements Serializable, IEntity<CommandeVO> {
         if (getFacture() != null) {
             vo.setFacture(getFacture().toVO());
         }
-		vo.setUtilisateur(getUtilisateur().toVO());
+		vo.setUtilisateurId(getUtilisateur().getUtilisateurId());
 		vo.setFacture(getFacture().toVO());
 		vo.setUtilisateurId(getUtilisateur().getUtilisateurId());
 
