@@ -6,24 +6,74 @@
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources/bootstrap/css/bootstrap.css"/>
-        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources/css/default.css"/>
-        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources/css/signin.css"/>
+        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources/frontend/bootflat/css/bootstrap.min.css"/>
+        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources/frontend/bootflat/bootflat/css/bootflat.css"/>
+        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources/css/style.css"/>
 
-        <link href="#{request.contextPath}/static/bootstrap/css/bootstrap-responsive.css" rel="stylesheet" type="text/css"/>
         <h:outputScript library="primefaces" name="jquery/jquery.js" />
         <script type="text/javascript" src="#{request.contextPath}/static/bootstrap/js/bootstrap.min.js"></script>
         <script type="text/javascript">
-            $('.collapse').collapse();
         </script>
 
         <title>Projet DAC - <ui:insert name="title">Title</ui:insert></title>
     </h:head>
 
     <h:body>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#{request.contextPath}/index.xhtml">Projet DAC</a>
+                </div>
 
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+                    <li><a href="#">Link</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">One more separated link</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <!--<form class="navbar-form navbar-left" role="search">
+                    <div class="form-search search-only">
+                        <i class="search-icon glyphicon glyphicon-search"></i>
+                        <input type="text" class="form-control search-query">
+                    </div>
+                </form>-->
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">Link</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+    <!--
         <div id="top">
-            <!--navbar-->
             <div class="navbar navbar-fixed-top">
                 <div class="navbar-inner " id="navbar-top">
                     <div class="container">
@@ -58,11 +108,55 @@
                     </div>
                 </div>
             </div>
-            <!--end navbar-->
-        </div>
+        </div>-->
 
         <div id="content" class="center_content">
             <ui:insert name="content">Content</ui:insert>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md12">
+                    <div class="footer">
+                        <div class="container">
+                            <div class="clearfix">
+                                <div class="footer-logo">
+                                    <a href="#">Logo Link</a>
+                                </div>
+                                <dl class="footer-nav">
+                                    <dt class="nav-title">Title 1</dt>
+                                    <dd class="nav-item"><a href="">Link 1</a></dd>
+                                    <dd class="nav-item"><a href="">Link 2</a></dd>
+                                    <dd class="nav-item"><a href="">Link 3</a></dd>
+                                    <dd class="nav-item"><a href="">Link 4</a></dd>
+                                </dl>
+                                <dl class="footer-nav">
+                                    <dt class="nav-title">Title 2</dt>
+                                    <dd class="nav-item"><a href="">Link 1</a></dd>
+                                    <dd class="nav-item"><a href="">Link 2</a></dd>
+                                    <dd class="nav-item"><a href="">Link 3</a></dd>
+                                    <dd class="nav-item"><a href="">Link 4</a></dd>
+                                </dl>
+                                <dl class="footer-nav">
+                                    <dt class="nav-title">Title 3</dt>
+                                    <dd class="nav-item"><a href="">Link 1</a></dd>
+                                    <dd class="nav-item"><a href="">Link 2</a></dd>
+                                    <dd class="nav-item"><a href="">Link 3</a></dd>
+                                    <dd class="nav-item"><a href="">Link 4</a></dd>
+                                </dl>
+                                <dl class="footer-nav">
+                                    <dt class="nav-title">Title 4</dt>
+                                    <dd class="nav-item"><a href="">Link 1</a></dd>
+                                    <dd class="nav-item"><a href="">Link 2</a></dd>
+                                    <dd class="nav-item"><a href="">Link 3</a></dd>
+                                    <dd class="nav-item"><a href="">Link 4</a></dd>
+                                </dl>
+                                <div class="footer-copyright text-center">Copyright © 2014 DAC Ensimag. All rights reserved.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </h:body>

@@ -1,0 +1,178 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition>
+<html xmlns="http://www.w3.org/1999/xhtml"><head><link type="text/css" rel="stylesheet" href="/javax.faces.resource/theme.css.xhtml?ln=primefaces-bootstrap" /><link type="text/css" rel="stylesheet" href="/javax.faces.resource/primefaces.css.xhtml?ln=primefaces&amp;v=5.1" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link type="text/css" rel="stylesheet" href="/resources/frontend/bootflat/css/bootstrap.min.css" />
+        <link type="text/css" rel="stylesheet" href="/resources/frontend/bootflat/bootflat/css/bootflat.css" />
+        <link type="text/css" rel="stylesheet" href="/resources/css/style.css" /><script type="text/javascript" src="/javax.faces.resource/jquery/jquery.js.xhtml?ln=primefaces&amp;v=5.1"></script>
+        <script type="text/javascript" src="/static/bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+        </script>
+
+        <title>Projet DAC - 
+        Index
+    </title></head><body>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/index.xhtml">Projet DAC</a>
+                </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+                    <li><a href="#">Link</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">One more separated link</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <!--&lt;form class="navbar-form navbar-left" role="search"&gt;
+                    &lt;div class="form-search search-only"&gt;
+                        &lt;i class="search-icon glyphicon glyphicon-search"&gt;&lt;/i&gt;
+                        &lt;input type="text" class="form-control search-query"&gt;
+                    &lt;/div&gt;
+                &lt;/form&gt;-->
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">Link</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+    <!--
+        &lt;div id="top"&gt;
+            &lt;div class="navbar navbar-fixed-top"&gt;
+                &lt;div class="navbar-inner " id="navbar-top"&gt;
+                    &lt;div class="container"&gt;
+
+                        &lt;a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"&gt;
+                            &lt;span class="icon-bar"&gt;&lt;/span&gt;
+                            &lt;span class="icon-bar"&gt;&lt;/span&gt;
+                            &lt;span class="icon-bar"&gt;&lt;/span&gt;
+                        &lt;/a&gt;
+
+                        &lt;a class="brand" href="/index.xhtml"&gt;Project DAC&lt;/a&gt;
+
+                        &lt;div class="nav-collapse"&gt; 
+                            &lt;ui:fragment rendered="false"&gt;
+                                &lt;ul class="nav pull-right"&gt;
+                                    &lt;li class="dropdown"&gt;
+                                        &lt;a href="#" class="dropdown-toggle" data-toggle="dropdown"&gt;
+                                            &lt;h:outputText value="" /&gt;
+                                            &lt;b class="caret"&gt;&lt;/b&gt;
+                                        &lt;/a&gt;
+                                        &lt;ul class="dropdown-menu"&gt;
+                                            &lt;li&gt;
+                                                &lt;h:form class="navbar-form"&gt;
+                                                    &lt;h:commandLink action="logout" value="LogOut" /&gt;
+                                                &lt;/h:form&gt;
+                                            &lt;/li&gt;
+                                        &lt;/ul&gt;
+                                    &lt;/li&gt;
+                                &lt;/ul&gt;
+                            &lt;/ui:fragment&gt;  
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;-->
+
+        <div id="content" class="center_content">
+        <div class="container">
+<form id="signUpForm" name="signUpForm" method="post" action="/index.xhtml" class="form-signin span6" enctype="application/x-www-form-urlencoded" role="form">
+<input type="hidden" name="signUpForm" value="signUpForm" />
+
+                <h2 class="form-signin-heading">Sign Up</h2>
+                
+                <label for="inputUsername" class="sr-only">Username</label><input id="signUpForm:inputUsername" type="text" name="signUpForm:inputUsername" class="form-control" /><div id="signUpForm:usernameMessage" aria-live="polite" class="ui-message"></div>
+                <label for="inputPassword" class="sr-only">Password</label><input id="signUpForm:inputPassword" type="password" name="signUpForm:inputPassword" value="" class="form-control" /><div id="signUpForm:passwordMessage" aria-live="polite" class="ui-message"></div><input type="submit" name="signUpForm:j_idt13" value="submit" class="btn btn-lg btn-primary btn-block" /><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:0" value="-3752479826015524996:6160485856796096563" autocomplete="off" />
+</form>
+<form id="loginForm" name="loginForm" method="post" action="/index.xhtml" class="form-signin span6" enctype="application/x-www-form-urlencoded" role="form">
+<input type="hidden" name="loginForm" value="loginForm" />
+
+                <h2 class="form-signin-heading">Login</h2>
+                
+                <label for="inputUsername" class="sr-only">Username</label><input id="loginForm:inputUsername" type="text" name="loginForm:inputUsername" class="form-control" /><div id="loginForm:usernameMessage" aria-live="polite" class="ui-message"></div>
+                <label for="inputPassword" class="sr-only">Password</label><input id="loginForm:inputPassword" type="password" name="loginForm:inputPassword" value="" class="form-control" /><div id="loginForm:passwordMessage" aria-live="polite" class="ui-message"></div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value="remember-me"> Remember me</input>
+                    </label>
+                </div><input type="submit" name="loginForm:j_idt17" value="submit" class="btn btn-lg btn-primary btn-block" /><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:0" value="-3752479826015524996:6160485856796096563" autocomplete="off" />
+</form>
+
+        </div> <!-- /container -->
+        </div>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md12">
+                    <div class="footer">
+                        <div class="container">
+                            <div class="clearfix">
+                                <div class="footer-logo">
+                                    <a href="#">Logo Link</a>
+                                </div>
+                                <dl class="footer-nav">
+                                    <dt class="nav-title">Title 1</dt>
+                                    <dd class="nav-item"><a href="">Link 1</a></dd>
+                                    <dd class="nav-item"><a href="">Link 2</a></dd>
+                                    <dd class="nav-item"><a href="">Link 3</a></dd>
+                                    <dd class="nav-item"><a href="">Link 4</a></dd>
+                                </dl>
+                                <dl class="footer-nav">
+                                    <dt class="nav-title">Title 2</dt>
+                                    <dd class="nav-item"><a href="">Link 1</a></dd>
+                                    <dd class="nav-item"><a href="">Link 2</a></dd>
+                                    <dd class="nav-item"><a href="">Link 3</a></dd>
+                                    <dd class="nav-item"><a href="">Link 4</a></dd>
+                                </dl>
+                                <dl class="footer-nav">
+                                    <dt class="nav-title">Title 3</dt>
+                                    <dd class="nav-item"><a href="">Link 1</a></dd>
+                                    <dd class="nav-item"><a href="">Link 2</a></dd>
+                                    <dd class="nav-item"><a href="">Link 3</a></dd>
+                                    <dd class="nav-item"><a href="">Link 4</a></dd>
+                                </dl>
+                                <dl class="footer-nav">
+                                    <dt class="nav-title">Title 4</dt>
+                                    <dd class="nav-item"><a href="">Link 1</a></dd>
+                                    <dd class="nav-item"><a href="">Link 2</a></dd>
+                                    <dd class="nav-item"><a href="">Link 3</a></dd>
+                                    <dd class="nav-item"><a href="">Link 4</a></dd>
+                                </dl>
+                                <div class="footer-copyright text-center">Copyright © 2014 DAC Ensimag. All rights reserved.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></body>
+
+</html>
