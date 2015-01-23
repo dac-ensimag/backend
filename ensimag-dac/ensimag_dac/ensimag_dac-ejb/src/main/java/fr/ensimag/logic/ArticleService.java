@@ -1,6 +1,7 @@
 package fr.ensimag.logic;
 
 import fr.ensimag.dao.ArticleDAOLocal;
+import fr.ensimag.vo.ArticleVO;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -18,6 +19,11 @@ public class ArticleService implements ArticleServiceLocal {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public ArticleVO getArticle(Integer articleId) throws Exception {
+		return articleDAO.find(articleId).toVO();
 	}
 
 	/*@Override
