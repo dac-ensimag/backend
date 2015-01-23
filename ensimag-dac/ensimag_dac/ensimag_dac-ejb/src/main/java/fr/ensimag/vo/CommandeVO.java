@@ -3,86 +3,82 @@ package fr.ensimag.vo;
 import java.util.Date;
 import java.util.List;
 
-/**
- *
- * @author dac
- */
 public class CommandeVO implements IValueObject {
-    
-    private Integer commandeId;    
-    private Date commandeDate;
-    private String commandeDescription;
-    private double commandeTotale;
-    private List<ArticleVO> articleList;
-    private UtilisateurVO utilisateur;
-    private FactureVO facture;
-    private List<UtilisateurVO> utilisateurList;
 
-    public CommandeVO() {
-    }
+	private Integer             commandeId;
+	private Date                commandeDate;
+	private String              commandeDescription;
+	private double              commandeTotale;
+	private List<ArticleVO>     articleList;
+	private UtilisateurVO       utilisateur;
+	private FactureVO           facture;
+	private List<UtilisateurVO> utilisateurList;
 
-    public Integer getCommandeId() {
-        return commandeId;
-    }
+	public CommandeVO() {
+	}
 
-    public void setCommandeId(Integer commandeId) {
-        this.commandeId = commandeId;
-    }
+	public Integer getCommandeId() {
+		return commandeId;
+	}
 
-    public Date getCommandeDate() {
-        return commandeDate;
-    }
+	public void setCommandeId(Integer commandeId) {
+		this.commandeId = commandeId;
+	}
 
-    public void setCommandeDate(Date commandeDate) {
-        this.commandeDate = commandeDate;
-    }
+	public Date getCommandeDate() {
+		return commandeDate;
+	}
 
-    public String getCommandeDescription() {
-        return commandeDescription;
-    }
+	public void setCommandeDate(Date commandeDate) {
+		this.commandeDate = commandeDate;
+	}
 
-    public void setCommandeDescription(String commandeDescription) {
-        this.commandeDescription = commandeDescription;
-    }
+	public String getCommandeDescription() {
+		return commandeDescription;
+	}
 
-    public double getCommandeTotale() {
-        return commandeTotale;
-    }
+	public void setCommandeDescription(String commandeDescription) {
+		this.commandeDescription = commandeDescription;
+	}
 
-    public void setCommandeTotale(double commandeTotale) {
-        this.commandeTotale = commandeTotale;
-    }
+	public double getCommandeTotale() {
+		return commandeTotale;
+	}
 
-    public List<ArticleVO> getArticleList() {
-        return articleList;
-    }
+	public void setCommandeTotale(double commandeTotale) {
+		this.commandeTotale = commandeTotale;
+	}
 
-    public void setArticleList(List<ArticleVO> articleList) {
-        this.articleList = articleList;
-    }
+	public List<ArticleVO> getArticleList() {
+		return articleList;
+	}
 
-    public UtilisateurVO getUtilisateur() {
-        return utilisateur;
-    }
+	public void setArticleList(List<ArticleVO> articleList) {
+		this.articleList = articleList;
+	}
 
-    public void setUtilisateur(UtilisateurVO utilisateur) {
-        this.utilisateur = utilisateur;
-    }
+	public UtilisateurVO getUtilisateur() {
+		return utilisateur;
+	}
 
-    public FactureVO getFacture() {
-        return facture;
-    }
+	public void setUtilisateur(UtilisateurVO utilisateur) {
+		this.utilisateur = utilisateur;
+	}
 
-    public void setFacture(FactureVO facture) {
-        this.facture = facture;
-    }
+	public FactureVO getFacture() {
+		return facture;
+	}
 
-    public List<UtilisateurVO> getUtilisateurList() {
-        return utilisateurList;
-    }
+	public void setFacture(FactureVO facture) {
+		this.facture = facture;
+	}
 
-    public void setUtilisateurList(List<UtilisateurVO> utilisateurList) {
-        this.utilisateurList = utilisateurList;
-    }
-    
+	public List<UtilisateurVO> getUtilisateurList() {
+		return utilisateurList;
+	}
+
+	public void setUtilisateurList(List<UtilisateurVO> utilisateurList) {
+		this.utilisateurList = utilisateurList;
+	}
+
 }

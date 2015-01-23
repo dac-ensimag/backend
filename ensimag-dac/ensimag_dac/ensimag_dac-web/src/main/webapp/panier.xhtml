@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./WEB-INF/templates/default.xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+        >
+
+
+    <ui:define name="title">
+        Votre panier
+    </ui:define>
+
+    <ui:define name="content">
+        <div class="container">
+            <h2><h:outputText id="cartSize" value="Dans votre panier, vous avez #{CartBean.cartCount} article(s)"/></h2>
+            <br/><br/>
+
+
+            <ui:repeat value="#{CartBean.cartContents.entrySet().toArray()}" var="p">
+                <div class="col-sm-6 col-md-3">
+                    <div class="thumbnail">
+                        <img src="img/cats/thumb-1.png" alt="" class="img-rounded"/>
+
+                        <div class="caption text-center">
+                            <h3>#{p.key.articleLibele}</h3>
+
+                            <p>Prix : #{p.key.articlePrix} euros</p>
+                            <h:form>
+                                <h:commandButton value="Supprimer" action="#{CartBean.remove(p.key)}"/>
+
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+            </ui:repeat>
+
+
+            <h4><h:outputText id="cartTotal" value="Le total à payer (TTC) est #{CartBean.cartTotalPrice} euros"/> <br/><br/>
+            </h4>
+
+            <h:outputLink value="paiement.xhtml">
+                <h4><h:outputText value="Payez la commande"/></h4>
+            </h:outputLink>
+
+        </div>
+        <!-- /container -->
+    </ui:define>
+
+</ui:composition>
+
+
+

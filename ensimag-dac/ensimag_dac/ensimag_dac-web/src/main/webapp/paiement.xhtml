@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./WEB-INF/templates/default.xhtml"
+                xmlns:h="http://java.sun.com/jsf/html">
+
+    <ui:define name="title">
+        Paiement
+    </ui:define>
+
+    <ui:define name="content">
+        <div class="container">
+            <h2><h:outputText id="cartSize" value="Dans votre panier, vous avez #{CartBean.cartCount} article(s)"/></h2>
+            <br/><br/>
+
+            <ui:repeat value="#{CartBean.cartContents.entrySet().toArray()}" var="p">
+
+                Nom : #{p.key.articleLibele}, Prix : #{p.key.articlePrix}
+                <Br/>
+                <h:form>
+                    <h:commandButton value="Supprimer" action="#{CartBean.remove(p.key)}"/>
+                </h:form>
+                <br/>
+
+            </ui:repeat>
+
+            <h2><h:outputText id="cartTotal" value="Le total à payer (TTC) est #{CartBean.cartTotalPrice} euros"/> <br/><br/>
+            </h2>
+
+
+            <h:form id="signUpForm" styleClass="form-signin span6" role="form">
+                Veuillez saisir les informations de payement :
+
+                <label for="inputLastname" class="sr-only">Nom</label>
+                <h:inputText value="" styleClass="form-control" required="true"
+                             requiredMessage="Veuillez compléter ce champ" id="inputLastname"/>
+                <br/><br/>
+                <label for="inputFirstname" class="sr-only">Prenom</label>
+                <h:inputText value="" styleClass="form-control" required="true"
+                             requiredMessage="Veuillez compléter ce champ" id="inputFirstname"/>
+                <br/><br/>
+                <label for="inputMail" class="sr-only">Mail</label>
+                <h:inputText value="" styleClass="form-control" required="true"
+                             requiredMessage="Veuillez compléter ce champ" id="inputMail"/>
+                <br/><br/>
+                <label for="inputTel" class="sr-only">Téléphone</label>
+                <h:inputText value="" styleClass="form-control" required="true"
+                             requiredMessage="Veuillez compléter ce champ" id="inputTel"/>
+                <br/><br/>
+                <label for="inputAdress" class="sr-only">Adresse</label>
+                <h:inputText value="" styleClass="form-control" required="true"
+                             requiredMessage="Veuillez compléter ce champ" id="inputAdress"/>
+                <br/><br/>
+                <label for="inputCP" class="sr-only">CP</label>
+                <h:inputText value="" styleClass="form-control" required="true"
+                             requiredMessage="Veuillez compléter ce champ" id="inputCP"/>
+            </h:form>
+
+
+            <h:outputLink value="confirmation.xhtml">
+                <h2><h:outputText value="Payez la commande"/></h2>
+            </h:outputLink>
+
+        </div>
+        <!-- /container -->
+    </ui:define>
+
+</ui:composition>
+
