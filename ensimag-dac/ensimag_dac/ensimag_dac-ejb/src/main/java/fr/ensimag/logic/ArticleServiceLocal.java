@@ -2,6 +2,8 @@ package fr.ensimag.logic;
 
 
 
+import fr.ensimag.vo.ArticleVO;
+
 import javax.ejb.Local;
 import java.util.List;
 
@@ -9,5 +11,7 @@ import java.util.List;
 public interface ArticleServiceLocal {
 
 	void deleteArticle(Integer articleId);
+
+	ArticleVO getArticle(Integer articleId) throws Exception;
 
 }
