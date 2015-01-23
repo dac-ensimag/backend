@@ -17,7 +17,7 @@
         <div class="container">
             <h2><h:outputText value="Liens de téléchargements :"/></h2> <br/><br/>
 
-            <ui:repeat value="#{CartBean.cartContents.entrySet().toArray()}" var="p">
+            <ui:repeat value="#{cartBean.cartContents.entrySet().toArray()}" var="p">
                 Nom : #{p.key.articleLibele}, Prix : #{p.key.articlePrix}
                 <h:outputLink value="#{p.key.articleLibele}.zip">
                     <h4><h:outputText value="#{p.key.articleLibele}"/></h4>
