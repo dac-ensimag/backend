@@ -88,11 +88,7 @@ public class CatalogBean implements Serializable {
 	}
 
 	public String view() {
-		return "view_item";
-	}
-
-	public String addToCart() {
-		return "failure";
+		return "view_item?faces-redirect=true";
 	}
 
 	@Override
