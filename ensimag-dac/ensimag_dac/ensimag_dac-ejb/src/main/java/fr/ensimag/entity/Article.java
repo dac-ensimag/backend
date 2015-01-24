@@ -68,6 +68,11 @@ public class Article implements Serializable, IEntity<ArticleVO> {
 		this.articleDescription = articleDescription;
 	}
 
+	@Override
+	public int getId() {
+		return this.getArticleId();
+	}
+
 	public Integer getArticleId() {
 		return articleId;
 	}

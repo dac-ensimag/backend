@@ -63,6 +63,11 @@ public class Commande implements Serializable, IEntity<CommandeVO> {
 		this.commandeTotale = commandeTotale;
 	}
 
+	@Override
+	public int getId() {
+		return this.getCommandeId();
+	}
+
 	public Integer getCommandeId() {
 		return commandeId;
 	}

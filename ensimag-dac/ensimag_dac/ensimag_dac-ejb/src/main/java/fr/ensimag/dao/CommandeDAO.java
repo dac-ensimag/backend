@@ -15,25 +15,4 @@ import javax.transaction.UserTransaction;
 @Stateless
 @TransactionManagement(TransactionManagementType.BEAN)
 public class CommandeDAO extends AbstractDAO<Commande> implements CommandeDAOLocal {
-
-	@PersistenceContext(unitName = INames.PU_NAME)
-	private EntityManager em;
-
-	@Resource
-	private EJBContext ctx;
-
-	public CommandeDAO() {
-		super(Commande.class);
-	}
-
-	@Override
-	protected EntityManager getEntityManager() {
-		return em;
-	}
-
-	@Override
-	protected UserTransaction getUserTransaction() {
-		return ctx.getUserTransaction();
-	}
-
 }

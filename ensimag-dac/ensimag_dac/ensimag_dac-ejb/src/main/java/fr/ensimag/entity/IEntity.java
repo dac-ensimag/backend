@@ -7,6 +7,8 @@ import fr.ensimag.vo.IValueObject;
  */
 public interface IEntity<T extends IValueObject> {
 
+	int getId();
+
 	T toVO();
 
 }

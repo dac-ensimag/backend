@@ -11,26 +11,14 @@ public interface AbstractLocal<T extends IEntity> {
 
 	T create(T support) throws Exception;
 
-	;
-
-	void edit(T support) throws Exception;
-
-	;
+	T edit(T support) throws Exception;
 
 	void remove(T support) throws Exception;
 
-	;
-
 	T find(Object id) throws Exception;
-
-	;
 
 	List<T> findAll() throws Exception;
 
-	;
-
 	int count() throws Exception;
-
-	;
 
 }

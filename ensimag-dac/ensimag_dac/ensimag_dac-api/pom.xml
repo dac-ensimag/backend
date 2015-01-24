@@ -36,11 +36,6 @@
                         <phase>test</phase>
                     </execution>
                 </executions>
-                <configuration>
-                    <includes>
-                        <include>**/utest/*.java</include>
-                    </includes>
-                </configuration>
             </plugin>
         </plugins>
     </build>
