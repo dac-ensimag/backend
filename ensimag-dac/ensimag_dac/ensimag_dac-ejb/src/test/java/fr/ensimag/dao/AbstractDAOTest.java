@@ -113,7 +113,7 @@ public class AbstractDAOTest extends DatabaseTestcase {
 
 		List<Categorie> all = categorieDAO.findAll();
 
-		Assert.assertThat(all.size(), equalTo(2));
+		Assert.assertThat(all.size(), greaterThanOrEqualTo(2));
 	}
 
 	@Test
