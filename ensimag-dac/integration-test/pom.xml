@@ -14,7 +14,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>javaee</groupId>
+            <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
             <version>7.0</version>
             <scope>test</scope>
