@@ -8,7 +8,7 @@
     <name>ensimag-dac root project</name>
 
     <packaging>pom</packaging>
-    
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
@@ -195,4 +195,21 @@
             </plugin>
         </plugins>
     </reporting>
+
+    <organization>
+        <name>Ensimag</name>
+        <url>http://ensimag.grenoble-inp.fr/</url>
+    </organization>
+
+    <description>
+        Plateforme développé dans le cadre du Projet DAC (Développement d'Applications Communicantes) de l'Ensimag.
+    </description>
+
+    <url>http://sardes.inrialpes.fr/~quema/DAC.pdf</url>
+
+    <licenses>
+        <license>
+            <name>Private project. Distribution is not allowed.</name>
+        </license>
+    </licenses>
 </project>
