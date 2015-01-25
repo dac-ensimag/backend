@@ -75,20 +75,13 @@
                 <version>2.1</version>
                 <executions>
                     <execution>
-                        <id>gf-undeploy</id>
-                        <goals>
-                            <goal>undeploy</goal>
-                        </goals>
-                        <phase>clean</phase>
-                    </execution>
-                    <execution>
                         <id>gf-deploy</id>
                         <goals>
                             <goal>deploy</goal>
                             <goal>stop-domain</goal>
                             <goal>start-domain</goal>
                         </goals>
-                        <phase>package</phase>
+                        <phase>deploy</phase>
                     </execution>
                 </executions>
                 <configuration>
@@ -115,5 +108,36 @@
             </plugin>
         </plugins>
     </build>
-
+    <profiles>
+        <profile>
+            <id>glassfish-undeploy</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+                <file>
+                    <exists>${glassfish.directory}/glassfish/domains/domain_dac/config/pid</exists>
+                </file>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.glassfish.maven.plugin</groupId>
+                        <artifactId>maven-glassfish-plugin</artifactId>
+                        <version>2.1</version>
+                        <executions>
+                            <execution>
+                                <id>gf-deploy</id>
+                                <goals> 
+                                    <goal>undeploy</goal>
+                                    <goal>deploy</goal>
+                                    <goal>stop-domain</goal>
+                                    <goal>start-domain</goal>
+                                </goals>
+                                <phase>deploy</phase>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
