@@ -3,7 +3,7 @@ package fr.ensimag;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 
-public class Debug {
+public class    Debug {
 	public static String defaultFile = "DAC_log.txt";
 
 	public static void w(String fileName, String message) {
