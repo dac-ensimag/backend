@@ -22,14 +22,14 @@ public class CategorieTestdataBuilder extends AbstractTestdataBuilder<Categorie>
 		return this;
 	}
 
-	private String getCategoriLibele() {
+	private String getCategorieLibele() {
 		return withLibele != null ? withLibele : "utilitaire";
 	}
 
 	@Override
 	public Categorie build() {
 		final Categorie categorie = new Categorie();
-		categorie.setCategorieLibele(getCategoriLibele());
+		categorie.setCategorieLibele(getCategorieLibele());
 
 		return categorie;
 	}
