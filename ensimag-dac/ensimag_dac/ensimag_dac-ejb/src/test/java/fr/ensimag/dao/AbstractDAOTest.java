@@ -62,11 +62,28 @@ public class AbstractDAOTest extends DatabaseTestcase {
 	@Test
 	public void testRemove() {
 		Categorie categorie = new CategorieTestdataBuilder(entityManager).buildAndSave();
+		categorieDAO.remove(categorie);
+		Categorie categorieFromDb = categorieDAO.find(categorie.getCategorieId());
+		Assert.assertNull(categorieFromDb);
 
+		Categorie categorie2 = new CategorieTestdataBuilder(entityManager).buildAndSave();
+		categorie = new CategorieTestdataBuilder(entityManager).build();
+
+		try {
+			categorie.setCategorieId(-1);
+			categorieDAO.remove(categorie);
+			Assert.fail();
+		} catch (Exception e) {
+			Assert.assertTrue(true);
+		}
+
+		categorieFromDb = categorieDAO.find(categorie2.getCategorieId());
+		Assert.assertNotNull(categorieFromDb);
+
+		categorie.setCategorieId(categorie2.getCategorieId());
 		categorieDAO.remove(categorie);
 
-		Categorie categorieFromDb = categorieDAO.find(categorie.getCategorieId());
-
+		categorieFromDb = categorieDAO.find(categorie2.getCategorieId());
 		Assert.assertNull(categorieFromDb);
 	}
 
