@@ -1,4 +1,4 @@
-package fr.ensimag;
+package fr.ensimag.util;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;

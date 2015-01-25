@@ -12,7 +12,7 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
-import util.RepeatPaginator;
+import fr.ensimag.util.RepeatPaginator;
 import fr.ensimag.logic.CatalogServiceLocal;
 import fr.ensimag.vo.ArticleVO;
 

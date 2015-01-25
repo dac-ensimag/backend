@@ -1,27 +1,34 @@
-package util;
+/**
+ * @copyright at69
+ * @see https://github.com/at69/CoffeeRoom/blob/master/src/java/com/coffeeroom/util/RepeatPaginator.java
+ */
+
+package fr.ensimag.util;
 
 import java.util.List;
 
 public class RepeatPaginator {
 	private static final int DEFAULT_RECORDS_NUMBER = 10;
-	private static final int DEFAULT_PAGE_INDEX = 1;
-
-	private int records;
-	private final int recordsTotal;
-	private int pageIndex;
-	private int pages;
+	private static final int DEFAULT_PAGE_INDEX     = 1;
+	private final int     recordsTotal;
 	private final List<?> origModel;
-	private List<?> model;
+	private       int     records;
+	private       int     pageIndex;
+	private       int     pages;
+	private       List<?> model;
 
 	public RepeatPaginator(final List<?> model) {
+		this(model, RepeatPaginator.DEFAULT_RECORDS_NUMBER);
+	}
+
+	public RepeatPaginator(final List<?> model, int records) {
 		this.origModel = model;
-		this.records = RepeatPaginator.DEFAULT_RECORDS_NUMBER;
+		this.records = records;
 		this.pageIndex = RepeatPaginator.DEFAULT_PAGE_INDEX;
 		this.recordsTotal = model.size();
 
 		if (this.records > 0) {
-			this.pages = this.records <= 0 ? 1 : this.recordsTotal
-					/ this.records;
+			this.pages = this.records <= 0 ? 1 : this.recordsTotal / this.records;
 
 			if (this.recordsTotal % this.records > 0) {
 				this.pages++;
@@ -38,7 +45,7 @@ public class RepeatPaginator {
 		this.updateModel();
 	}
 
-	public void updateModel() {
+	private void updateModel() {
 		final int fromIndex = this.getFirst();
 		int toIndex = this.getFirst() + this.records;
 
@@ -77,6 +84,14 @@ public class RepeatPaginator {
 		return this.pageIndex;
 	}
 
+	public void setPageIndex(final int pageIndex) {
+		if (pageIndex <= this.pages && pageIndex >= 1) {
+			this.pageIndex = pageIndex;
+
+			this.updateModel();
+		}
+	}
+
 	public int getPages() {
 		return this.pages;
 	}
@@ -87,9 +102,5 @@ public class RepeatPaginator {
 
 	public List<?> getModel() {
 		return this.model;
-	}
-
-	public void setPageIndex(final int pageIndex) {
-		this.pageIndex = pageIndex;
 	}
 }
