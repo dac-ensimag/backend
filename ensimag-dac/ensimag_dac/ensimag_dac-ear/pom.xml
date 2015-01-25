@@ -114,7 +114,7 @@
             <activation>
                 <activeByDefault>false</activeByDefault>
                 <file>
-                    <exists>${glassfish.directory}/glassfish/domains/domain_dac/config/pid</exists>
+                    <exists>${glassfish.directory}/glassfish/domains/domain_dac/applications/${project.artifactId}/META-INF/application.xml</exists>
                 </file>
             </activation>
             <build>
@@ -126,7 +126,7 @@
                         <executions>
                             <execution>
                                 <id>gf-deploy</id>
-                                <goals> 
+                                <goals>
                                     <goal>undeploy</goal>
                                     <goal>deploy</goal>
                                     <goal>stop-domain</goal>
