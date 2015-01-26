@@ -55,11 +55,11 @@ public class SupressionArticleBean implements Serializable {
 		return product.getArticleLibele();
 	}
 
-	public String cancelDeletion() { return "catalogue.xhtml"; }
+	public String cancelDeletion() { return "catalogue"; }
 
 	public String deleteArticle() {
 		this.articleService.deleteArticle(this.id);
-		return "catalogue.xhtml";
+		return "catalogue";
 	}
 
 	public Integer getId() {
