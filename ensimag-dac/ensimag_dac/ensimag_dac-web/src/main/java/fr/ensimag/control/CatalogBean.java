@@ -12,6 +12,7 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
+import fr.ensimag.logic.ArticleServiceLocal;
 import fr.ensimag.util.RepeatPaginator;
 import fr.ensimag.logic.CatalogServiceLocal;
 import fr.ensimag.vo.ArticleVO;
@@ -111,5 +112,13 @@ public class CatalogBean implements Serializable {
 	public RepeatPaginator getPaginator() {
 		return this.paginator;
 	}
+
+	@EJB
+	ArticleServiceLocal articleService;
+
+	public String getErrorArticleService() {
+		return this.articleService.getError();
+	}
+
 
 }

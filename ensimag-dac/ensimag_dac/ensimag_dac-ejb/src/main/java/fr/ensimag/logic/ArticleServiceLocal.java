@@ -11,4 +11,5 @@ public interface ArticleServiceLocal {
 
 	ArticleVO getArticle(Integer articleId) throws Exception;
 
+	String getError();
 }
