@@ -21,7 +21,6 @@ public class SupressionArticleBean implements Serializable {
 	//    @ManagedProperty("#{param.id}")
 	private Integer id;
 
-	private ArticleVO product;
 	private String    error;
 
 	public SupressionArticleBean() {
@@ -36,7 +35,7 @@ public class SupressionArticleBean implements Serializable {
 		this.error = error;
 	}
 
-	public void setArticle() {
+	/*public void setArticle() {
 		try {
 			this.product = articleService.getArticle(id);
 		} catch (Exception e) {
@@ -49,10 +48,22 @@ public class SupressionArticleBean implements Serializable {
 				e1.printStackTrace();
 			}
 		}
-	}
+	}*/
 
 	public String getArticleLibele() {
-		return product.getArticleLibele();
+		try {
+			return articleService.getArticle(this.id).getArticleLibele();
+		} catch (Exception e) {
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			PrintStream ps = new PrintStream(baos);
+			e.printStackTrace(ps);
+			try {
+				this.error = baos.toString("UTF-8");
+			} catch (UnsupportedEncodingException e1) {
+				e1.printStackTrace();
+			}
+			return null;
+		}
 	}
 
 	public String cancelDeletion() { return "catalogue?faces-redirect=true"; }
