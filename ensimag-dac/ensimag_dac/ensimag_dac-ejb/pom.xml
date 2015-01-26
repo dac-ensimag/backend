@@ -2,10 +2,10 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>fr.ensimag</groupId>
+
     <artifactId>ensimag_dac-ejb</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <name>ensimag_dac-ejb</name>
+
+    <name>ensimag-dac ejb</name>
 
     <parent>
         <artifactId>ensimag_dac</artifactId>
@@ -19,7 +19,7 @@
         <dependency>
             <groupId>fr.ensimag</groupId>
             <artifactId>ensimag_dac-api</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${project.version}</version>
             <type>jar</type>
             <scope>compile</scope>
         </dependency>
@@ -62,6 +62,14 @@
                 <version>2.4</version>
                 <configuration>
                     <ejbVersion>3.0</ejbVersion>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <version>3.0.0</version>
+                <configuration>
+                    <excludeFilterFile>findbugs-exclude.xml</excludeFilterFile>
                 </configuration>
             </plugin>
         </plugins>

@@ -46,15 +46,11 @@ public class UtilisateurService implements UtilisateurServiceLocal {
 		entity.setUtilisateurLogin(vo.getUtilisateurLogin());
 		entity.setUtilisateurPass(BCrypt.hashpw(vo.getUtilisateurPass(), BCrypt.gensalt(12)));
 
-		try {
-			Role role = roleDAO.find(INames.ROLE_USER_ID);
-			entity.setRole(role);
-			entity = utilisateurDAO.create(entity);
-			return entity.toVO();
-		} catch (Exception ex) {
-			ex.printStackTrace();
-			return null;
-		}
+		Role role = roleDAO.find(INames.ROLE_USER_ID);
+		entity.setRole(role);
+		entity = utilisateurDAO.create(entity);
+
+		return entity.toVO();
 	}
 
 }

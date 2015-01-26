@@ -1,10 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>fr.ensimag</groupId>
+
     <artifactId>integration-test</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <name>integration-test</name>
+
+    <name>ensimag-dac integration tests</name>
 
     <parent>
         <groupId>fr.ensimag</groupId>
@@ -14,15 +14,15 @@
 
     <dependencies>
         <dependency>
-            <groupId>javaee</groupId>
+            <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
-            <version>5</version>
+            <version>7.0</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>fr.ensimag</groupId>
             <artifactId>ensimag_dac-ejb</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${project.version}</version>
             <type>ejb</type>
             <scope>test</scope>
         </dependency>
@@ -43,7 +43,7 @@
                     <dependency>
                         <groupId>fr.ensimag</groupId>
                         <artifactId>ensimag_dac-ear</artifactId>
-                        <version>1.0-SNAPSHOT</version>
+                        <version>${project.version}</version>
                         <type>ear</type>
                     </dependency>
                 </dependencies>
