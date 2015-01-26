@@ -19,7 +19,6 @@
     </ui:define>
 
     <ui:define name="content">
-        <!--<pre>#{articleBean.error}</pre>-->
         <div class="col-md-offset-3 col-md-6">
             <div class="jumbotron">
                 <div class="jumbotron-photo">
@@ -34,7 +33,7 @@
                 </div>
                 <h:button styleClass="btn btn-default" outcome="#{articleBean.deleteArticle()}" includeViewParams="true"
                         value="View item">
-                    <f:param value="#{product.articleId}" name="id"/>
+                    <f:param value="#{product.articleId}" name="articleId"/>
                 </h:button>
             </div>
         </div>
