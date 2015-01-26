@@ -33,7 +33,7 @@
                 </div>
                 <h:button styleClass="btn btn-default" outcome="#{articleBean.deleteArticle()}" includeViewParams="true"
                         value="View item">
-                    <f:param value="#{product.articleId}" name="articleId"/>
+                    <f:param value="#{articleBean.getId()}" name="articleId"/>
                 </h:button>
             </div>
         </div>
