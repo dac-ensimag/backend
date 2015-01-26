@@ -15,25 +15,12 @@ public class ArticleService implements ArticleServiceLocal {
 	@EJB
 	ArticleDAOLocal articleDAO;
 
-	public String getError() {
-		return error;
-	}
-
-	private String error;
-
 	@Override
 	public void deleteArticle(Integer articleId) {
 		try {
 			articleDAO.remove(articleDAO.find(articleId));
 		} catch (Exception e) {
-			final ByteArrayOutputStream baos = new ByteArrayOutputStream();
-			final PrintStream ps = new PrintStream(baos);
-			e.printStackTrace(ps);
-			try {
-				this.error = baos.toString("UTF-8");
-			} catch (final UnsupportedEncodingException e1) {
-				e1.printStackTrace();
-			}
+			e.printStackTrace();
 		}
 	}
 

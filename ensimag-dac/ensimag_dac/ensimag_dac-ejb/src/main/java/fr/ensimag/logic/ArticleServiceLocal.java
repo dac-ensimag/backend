@@ -10,6 +10,4 @@ public interface ArticleServiceLocal {
 	void deleteArticle(Integer articleId);
 
 	ArticleVO getArticle(Integer articleId) throws Exception;
-
-	String getError();
 }

@@ -113,12 +113,4 @@ public class CatalogBean implements Serializable {
 		return this.paginator;
 	}
 
-	@EJB
-	ArticleServiceLocal articleService;
-
-	public String getErrorArticleService() {
-		return this.articleService.getError();
-	}
-
-
 }
