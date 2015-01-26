@@ -66,9 +66,8 @@ public class SupressionArticleBean implements Serializable {
 		}
 	}
 
-	public String deleteArticle() {
+	public void deleteArticle() {
 		this.articleService.deleteArticle(this.id);
-		return "/catalogue";
 	}
 
 	public Integer getId() {
