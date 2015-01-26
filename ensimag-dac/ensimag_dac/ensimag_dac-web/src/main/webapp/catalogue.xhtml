@@ -8,6 +8,10 @@
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core">
 
+    <f:metadata>
+        <f:event type="preRenderView" listener="#{catalogBean.init()}"/>
+    </f:metadata>
+
     <ui:define name="content">
         <div class="container">
             <h5><h:outputText id="cartSize" value="Vous avez #{cartBean.cartCount} article(s) dans votre panier"/></h5>
