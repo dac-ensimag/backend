@@ -72,7 +72,7 @@ public class ArticleBean implements Serializable {
 	}
 
 	public String deleteArticle() {
-		return "/admin/supr_item.xhtml?faces-redirect=true";
+		return "admin/supr_item?faces-redirect=true";
 	}
 
 }
