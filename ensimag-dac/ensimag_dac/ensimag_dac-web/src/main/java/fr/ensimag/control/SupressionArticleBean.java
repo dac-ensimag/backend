@@ -11,9 +11,9 @@ import java.io.PrintStream;
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 
-@ManagedBean(name = "articleBean")
+@ManagedBean(name = "suprArticleBean")
 @ViewScoped
-public class ArticleBean implements Serializable {
+public class SupressionArticleBean implements Serializable {
 
 	@EJB
 	private ArticleServiceLocal articleService;
@@ -24,7 +24,7 @@ public class ArticleBean implements Serializable {
 	private ArticleVO product;
 	private String    error;
 
-	public ArticleBean() {
+	public SupressionArticleBean() {
 
 	}
 
@@ -55,12 +55,11 @@ public class ArticleBean implements Serializable {
 		return product.getArticleLibele();
 	}
 
-	public String getArticleDescription() {
-		return product.getArticleDescription();
-	}
+	public String cancelDeletion() { return "catalogue.xhtml"; }
 
-	public float getArticlePrix() {
-		return product.getArticlePrix();
+	public String deleteArticle() {
+		this.articleService.deleteArticle(this.id);
+		return "catalogue.xhtml";
 	}
 
 	public Integer getId() {
@@ -69,10 +68,6 @@ public class ArticleBean implements Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public String deleteArticle() {
-		return "/admin/supr_item.xhtml";
 	}
 
 }
