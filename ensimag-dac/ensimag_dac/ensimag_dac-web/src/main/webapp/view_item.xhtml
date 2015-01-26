@@ -31,10 +31,14 @@
                         #{articleBean.getArticleDescription()}
                     </p>
                 </div>
-                <h:button styleClass="btn btn-default" outcome="#{articleBean.deleteArticle()}" includeViewParams="true"
-                        value="View item">
+                <h:button styleClass="btn btn-lg btn-primary btn-block" value="Supprimer" outcome="#{articleBean.deleteArticle()}" includeViewParams="true">
                     <f:param value="#{articleBean.getId()}" name="articleId"/>
                 </h:button>
+
+                <!--<h:button styleClass="btn btn-default" outcome="#{articleBean.deleteArticle()}" includeViewParams="true"
+                          value="View item">
+                    <f:param value="#{articleBean.getId()}" name="articleId"/>
+                </h:button>-->
             </div>
         </div>
     </ui:define>
