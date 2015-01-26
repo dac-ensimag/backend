@@ -123,6 +123,6 @@ public class AbstractDAOTest extends DatabaseTestcase {
 
 		int count = categorieDAO.count();
 
-		Assert.assertThat(count, equalTo(2));
+		Assert.assertThat(count, greaterThanOrEqualTo(2));
 	}
 }
