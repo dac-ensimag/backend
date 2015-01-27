@@ -12,17 +12,22 @@
         <f:event type="preRenderView" listener="#{catalogBean.init()}"/>
     </f:metadata>
 
-    <ui:define name="content">
-        <div class="container">
-            <h5><h:outputText id="cartSize" value="Vous avez #{cartBean.cartCount} article(s) dans votre panier"/></h5>
-            <br/>
+    <ui:define name="topmenu">
+        <li>
             <h:outputLink value="panier.xhtml">
-                <h4><h:outputText value="Consulter le panier"/></h4>
+                <span class="glyphicon glyphicon-shopping-cart"></span>
+                Panier
+                <span class="badge badge-success">
+                    #{cartBean.cartCount}
+                </span>
             </h:outputLink>
-        </div>
+        </li>
+    </ui:define>
+
+    <ui:define name="content">
         
         <div class="container">
-            	<div class="rows pull-right">
+            	<div class="row pull-right">
                	 	<div class="col-md-12">
                     	<ul class="pagination">
                             <h:form>
@@ -42,7 +47,7 @@
  			<ui:repeat value="#{catalogBean.paginator.model}" var="product">
             	<div class="col-sm-6 col-md-3">
                     <div class="thumbnail">
-                        <img src="img/cats/thumb-1.png" alt="" class="img-rounded"/>
+                        <img src="#{request.contextPath}/static/frontend/img/ensimag.png" alt="" class="img-rounded"/>
 
                         <div class="caption text-center">
                             <h3>#{product.articleLibele}</h3>
@@ -50,14 +55,19 @@
                             <p>#{product.articleDescription}</p>
 
                             <h:form>
-                                <h:link styleClass="btn btn-default" outcome="#{catalogBean.view()}" includeViewParams="true"
-                                value="View item">
-                                    <f:param value="#{product.articleId}" name="id"/>
-                                </h:link>
-                                <h:commandButton styleClass="btn btn-default" value="Add to cart"
-                                                 action="#{cartBean.add(product)}"/>
+                                <div class="row view_item">
+                                    <div class="col-xs-12">
+                                        <h:link styleClass="btn btn-default btn-block" outcome="#{catalogBean.view()}" includeViewParams="true" value="View item">
+                                            <f:param value="#{product.articleId}" name="id"/>
+                                        </h:link>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <h:commandButton styleClass="btn btn-success btn-block" value="Add to cart" action="#{cartBean.add(product)}"/>
+                                    </div>
+                                </div>
                             </h:form>
-
                         </div>
                     </div>
                 </div>
