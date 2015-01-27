@@ -49,6 +49,11 @@ public class Role implements Serializable, IEntity<RoleVO> {
 		this.roleDescription = roleDescription;
 	}
 
+	@Override
+	public int getId() {
+		return this.getRoleId();
+	}
+
 	public Integer getRoleId() {
 		return roleId;
 	}

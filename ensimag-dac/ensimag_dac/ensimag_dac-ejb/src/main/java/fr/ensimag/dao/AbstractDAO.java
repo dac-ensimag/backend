@@ -1,22 +1,93 @@
 package fr.ensimag.dao;
 
 import fr.ensimag.entity.IEntity;
+import fr.ensimag.foundation.INames;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
-import javax.persistence.TypedQuery;
+import javax.persistence.NoResultException;
+import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
-import javax.transaction.UserTransaction;
+import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 /**
- * @param <T> The type of Entity for this DAO
+ * @param <E> The type of Entity for this DAO
  */
-public abstract class AbstractDAO<T extends IEntity> {
+public abstract class AbstractDAO<E extends IEntity> implements AbstractLocal<E> {
+	protected final Class<E> entityClass;
 
-	private Class<T> entityClass;
+	@PersistenceContext(unitName = INames.PU_NAME)
+	private EntityManager entityManager;
+
+	@SuppressWarnings("unchecked")
+	protected AbstractDAO() {
+		super();
+		entityClass = (Class<E>) ((ParameterizedType) getClass()
+				.getGenericSuperclass()).getActualTypeArguments()[0];
+	}
+
+	protected E getSingleResult(final CriteriaQuery<E> query) {
+		return this.<E>getTypedSingleResult(query);
+	}
+
+	protected <T> T getTypedSingleResult(final CriteriaQuery<T> query) {
+		try {
+			return entityManager.createQuery(query).getSingleResult();
+		} catch (NoResultException e) {
+			return null;
+		}
+	}
+
+	protected List<E> getResultList(final CriteriaQuery<E> query) {
+		return entityManager.createQuery(query).getResultList();
+	}
+
+	protected List<E> getResultList(final CriteriaQuery<E> query, int maxresults, int firstresult) {
+		return entityManager.createQuery(query).setMaxResults(maxresults).setFirstResult(firstresult).getResultList();
+	}
+
+	protected CriteriaBuilder getCriteriaBuilder() {
+		return entityManager.getCriteriaBuilder();
+	}
+
+	public E create(final E instance) {
+		entityManager.persist(instance);
+		return instance;
+	}
+
+	public E find(Object id) {
+		return entityManager.find(entityClass, id);
+	}
+
+	public void remove(final E instance) {
+		boolean contains = entityManager.contains(instance);
+		E remove = instance;
+		if (!contains) {
+			remove = find(instance.getId());
+		}
+		entityManager.remove(remove);
+	}
+
+	public E edit(final E instance) {
+		E merge = entityManager.merge(instance);
+		entityManager.flush();
+		return merge;
+	}
+
+	public List<E> findAll() {
+		CriteriaBuilder builder = getCriteriaBuilder();
+		CriteriaQuery<E> query = builder.createQuery(entityClass);
+		query.from(entityClass);
+
+		return getResultList(query);
+	}
+
+	public int count() {
+		return findAll().size();
+	}
+
+/*	private Class<T> entityClass;
 
 	public AbstractDAO() {
 
@@ -112,6 +183,6 @@ public abstract class AbstractDAO<T extends IEntity> {
 
 	public int count() throws Exception {
 		return findAll().size();
-	}
+	}*/
 
 }

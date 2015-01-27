@@ -9,28 +9,16 @@ import java.util.List;
  */
 public interface AbstractLocal<T extends IEntity> {
 
-	T create(T support) throws Exception;
+	T create(T support);
 
-	;
+	T edit(T support);
 
-	void edit(T support) throws Exception;
+	void remove(T support);
 
-	;
+	T find(Object id);
 
-	void remove(T support) throws Exception;
+	List<T> findAll();
 
-	;
-
-	T find(Object id) throws Exception;
-
-	;
-
-	List<T> findAll() throws Exception;
-
-	;
-
-	int count() throws Exception;
-
-	;
+	int count();
 
 }

@@ -92,6 +92,11 @@ public class Utilisateur implements Serializable, IEntity<UtilisateurVO> {
 		this.utilisateurPrenom = utilisateurPrenom;
 	}
 
+	@Override
+	public int getId() {
+		return this.getUtilisateurId();
+	}
+
 	public Integer getUtilisateurId() {
 		return utilisateurId;
 	}

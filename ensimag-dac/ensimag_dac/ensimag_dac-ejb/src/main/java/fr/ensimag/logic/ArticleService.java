@@ -5,6 +5,9 @@ import fr.ensimag.vo.ArticleVO;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.io.UnsupportedEncodingException;
 
 @Stateless
 public class ArticleService implements ArticleServiceLocal {
@@ -25,48 +28,5 @@ public class ArticleService implements ArticleServiceLocal {
 	public ArticleVO getArticle(Integer articleId) throws Exception {
 		return articleDAO.find(articleId).toVO();
 	}
-
-	/*@Override
-	public List<ArticleVO> getAllProducts() throws Exception {
-		try {
-			List<Article> articles = articleDAO.findAll();
-			return Article.toVo(articles);
-		} catch (Exception e) {
-			throw new Exception();
-		}
-	}
-*/
-/*@EJB
-	AccountDAOLocal accountDBAcces;
-
-	@Override
-	public void register(AccountVO accountVO) {
-		Account account = new Account();
-		account.setUsername(accountVO.getUsername());
-		account.setPassword(accountVO.getPassword());
-		try {
-			accountDBAcces.create(account);
-		} catch (Exception e) {
-			//TODO
-			e.printStackTrace();
-		}
-	}
-
-	@Override
-	public AccountVO login(AccountVO accountVO) {
-		Account account = new Account();
-		account.setUsername(accountVO.getUsername());
-		account.setPassword(accountVO.getPassword());
-		try {
-			Account login = accountDBAcces.find(account.getUsername());
-			if (login != null && login.getPassword().equals(account.getPassword())) {
-				return login.toVO();
-			} else {
-				return null;
-			}
-		} catch (Exception e) {
-			return null;
-		}
-	}*/
 
 }

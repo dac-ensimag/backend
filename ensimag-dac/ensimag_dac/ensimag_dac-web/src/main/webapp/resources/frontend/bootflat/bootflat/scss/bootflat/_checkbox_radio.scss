@@ -1,6 +1,6 @@
 // Variables
 //------------------------------------------------------
-$img-src:                "../bootflat/img/check_flat/default.png" !default;
+$img-src:                "../img/check_flat/success.png" !default;
 
 // Exports
 //------------------------------------------------------
@@ -36,6 +36,9 @@ $img-src:                "../bootflat/img/check_flat/default.png" !default;
 
   .icheckbox_flat {
       background-position: 0 0;
+
+      position: relative;
+      top: -2px;
 
       &.checked {
           background-position: -22px 0;

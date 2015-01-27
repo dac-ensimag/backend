@@ -42,6 +42,11 @@ public class Categorie implements Serializable, IEntity<CategorieVO> {
 		this.categorieLibele = categorieLibele;
 	}
 
+	@Override
+	public int getId() {
+		return this.getCategorieId();
+	}
+
 	public Integer getCategorieId() {
 		return categorieId;
 	}

@@ -7,6 +7,7 @@ $button-success:                 $grass-dark !default;
 $button-danger:                  $grapefruit-dark !default;
 $button-warning:                 $sunflower-dark !default;
 $button-info:                    $mint-dark !default;
+$button-link:                    $darkgray-dark;
 
 $button-normal-hover:            $mediumgray-light !default;
 $button-default-hover:           $button-default !default;
@@ -68,7 +69,7 @@ $button-shadow:                  inset 0 1px 2px rgba(0, 0, 0, .125) !default;
       &[disabled] {
           border-color: transparent;
           background-color: transparent;
-          color: $button-primary;
+          color: $button-link;
           @include box-shadow($value: none);
       }
       &:hover, 

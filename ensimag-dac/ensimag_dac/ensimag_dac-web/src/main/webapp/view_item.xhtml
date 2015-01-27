@@ -19,7 +19,6 @@
     </ui:define>
 
     <ui:define name="content">
-        <pre>#{articleBean.error}</pre>
         <div class="col-md-offset-3 col-md-6">
             <div class="jumbotron">
                 <div class="jumbotron-photo">
@@ -32,7 +31,14 @@
                         #{articleBean.getArticleDescription()}
                     </p>
                 </div>
-                <h:button styleClass="btn btn-lg btn-primary btn-block" value="Supprimer" action="#{articleBean.deleteArticle()}"/>
+                <h:button styleClass="btn btn-lg btn-primary btn-block" value="Supprimer" outcome="#{articleBean.deleteArticle()}" includeViewParams="true">
+                    <f:param value="#{articleBean.getId()}" name="articleId"/>
+                </h:button>
+
+                <!--<h:button styleClass="btn btn-default" outcome="#{articleBean.deleteArticle()}" includeViewParams="true"
+                          value="View item">
+                    <f:param value="#{articleBean.getId()}" name="articleId"/>
+                </h:button>-->
             </div>
         </div>
     </ui:define>

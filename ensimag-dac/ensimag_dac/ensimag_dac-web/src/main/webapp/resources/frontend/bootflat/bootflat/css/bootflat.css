@@ -125,7 +125,7 @@ blockquote {
   .btn-link, .btn-link:hover, .btn-link:focus, .btn-link:active, .btn-link.active, .btn-link.disabled, .btn-link[disabled] {
     border-color: transparent;
     background-color: transparent;
-    color: #3BAFDA;
+    color: #434A54;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none; }
@@ -456,7 +456,7 @@ blockquote {
     -moz-box-shadow: none;
     box-shadow: none; }
   .form-control:focus {
-    border-color: #3BAFDA; }
+    border-color: #8CC152; }
   .form-control::-moz-placeholder, .form-control:-ms-input-placeholder, .form-control::-webkit-input-placeholder {
     color: #E6E9ED; }
   .form-control.disabled, .form-control[disabled] {
@@ -847,12 +847,14 @@ blockquote {
   padding: 0 !important;
   width: 20px;
   height: 20px;
-  background: url("../bootflat/img/check_flat/default.png") no-repeat;
+  background: url("../img/check_flat/success.png") no-repeat;
   border: none;
   cursor: pointer; }
 
 .icheckbox_flat {
-  background-position: 0 0; }
+  background-position: 0 0;
+  position: relative;
+  top: -2px; }
   .icheckbox_flat.checked {
     background-position: -22px 0; }
   .icheckbox_flat.disabled {
