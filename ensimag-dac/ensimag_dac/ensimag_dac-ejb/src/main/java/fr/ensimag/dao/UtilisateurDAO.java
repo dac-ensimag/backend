@@ -9,6 +9,7 @@ import javax.ejb.Stateless;
 import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.UserTransaction;
@@ -38,15 +39,17 @@ public class UtilisateurDAO extends AbstractDAO<Utilisateur> implements Utilisat
 	}
 
     @Override
-    public Utilisateur findByLogin(Utilisateur entity) {
+    public Utilisateur findByLogin(String login) throws Exception {
         EntityManager em = getEntityManager();
         try {
             Query loginQuery = em.createNamedQuery("Utilisateur.findByLogin");
-            loginQuery.setParameter("login", entity.getUtilisateurLogin());
+            loginQuery.setParameter("login", login);
             Utilisateur utilisateur = (Utilisateur) loginQuery.getSingleResult();
 
             return utilisateur;
-        } catch (Exception ex) {
+        } catch (NoResultException ex) {
+            return null;
+        }catch (Exception ex) {
             throw ex;
         }
     }

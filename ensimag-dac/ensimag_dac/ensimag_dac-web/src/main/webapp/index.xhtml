@@ -15,10 +15,11 @@
         <div class="container">
             <h:form id="signUpForm" styleClass="form-signin span6" role="form">
                 <h2 class="form-signin-heading">S'inscrire</h2>
-
+                <p:focus context="signUpForm"/>
+ 
                 <label for="inputLastname" class="sr-only">Nom</label>
                 <h:inputText value="#{utilisateurBean.user.utilisateurNom}" styleClass="form-control" required="true"
-                             requiredMessage="Veuillez compléter ce champ" id="inputLastname"/>
+                             requiredMessage="Veuillez compléter ce champ" id="inputLastname" />
                 <p:message id="lastnameMessage" for="inputLastname"/>
                 <label for="inputFirstname" class="sr-only">Prenom</label>
                 <h:inputText value="#{utilisateurBean.user.utilisateurPrenom}" styleClass="form-control" required="true"
@@ -29,8 +30,8 @@
                              requiredMessage="Veuillez compléter ce champ" id="inputMail"/>
                 <p:message id="mailMessage" for="inputMail"/>
                 <label for="inputTel" class="sr-only">Téléphone</label>
-                <h:inputText value="#{utilisateurBean.user.utilisateurTel}" styleClass="form-control" required="true"
-                             requiredMessage="Veuillez compléter ce champ" id="inputTel"/>
+                <p:inputMask value="#{utilisateurBean.user.utilisateurTel}" styleClass="form-control" required="true"
+                             requiredMessage="Veuillez compléter ce champ" id="inputTel" mask="99 99 99 99 99"/>
                 <p:message id="telMessage" for="inputTel"/>
                 <label for="inputAdress" class="sr-only">Adresse</label>
                 <h:inputText value="#{utilisateurBean.user.utilisateurAdresse}" styleClass="form-control"
@@ -56,7 +57,7 @@
             </h:form>
             <h:form id="loginForm" styleClass="form-signin span6" role="form">
                 <h2 class="form-signin-heading">Identification</h2>
-
+                <p:focus context="loginForm"/>
                 <label for="inputUsername" class="sr-only">Username</label>
                 <h:inputText value="#{loginBean.username}" styleClass="form-control" required="true"
                              requiredMessage="Value is required" id="inputUsername"/>

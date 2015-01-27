@@ -1,8 +1,13 @@
 package fr.ensimag.control;
 
+import fr.ensimag.exception.ExistingUserException;
+import fr.ensimag.exception.InvalidEmailException;
 import fr.ensimag.vo.UtilisateurVO;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -26,15 +31,30 @@ public class UtilisateurBean {
     }
 
     public String register() {
-        UtilisateurVO signUp = utilisateurService.signUp(getUser());
-        user = new UtilisateurVO();
-        if (signUp != null) {
+        UtilisateurVO signUp = null;
+        try {
+            signUp = utilisateurService.signUp(getUser());
+            user = new UtilisateurVO();
+            if (signUp != null) {
+                return "index";
+            } else {
+                return "error";
+            }
+        } catch (ExistingUserException ex) {
+            FacesContext.getCurrentInstance().addMessage(
+                    "signUpForm:inputUsername", new FacesMessage(FacesMessage.SEVERITY_ERROR,
+                            "Login non valide","Le nom d'utilisateur est déjà utilisé"));
+            user.setUtilisateurLogin("");
             return "index";
-        } else {
-            return "error";
+        } catch (InvalidEmailException ex) {
+            FacesContext.getCurrentInstance().addMessage(
+                    "signUpForm:inputMail", new FacesMessage(FacesMessage.SEVERITY_ERROR,
+                            "Mail non valid","Veuillez écrire un mail valid"));
+            //user.setUtilisateurMail("");
+            return "index";
         }
     }
-    
+
     public String logOut() {
         user = new UtilisateurVO();
         loggedIn = false;
