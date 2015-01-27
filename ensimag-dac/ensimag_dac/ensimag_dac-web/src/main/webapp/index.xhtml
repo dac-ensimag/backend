@@ -49,7 +49,7 @@
                             <p:message id="adressMessage" for="inputAdress"/>
                         </div>
                         <div class="form-group">
-                            <label for="inputCP">CP</label>
+                            <label for="inputCP">Code Postal</label>
                             <h:inputText value="#{utilisateurBean.user.utilisateurCp}" styleClass="form-control" required="true"
                                          requiredMessage="Veuillez compléter ce champ" id="inputCP"/>
                             <p:message id="cpMessage" for="inputCP"/>
@@ -68,7 +68,7 @@
                         </div>
                         <div class="form-group">
                             <h:commandButton styleClass="btn btn-success btn-block" action="#{utilisateurBean.register()}"
-                                             value="submit"/>
+                                             value="Inscription"/>
                         </div>
                     </h:form>
                 </div>
@@ -77,13 +77,13 @@
                     <h2>Identification</h2>
                     <h:form id="loginForm" role="form">
                         <div class="form-group">
-                            <label for="inputUsername">Username</label>
+                            <label for="inputUsername">Login</label>
                             <h:inputText value="#{loginBean.username}" styleClass="form-control" required="true"
                                  requiredMessage="Value is required" id="inputUsername"/>
                             <p:message id="usernameMessage" for="inputUsername"/>
                         </div>
                         <div class="form-group">
-                            <label for="inputPassword">Password</label>
+                            <label for="inputPassword">Mot de passe</label>
                             <h:inputSecret value="#{loginBean.password}" styleClass="form-control" required="true"
                                            requiredMessage="Value is required" id="inputPassword"/>
                             <p:message id="passwordMessage" for="inputPassword"/>
@@ -93,13 +93,13 @@
                                 <div class="btn btn-link btn-block">
                                     <div class="checkbox">
                                         <label>
-                                            <input type="checkbox" value="remember-me"> Remember me</input>
+                                            <input type="checkbox" value="remember-me">Se rappeler de moi</input>
                                         </label>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-xs-6">
-                                <h:commandButton styleClass="btn btn-success btn-block" action="#{loginBean.login()}" value="submit"/>
+                                <h:commandButton styleClass="btn btn-success btn-block" action="#{loginBean.login()}" value="Connexion"/>
                             </div>
                         </div> 
                     </h:form>
