@@ -10,7 +10,7 @@ public class ArticleVO implements IValueObject {
 	private boolean          articleDisponibilite;
 	private String           articleDescription;
 	private List<CommandeVO> commandeList;
-	private CategorieVO      categorie;
+	private Integer      categorieId;
 
 	public ArticleVO() {
 	}
@@ -63,12 +63,12 @@ public class ArticleVO implements IValueObject {
 		this.commandeList = commandeList;
 	}
 
-	public CategorieVO getCategorie() {
-		return categorie;
+	public Integer getCategorieId() {
+		return categorieId;
 	}
 
-	public void setCategorie(CategorieVO categorie) {
-		this.categorie = categorie;
+	public void setCategorieId(Integer categorieId) {
+		this.categorieId = categorieId;
 	}
 
 }

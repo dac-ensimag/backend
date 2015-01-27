@@ -68,6 +68,11 @@ public class Article implements Serializable, IEntity<ArticleVO> {
 		this.articleDescription = articleDescription;
 	}
 
+	@Override
+	public int getId() {
+		return this.getArticleId();
+	}
+
 	public Integer getArticleId() {
 		return articleId;
 	}
@@ -159,10 +164,12 @@ public class Article implements Serializable, IEntity<ArticleVO> {
 		vo.setArticlePrix(getArticlePrix());
 
 		List<CommandeVO> commandVOList = new ArrayList<>();
-		for (Commande commande : getCommandeList()) {
-			commandVOList.add(commande.toVO());
-		}
+//		for (Commande commande : getCommandeList()) {
+//			commandVOList.add(commande.toVO());
+//		}
 		vo.setCommandeList(commandVOList);
+                
+                vo.setCategorieId(getCategorie().getCategorieId());
 
 		return vo;
 	}

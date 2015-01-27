@@ -15,24 +15,4 @@ import javax.transaction.UserTransaction;
 @Stateless
 @TransactionManagement(TransactionManagementType.BEAN)
 public class RoleDAO extends AbstractDAO<Role> implements RoleDAOLocal {
-
-	@PersistenceContext(unitName = INames.PU_NAME)
-	private EntityManager em;
-
-	@Resource
-	private EJBContext ctx;
-
-	public RoleDAO() {
-		super(Role.class);
-	}
-
-	@Override
-	protected EntityManager getEntityManager() {
-		return em;
-	}
-
-	@Override
-	protected UserTransaction getUserTransaction() {
-		return ctx.getUserTransaction();
-	}
 }

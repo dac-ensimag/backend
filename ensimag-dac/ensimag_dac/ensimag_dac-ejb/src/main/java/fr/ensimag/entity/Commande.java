@@ -63,6 +63,11 @@ public class Commande implements Serializable, IEntity<CommandeVO> {
 		this.commandeTotale = commandeTotale;
 	}
 
+	@Override
+	public int getId() {
+		return this.getCommandeId();
+	}
+
 	public Integer getCommandeId() {
 		return commandeId;
 	}
@@ -151,8 +156,12 @@ public class Commande implements Serializable, IEntity<CommandeVO> {
 		vo.setCommandeDate(getCommandeDate());
 		vo.setCommandeDescription(getCommandeDescription());
 		vo.setCommandeTotale(getCommandeTotale());
+        if (getFacture() != null) {
+            vo.setFacture(getFacture().toVO());
+        }
+		vo.setUtilisateurId(getUtilisateur().getUtilisateurId());
 		vo.setFacture(getFacture().toVO());
-		vo.setUtilisateur(getUtilisateur().toVO());
+		vo.setUtilisateurId(getUtilisateur().getUtilisateurId());
 
 		List<ArticleVO> articleVOList = new ArrayList<>();
 		for (Article article : getArticleList()) {

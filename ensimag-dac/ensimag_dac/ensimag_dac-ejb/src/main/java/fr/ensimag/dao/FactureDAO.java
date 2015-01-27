@@ -15,25 +15,4 @@ import javax.transaction.UserTransaction;
 @Stateless
 @TransactionManagement(TransactionManagementType.BEAN)
 public class FactureDAO extends AbstractDAO<Facture> implements FactureDAOLocal {
-
-	@PersistenceContext(unitName = INames.PU_NAME)
-	private EntityManager em;
-
-	@Resource
-	private EJBContext ctx;
-
-	public FactureDAO() {
-		super(Facture.class);
-	}
-
-	@Override
-	protected EntityManager getEntityManager() {
-		return em;
-	}
-
-	@Override
-	protected UserTransaction getUserTransaction() {
-		return ctx.getUserTransaction();
-	}
-
 }

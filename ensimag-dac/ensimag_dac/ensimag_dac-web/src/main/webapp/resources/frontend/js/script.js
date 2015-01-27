@@ -1,10 +1,5 @@
-$( document ).ready(function() {
-
-	// Checkboxes
-
+$(document).ready(function(){
 	$('input').iCheck({
-		// base class added to customized checkboxes
 		checkboxClass: 'icheckbox_flat'
 	});
-
 });

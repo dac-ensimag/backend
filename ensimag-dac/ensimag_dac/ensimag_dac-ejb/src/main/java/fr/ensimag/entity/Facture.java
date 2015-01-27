@@ -65,6 +65,11 @@ public class Facture implements Serializable, IEntity<FactureVO> {
 		this.factureTotalttc = factureTotalttc;
 	}
 
+	@Override
+	public int getId() {
+		return this.getFactureId();
+	}
+
 	public Integer getFactureId() {
 		return factureId;
 	}
@@ -156,7 +161,7 @@ public class Facture implements Serializable, IEntity<FactureVO> {
 		vo.setFactureTotalttc(getFactureTotalttc());
 		vo.setFactureTva(getFactureTva());
 
-		vo.setCommande(getCommande().toVO());
+		vo.setCommandeId(getCommande().getCommandeId());
 
 		return vo;
 	}
