@@ -11,6 +11,7 @@ public class ArticleVO implements IValueObject {
 	private String           articleDescription;
 	private List<CommandeVO> commandeList;
 	private Integer      categorieId;
+        private String           articleImg;
 
 	public ArticleVO() {
 	}
@@ -70,5 +71,17 @@ public class ArticleVO implements IValueObject {
 	public void setCategorieId(Integer categorieId) {
 		this.categorieId = categorieId;
 	}
+
+        public void setArticleImg(String articleImg) {
+               this.articleImg = articleImg;
+        }
+        
+        public String getArticleImg(){
+                if( "".equals(articleImg) || articleImg==null){
+                    return "http://morpheo.inrialpes.fr/people/hetroy/data/uploads/ensimag.jpg"; //IMAGE DE BASE (TODO : CHANGER?)
+                } else {
+                    return articleImg;
+                }
+        }
 
 }

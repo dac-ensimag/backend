@@ -62,6 +62,14 @@ public class ArticleBean implements Serializable {
 	public float getArticlePrix() {
 		return product.getArticlePrix();
 	}
+        
+        public String getArticleImg(){
+                if( "".equals(product.getArticleImg()) || product.getArticleImg()==null){
+                    return "http://morpheo.inrialpes.fr/people/hetroy/data/uploads/ensimag.jpg"; //IMAGE DE BASE (TODO : CHANGER?)
+                } else {
+                    return product.getArticleImg();
+                }
+        }
 
 	public Integer getId() {
 		return this.id;

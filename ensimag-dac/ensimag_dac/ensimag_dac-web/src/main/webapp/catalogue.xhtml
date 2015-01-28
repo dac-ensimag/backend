@@ -59,7 +59,7 @@
  			<ui:repeat value="#{catalogBean.paginator.model}" var="product">
             	<div class="col-sm-6 col-md-3">
                     <div class="thumbnail">
-                        <img src="#{request.contextPath}/static/frontend/img/ensimag.png" alt="" class="img-rounded"/>
+                        <img src="#{product.articleImg}" alt="" class="img-rounded"/>
 
                         <div class="caption text-center">
                             <h3>#{product.articleLibele}</h3>
