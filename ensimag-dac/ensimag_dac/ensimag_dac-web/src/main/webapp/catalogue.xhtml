@@ -27,18 +27,30 @@
     <ui:define name="content">
         
         <div class="container">
-            	<div class="row pull-right">
-               	 	<div class="col-md-12">
-                    	<ul class="pagination">
-                            <h:form>
-                             <h:commandButton value="&lt; Précédent" styleClass="btn btn-default" action="#{catalogBean.paginator.prev}"/>
-       						 <h:outputText value="#{catalogBean.paginator.pageIndex} / #{catalogBean.paginator.pages}"/>
-   						     <h:commandButton value="Suivant &gt;" styleClass="btn btn-default" action="#{catalogBean.paginator.next}"/>
-     						   <h:inputHidden value="#{catalogBean.paginator.pageIndex}"/>
-       						</h:form>
-                    	</ul>
-                	</div>
+        	<div class="row">
+           	 	<div class="col-md-6 pull-right">
+                	<ul class="pager">
+                        <h:form>
+                            <li>
+                                <a>
+                                    <span class="glyphicon glyphicon-left"></span> 
+                                    <h:commandButton value="Précédente" action="#{catalogBean.paginator.prev}"/>
+                                </a>
+                            </li>
+                            <li class="page">
+       						   <h:outputText value="Page #{catalogBean.paginator.pageIndex} sur #{catalogBean.paginator.pages}"/>
+                            </li>
+                            <li>
+                                <a>
+       						       <h:commandButton value="Suivante" action="#{catalogBean.paginator.next}"/> 
+                                   <span class="glyphicon glyphicon-right"></span>
+                                </a>
+                            </li>
+ 						   <h:inputHidden value="#{catalogBean.paginator.pageIndex}"/>
+   						</h:form>
+                	</ul>
             	</div>
+        	</div>
         </div>
 
 
@@ -57,14 +69,14 @@
                             <h:form>
                                 <div class="row view_item">
                                     <div class="col-xs-12">
-                                        <h:link styleClass="btn btn-default btn-block" outcome="#{catalogBean.view()}" includeViewParams="true" value="View item">
+                                        <h:link styleClass="btn btn-default btn-block" outcome="#{catalogBean.view()}" includeViewParams="true" value="Voir le produit">
                                             <f:param value="#{product.articleId}" name="id"/>
                                         </h:link>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-xs-12">
-                                        <h:commandButton styleClass="btn btn-success btn-block" value="Add to cart" action="#{cartBean.add(product)}"/>
+                                        <h:commandButton styleClass="btn btn-success btn-block" value="Ajouter au panier" action="#{cartBean.add(product)}"/>
                                     </div>
                                 </div>
                             </h:form>
@@ -72,11 +84,37 @@
                     </div>
                 </div>
         	</ui:repeat>
-
-        
-
-
         </div>
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 pull-right">
+                    <ul class="pager">
+                        <h:form>
+                            <li>
+                                <a>
+                                    <span class="glyphicon glyphicon-left"></span> 
+                                    <h:commandButton value="Précédente" action="#{catalogBean.paginator.prev}"/>
+                                </a>
+                            </li>
+                            <li class="page">
+                               <h:outputText value="Page #{catalogBean.paginator.pageIndex} sur #{catalogBean.paginator.pages}"/>
+                            </li>
+                            <li>
+                                <a>
+                                   <h:commandButton value="Suivante" action="#{catalogBean.paginator.next}"/> 
+                                   <span class="glyphicon glyphicon-right"></span>
+                                </a>
+                            </li>
+                           <h:inputHidden value="#{catalogBean.paginator.pageIndex}"/>
+                        </h:form>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
     </ui:define>
 
 </ui:composition>

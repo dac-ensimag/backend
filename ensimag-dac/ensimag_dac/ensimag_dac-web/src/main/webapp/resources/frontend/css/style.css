@@ -19,10 +19,27 @@ html, body {
 .navbar {
   border-radius: 0; }
 
+/****************/
+/*  Thumbnails  */
+/****************/
+.thumbnail img {
+  padding: 10px; }
 .thumbnail div p {
   height: 160px;
   overflow: hidden; }
 .thumbnail .view_item {
   margin-bottom: 10px; }
+
+/****************/
+/*  Pagination  */
+/****************/
+.pager li a input {
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none; }
+
+.page {
+  margin: 0 20px; }
 
 /*# sourceMappingURL=style.css.map */
