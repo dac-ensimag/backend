@@ -10,4 +10,6 @@ public interface ArticleServiceLocal {
 	void deleteArticle(Integer articleId) throws Exception;
 
 	ArticleVO getArticle(Integer articleId) throws Exception;
+
+	public ArticleVO createArticle(ArticleVO vo) throws Exception;
 }

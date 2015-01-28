@@ -17,7 +17,6 @@ public class Article implements Serializable, IEntity<ArticleVO> {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional = false)
-	@NotNull
 	@Column(name = "ARTICLE_ID")
 	private Integer articleId;
 
@@ -43,9 +42,9 @@ public class Article implements Serializable, IEntity<ArticleVO> {
 	@Column(name = "ARTICLE_DESCRIPTION")
 	private String articleDescription;
         
-        @Lob
-        @Column(name = "ARTICLE_IMG")
-        private String articleImg;
+	@Lob
+	@Column(name = "ARTICLE_IMG")
+	private String articleImg;
 
 	@JoinTable(name = "ARTICLECOMMANDE", joinColumns = {
 			@JoinColumn(name = "ARTICLE_ID", referencedColumnName = "ARTICLE_ID")}, inverseJoinColumns = {
