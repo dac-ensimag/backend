@@ -42,6 +42,10 @@ public class Article implements Serializable, IEntity<ArticleVO> {
 	@Lob
 	@Column(name = "ARTICLE_DESCRIPTION")
 	private String articleDescription;
+        
+        @Lob
+        @Column(name = "ARTICLE_IMG")
+        private String articleImg;
 
 	@JoinTable(name = "ARTICLECOMMANDE", joinColumns = {
 			@JoinColumn(name = "ARTICLE_ID", referencedColumnName = "ARTICLE_ID")}, inverseJoinColumns = {
@@ -59,13 +63,15 @@ public class Article implements Serializable, IEntity<ArticleVO> {
 	public Article(Integer articleId) {
 		this.articleId = articleId;
 	}
-
-	public Article(Integer articleId, String articleLibele, float articlePrix, boolean articleDisponibilite, String articleDescription) {
+        
+        //articleImg peut être NULL
+	public Article(Integer articleId, String articleLibele, float articlePrix, boolean articleDisponibilite, String articleDescription, String articleImg) {
 		this.articleId = articleId;
 		this.articleLibele = articleLibele;
 		this.articlePrix = articlePrix;
 		this.articleDisponibilite = articleDisponibilite;
 		this.articleDescription = articleDescription;
+                this.articleImg = articleImg;
 	}
 
 	@Override
@@ -116,6 +122,14 @@ public class Article implements Serializable, IEntity<ArticleVO> {
 	public List<Commande> getCommandeList() {
 		return commandeList;
 	}
+        
+        public void setArticleImg(String articleImg){
+                this.articleImg = articleImg;
+        }
+        
+        public String getArticleImg(){
+                return articleImg;
+        }
 
 	public void setCommandeList(List<Commande> commandeList) {
 		this.commandeList = commandeList;
@@ -162,6 +176,7 @@ public class Article implements Serializable, IEntity<ArticleVO> {
 		vo.setArticleDisponibilite(getArticleDisponibilite());
 		vo.setArticleLibele(getArticleLibele());
 		vo.setArticlePrix(getArticlePrix());
+                vo.setArticleImg(getArticleImg());
 
 		List<CommandeVO> commandVOList = new ArrayList<>();
 //		for (Commande commande : getCommandeList()) {
