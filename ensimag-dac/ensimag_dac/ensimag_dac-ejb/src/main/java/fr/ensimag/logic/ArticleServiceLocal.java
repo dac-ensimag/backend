@@ -7,7 +7,7 @@ import javax.ejb.Local;
 @Local
 public interface ArticleServiceLocal {
 
-	void deleteArticle(Integer articleId);
+	void deleteArticle(Integer articleId) throws Exception;
 
 	ArticleVO getArticle(Integer articleId) throws Exception;
 }
