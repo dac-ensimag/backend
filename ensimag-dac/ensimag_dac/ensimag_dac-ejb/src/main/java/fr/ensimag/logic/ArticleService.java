@@ -16,11 +16,12 @@ public class ArticleService implements ArticleServiceLocal {
 	ArticleDAOLocal articleDAO;
 
 	@Override
-	public void deleteArticle(Integer articleId) {
+	public void deleteArticle(Integer articleId) throws Exception {
 		try {
 			articleDAO.remove(articleDAO.find(articleId));
 		} catch (Exception e) {
 			e.printStackTrace();
+                        throw e;
 		}
 	}
 
