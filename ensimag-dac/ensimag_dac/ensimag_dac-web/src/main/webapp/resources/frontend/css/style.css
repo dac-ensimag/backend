@@ -42,4 +42,17 @@ html, body {
 .page {
   margin: 0 20px; }
 
+/************/
+/*  Panier  */
+/************/
+.cart table img {
+  max-width: 200px; }
+.cart table tr td:first-child {
+  width: 200px; }
+.cart table tr td:last-child {
+  text-align: center; }
+.cart tfoot tr td:first-child {
+  text-align: right;
+  padding-top: 15px; }
+
 /*# sourceMappingURL=style.css.map */
