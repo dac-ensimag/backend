@@ -15,36 +15,50 @@
 
     <ui:define name="content">
         <div class="container">
-            <h2><h:outputText id="cartSize" value="Dans votre panier, vous avez #{cartBean.cartCount} article(s)"/></h2>
-            <br/><br/>
-
-
-            <ui:repeat value="#{cartBean.cartContents.entrySet().toArray()}" var="p">
-                <div class="col-sm-6 col-md-3">
-                    <div class="thumbnail">
-                        <img src="img/cats/thumb-1.png" alt="" class="img-rounded"/>
-
-                        <div class="caption text-center">
-                            <h3>#{p.key.articleLibele}</h3>
-
-                            <p>Prix : #{p.key.articlePrix} euros</p>
-                            <h:form>
-                                <h:commandButton value="Supprimer" action="#{cartBean.remove(p.key)}"/>
-
-                            </h:form>
-                        </div>
-                    </div>
+            <h1>Votre panier</h1>
+            <div class="panel panel-theme">
+                <div class="panel-heading">Contenu de votre panier</div>
+                <div class="table-responsive cart">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Article</th>
+                                <th>Prix</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ui:repeat value="#{cartBean.cartContents.entrySet().toArray()}" var="p">
+                                <tr>
+                                    <td>
+                                        <img src="#{p.key.articleImg}" alt="" class="img-rounded"/>
+                                    </td>
+                                    <td>#{p.key.articleLibele}</td>
+                                    <td>#{p.key.articlePrix} €</td>
+                                    <td>
+                                        <h:form>
+                                            <h:commandButton value="Supprimer" class="btn btn-danger" action="#{cartBean.remove(p.key)}"/>
+                                        </h:form>
+                                    </td>
+                                </tr>
+                            </ui:repeat>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="3">
+                                    <b>Montant TTC à payer : #{cartBean.cartTotalPrice}€</b>
+                                </td>
+                                <td>
+                                    <h:outputLink value="paiement.xhtml" class="btn btn-success">
+                                        <h:outputText value="Payer la commande"/>
+                                    </h:outputLink>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
                 </div>
-            </ui:repeat>
-
-
-            <h4><h:outputText id="cartTotal" value="Le total à payer (TTC) est #{cartBean.cartTotalPrice} euros"/> <br/><br/>
-            </h4>
-
-            <h:outputLink value="paiement.xhtml">
-                <h4><h:outputText value="Payez la commande"/></h4>
-            </h:outputLink>
-
+            </div>
         </div>
         <!-- /container -->
     </ui:define>
