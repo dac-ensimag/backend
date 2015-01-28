@@ -1,0 +1,64 @@
+/****************/
+/*  Thumbnails  */
+/****************/
+
+.thumbnail {
+
+	img {
+		padding: 10px;
+	}
+	div p {
+		height : 160px;
+		overflow : hidden;
+	}
+
+	.view_item {
+		margin-bottom: 10px;
+	}
+}
+
+
+
+/****************/
+/*  Pagination  */
+/****************/
+
+.pager li a input {
+	margin: 0;
+	padding: 0;
+	background: none;
+	border: none;
+}
+
+.page {
+	margin: 0 20px;
+}
+
+
+
+/************/
+/*  Panier  */
+/************/
+
+.cart {
+	table {
+		img {
+			max-width: 200px;
+		}
+
+		tr td {
+			&:first-child {
+				width : 200px;
+			}
+
+			&:last-child {
+				text-align: center;
+			}
+		}
+	}
+
+	tfoot tr td:first-child {
+		text-align: right;
+		padding-top: 15px;
+	}
+}

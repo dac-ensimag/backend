@@ -7,6 +7,8 @@ $panel-success:                 $grass-dark !default;
 $panel-danger:                  $grapefruit-dark !default;
 $panel-warning:                 $sunflower-dark !default;
 $panel-info:                    $mint-dark !default;
+$panel-theme:                   $darkgray-dark;
+$panel-theme-color:             $grass-dark;
 
 $panel-font-color:              $darkgray-dark !default;
 
@@ -97,6 +99,15 @@ $panel-radius:                  4px !default;
         color: $panel-default;
         background-color: $panel-danger;
         border-color: $panel-danger;
+      }
+    }
+
+    @at-root &-theme {
+      border-color: $panel-theme;
+      & > .panel-heading {
+        color: $panel-theme-color;
+        background-color: $panel-theme;
+        border-color: $panel-theme;
       }
     }
 

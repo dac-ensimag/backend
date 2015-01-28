@@ -4,7 +4,55 @@ body {
 .container {
   max-width: 1000px; }
 
+html, body {
+  height: 100%; }
+
+#wrap {
+  min-height: 100%;
+  height: auto;
+  margin: 0 auto -267px;
+  padding: 0 0 267px; }
+
+#footer {
+  height: 267px; }
+
 .navbar {
   border-radius: 0; }
+
+/****************/
+/*  Thumbnails  */
+/****************/
+.thumbnail img {
+  padding: 10px; }
+.thumbnail div p {
+  height: 160px;
+  overflow: hidden; }
+.thumbnail .view_item {
+  margin-bottom: 10px; }
+
+/****************/
+/*  Pagination  */
+/****************/
+.pager li a input {
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none; }
+
+.page {
+  margin: 0 20px; }
+
+/************/
+/*  Panier  */
+/************/
+.cart table img {
+  max-width: 200px; }
+.cart table tr td:first-child {
+  width: 200px; }
+.cart table tr td:last-child {
+  text-align: center; }
+.cart tfoot tr td:first-child {
+  text-align: right;
+  padding-top: 15px; }
 
 /*# sourceMappingURL=style.css.map */
