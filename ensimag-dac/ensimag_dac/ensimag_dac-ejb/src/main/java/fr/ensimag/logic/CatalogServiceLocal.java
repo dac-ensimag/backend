@@ -1,9 +1,10 @@
 package fr.ensimag.logic;
 
-import fr.ensimag.vo.ArticleVO;
+import java.util.List;
 
 import javax.ejb.Local;
-import java.util.List;
+
+import fr.ensimag.vo.ArticleVO;
 
 @Local
 public interface CatalogServiceLocal {

@@ -66,8 +66,9 @@ public class SupressionArticleBean implements Serializable {
 		}
 	}
 
-	public void deleteArticle() {
-		this.articleService.deleteArticle(this.id);
+	public String deleteArticle() throws Exception {
+		this.articleService.deleteArticle(this.id);                
+                return "/catalogue?faces-redirect=true";
 	}
 
 	public Integer getId() {
