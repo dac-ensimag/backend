@@ -5,70 +5,70 @@ import java.util.List;
 
 public class CommandeVO implements IValueObject {
 
-	private Integer             commandeId;
-	private Date                commandeDate;
-	private String              commandeDescription;
-	private double              commandeTotale;
-	private List<ArticleVO>     articleList;
-	private Integer             utilisateurId;
-	private FactureVO           facture;
+	private Integer commandeId;
+	private Date commandeDate;
+	private String commandeDescription;
+	private double commandeTotale;
+	private List<ArticleVO> articleList;
+	private Integer utilisateurId;
+	private FactureVO facture;
 
 	public CommandeVO() {
 	}
 
 	public Integer getCommandeId() {
-		return commandeId;
+		return this.commandeId;
 	}
 
-	public void setCommandeId(Integer commandeId) {
+	public void setCommandeId(final Integer commandeId) {
 		this.commandeId = commandeId;
 	}
 
 	public Date getCommandeDate() {
-		return commandeDate;
+		return this.commandeDate;
 	}
 
-	public void setCommandeDate(Date commandeDate) {
+	public void setCommandeDate(final Date commandeDate) {
 		this.commandeDate = commandeDate;
 	}
 
 	public String getCommandeDescription() {
-		return commandeDescription;
+		return this.commandeDescription;
 	}
 
-	public void setCommandeDescription(String commandeDescription) {
+	public void setCommandeDescription(final String commandeDescription) {
 		this.commandeDescription = commandeDescription;
 	}
 
 	public double getCommandeTotale() {
-		return commandeTotale;
+		return this.commandeTotale;
 	}
 
-	public void setCommandeTotale(double commandeTotale) {
+	public void setCommandeTotale(final double commandeTotale) {
 		this.commandeTotale = commandeTotale;
 	}
 
 	public List<ArticleVO> getArticleList() {
-		return articleList;
+		return this.articleList;
 	}
 
-	public void setArticleList(List<ArticleVO> articleList) {
+	public void setArticleList(final List<ArticleVO> articleList) {
 		this.articleList = articleList;
 	}
 
 	public Integer getUtilisateurId() {
-		return utilisateurId;
+		return this.utilisateurId;
 	}
 
-	public void setUtilisateurId(Integer utilisateurId) {
+	public void setUtilisateurId(final Integer utilisateurId) {
 		this.utilisateurId = utilisateurId;
 	}
 
 	public FactureVO getFacture() {
-		return facture;
+		return this.facture;
 	}
 
-	public void setFacture(FactureVO facture) {
+	public void setFacture(final FactureVO facture) {
 		this.facture = facture;
 	}
 

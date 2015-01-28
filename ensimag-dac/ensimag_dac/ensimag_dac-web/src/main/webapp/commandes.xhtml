@@ -18,7 +18,7 @@
         
 
         <div class="container">
- 			<ui:repeat value="#{commandeBean.commandeContents.entrySet().toArray()}" var="p">
+ 			<ui:repeat value="#{commandeBean.commandeContents.entrySet().toArray()}" var="commande">
                 
                 
                 <div class="col-md-offset-3 col-md-6">
@@ -27,10 +27,28 @@
                     <img src="img/cats/thumb-1.png" alt=""/>
                 </div>
                 <div class="jumbotron-contents">
-                    <h1>#{p.key.commandeDate}</h1>
-                    <h2>Description</h2>
+                    <h4>Date : #{commande.key.commandeDate}</h4>
+                    <h4>Articles : </h4>
                     <p>
-                        #{p.key.commandeDescription}
+                    
+                  	  
+                  		  <ui:repeat value="#{commande.key.articleList.toArray()}" var="article">
+                      			<h:form>
+                                <div class="row view_item">
+                                    <div class="col-xs-12">
+                                        <h:link styleClass="btn btn-default btn-block" outcome="#{catalogBean.view()}" includeViewParams="true" value="#{article.getArticleLibele()}">
+                                            <f:param value="#{article.articleId}" name="id"/>
+                                        </h:link>
+                                    </div>
+                                </div>
+                                
+                            </h:form>
+                            
+                   		  </ui:repeat>
+                    
+                    
+                    
+                      
                     </p>
                 </div>
             

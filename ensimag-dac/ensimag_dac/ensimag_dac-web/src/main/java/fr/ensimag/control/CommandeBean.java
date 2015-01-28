@@ -25,6 +25,16 @@ public class CommandeBean implements Serializable {
 	private List<CommandeVO> commandes;
 	private List<ArticleVO> articles;
 	private RepeatPaginator paginator;
+	private CommandeVO cmd;
+
+	public CommandeVO getCmd() {
+		return cmd;
+	}
+
+	public void setCmd(CommandeVO cmd) {
+		this.cmd = cmd;
+	}
+
 	@ManagedProperty(value = "#{cartBean}")
 	private CartBean cartBean;
 
@@ -45,8 +55,11 @@ public class CommandeBean implements Serializable {
 	@PostConstruct
 	public void init() {
 		try {
+			cmd = new CommandeVO();
 			articles = new ArrayList<ArticleVO>();
 			articles.addAll(cartBean.getArticles());
+			cmd.setArticleList(articles);
+
 			commandes = new ArrayList<CommandeVO>();
 			this.commandes = this.commandeService.getAllCommands();
 		} catch (final Exception e) {
@@ -68,4 +81,18 @@ public class CommandeBean implements Serializable {
 		}
 		return cartContents;
 	}
+
+	public String confirmCommand() throws Exception {
+
+		CommandeVO success = null;
+
+		success = commandeService.addCommande(getCmd());
+		if (success != null) {
+			return "index";
+		} else {
+			return "error";
+		}
+
+	}
+
 }
