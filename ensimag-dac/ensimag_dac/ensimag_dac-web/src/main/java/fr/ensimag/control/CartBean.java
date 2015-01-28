@@ -17,6 +17,14 @@ import fr.ensimag.vo.ArticleVO;
 public class CartBean implements Serializable {
 	private List<ArticleVO> articles = new ArrayList<ArticleVO>();
 
+	public List<ArticleVO> getArticles() {
+		return articles;
+	}
+
+	public void setArticles(List<ArticleVO> articles) {
+		this.articles = articles;
+	}
+
 	/**
 	 * Creates a new instance of cart
 	 */
