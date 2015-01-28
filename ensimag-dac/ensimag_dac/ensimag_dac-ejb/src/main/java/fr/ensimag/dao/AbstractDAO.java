@@ -10,6 +10,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
+import javax.transaction.UserTransaction;
 
 /**
  * @param <E> The type of Entity for this DAO
@@ -19,6 +20,8 @@ public abstract class AbstractDAO<E extends IEntity> implements AbstractLocal<E>
 
 	@PersistenceContext(unitName = INames.PU_NAME)
 	private EntityManager entityManager;
+        
+        protected abstract UserTransaction getUserTransaction();
 
 	@SuppressWarnings("unchecked")
 	protected AbstractDAO() {
@@ -51,28 +54,65 @@ public abstract class AbstractDAO<E extends IEntity> implements AbstractLocal<E>
 		return entityManager.getCriteriaBuilder();
 	}
 
-	public E create(final E instance) {
-		entityManager.persist(instance);
-		return instance;
+        @Override
+	public E create(final E instance) throws Exception{
+                UserTransaction utx = null;
+                try {
+                        utx = getUserTransaction();
+                        utx.begin();
+                        entityManager.persist(instance);
+                        entityManager.flush();
+                        utx.commit();
+                        return instance;
+                } catch (Exception e) {
+			if (utx != null) {
+				utx.rollback();
+			}
+			throw e;
+		}
+                
 	}
 
 	public E find(Object id) {
 		return entityManager.find(entityClass, id);
 	}
 
-	public void remove(final E instance) {
-		boolean contains = entityManager.contains(instance);
-		E remove = instance;
-		if (!contains) {
-			remove = find(instance.getId());
+	public void remove(final E instance) throws Exception {
+                UserTransaction utx = null;
+                try {
+                        utx = getUserTransaction();
+                        utx.begin();
+                        boolean contains = entityManager.contains(instance);
+                        E remove = instance;
+                        if (!contains) {
+                                remove = find(instance.getId());
+                        }
+                        entityManager.remove(remove);
+                        utx.commit();
+                } catch (Exception e) {
+			if (utx != null) {
+				utx.rollback();
+			}
+			throw e;
 		}
-		entityManager.remove(remove);
 	}
 
-	public E edit(final E instance) {
-		E merge = entityManager.merge(instance);
-		entityManager.flush();
-		return merge;
+        @Override
+	public E edit(final E instance) throws Exception {
+                UserTransaction utx = null;
+                try {
+                        utx = getUserTransaction();
+                        utx.begin();
+                        E merge = entityManager.merge(instance);
+                        entityManager.flush();
+                        utx.commit();
+                        return merge;
+                } catch (Exception e) {
+			if (utx != null) {
+				utx.rollback();
+			}
+			throw e;
+		}
 	}
 
 	public List<E> findAll() {
