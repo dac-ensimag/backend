@@ -3,6 +3,7 @@ package fr.ensimag.control;
 import fr.ensimag.logic.ArticleServiceLocal;
 import fr.ensimag.vo.ArticleVO;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -27,6 +28,9 @@ public class ArticleBean implements Serializable {
 	public ArticleBean() {
 
 	}
+
+	@PostConstruct
+	public void init() { product = new ArticleVO(); }
 
 	public String getError() {
 		return error;
@@ -55,21 +59,39 @@ public class ArticleBean implements Serializable {
 		return product.getArticleLibele();
 	}
 
+	public void setArticleLibele(String articleLibele) {
+		product.setArticleLibele(articleLibele);
+	}
+
 	public String getArticleDescription() {
 		return product.getArticleDescription();
 	}
 
-	public float getArticlePrix() {
-		return product.getArticlePrix();
+	public void setArticleDescription(String articleDescription) {
+		product.setArticleDescription(articleDescription);
+	}
+
+	public String getArticlePrix() {
+		return new Float(product.getArticlePrix()).toString();
+	}
+
+	public void setArticlePrix(String articlePrix) {
+		product.setArticlePrix(Float.parseFloat(articlePrix));
 	}
         
-        public String getArticleImg(){
-                if( "".equals(product.getArticleImg()) || product.getArticleImg()==null){
-                    return "http://morpheo.inrialpes.fr/people/hetroy/data/uploads/ensimag.jpg"; //IMAGE DE BASE (TODO : CHANGER?)
-                } else {
-                    return product.getArticleImg();
-                }
-        }
+	public String getArticleImg(){
+		if( product.getArticleImg()==null || (product.getArticleImg().isEmpty())){
+			return "http://morpheo.inrialpes.fr/people/hetroy/data/uploads/ensimag.jpg"; //IMAGE DE BASE (TODO : CHANGER?)
+		} else {
+			return product.getArticleImg();
+		}
+	}
+
+	public void setArticleImg(String articleImg){
+		if (!articleImg.equals("")) {
+			product.setArticleImg(articleImg);
+		}
+	}
 
 	public Integer getId() {
 		return this.id;
@@ -81,6 +103,17 @@ public class ArticleBean implements Serializable {
 
 	public String deleteArticle() {
 		return "admin/supr_item?faces-redirect=true";
+	}
+
+	public String createArticle() throws Exception {
+		ArticleVO res = null;
+		res = articleService.createArticle(this.product);
+		this.product = new ArticleVO();
+		if (res != null) {
+			return "/catalogue?faces-redirect=true";
+		} else {
+			return "/index?faces-redirect=true";
+		}
 	}
 
 }
