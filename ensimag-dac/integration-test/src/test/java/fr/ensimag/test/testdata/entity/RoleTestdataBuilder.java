@@ -1,9 +1,10 @@
-package fr.ensimag.entity.testdata;
+package fr.ensimag.test.testdata.entity;
 
-import de.akquinet.jbosscc.needle.db.testdata.AbstractTestdataBuilder;
 import fr.ensimag.entity.Role;
+import fr.ensimag.test.testdata.AbstractTestdataBuilder;
 
 import javax.persistence.EntityManager;
+import javax.transaction.UserTransaction;
 
 public class RoleTestdataBuilder extends AbstractTestdataBuilder<Role> {
 
@@ -14,8 +15,8 @@ public class RoleTestdataBuilder extends AbstractTestdataBuilder<Role> {
 		super();
 	}
 
-	public RoleTestdataBuilder(EntityManager entityManager) {
-		super(entityManager);
+	public RoleTestdataBuilder(EntityManager entityManager, UserTransaction userTransaction) {
+		super(entityManager, userTransaction);
 	}
 
 	public RoleTestdataBuilder withLibele(String libele) {

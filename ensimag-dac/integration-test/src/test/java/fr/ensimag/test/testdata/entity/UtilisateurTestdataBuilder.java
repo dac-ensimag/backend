@@ -1,10 +1,11 @@
-package fr.ensimag.entity.testdata;
+package fr.ensimag.test.testdata.entity;
 
-import de.akquinet.jbosscc.needle.db.testdata.AbstractTestdataBuilder;
+import fr.ensimag.test.testdata.AbstractTestdataBuilder;
 import fr.ensimag.entity.Role;
 import fr.ensimag.entity.Utilisateur;
 
 import javax.persistence.EntityManager;
+import javax.transaction.UserTransaction;
 
 public class UtilisateurTestdataBuilder extends AbstractTestdataBuilder<Utilisateur> {
 
@@ -22,8 +23,8 @@ public class UtilisateurTestdataBuilder extends AbstractTestdataBuilder<Utilisat
 		super();
 	}
 
-	public UtilisateurTestdataBuilder(EntityManager entityManager) {
-		super(entityManager);
+	public UtilisateurTestdataBuilder(EntityManager entityManager, UserTransaction userTransaction) {
+		super(entityManager, userTransaction);
 	}
 
 	public UtilisateurTestdataBuilder withRole(Role role) {
@@ -76,7 +77,7 @@ public class UtilisateurTestdataBuilder extends AbstractTestdataBuilder<Utilisat
 			return withRole;
 		}
 
-		return hasEntityManager() ? new RoleTestdataBuilder(getEntityManager())
+		return hasEntityManager() ? new RoleTestdataBuilder(getEntityManager(), getUserTransaction())
 				.buildAndSave() : new RoleTestdataBuilder().build();
 	}
 

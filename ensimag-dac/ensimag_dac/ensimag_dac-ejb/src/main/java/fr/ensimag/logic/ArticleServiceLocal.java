@@ -8,10 +8,10 @@ import fr.ensimag.vo.ArticleVO;
 @Local
 public interface ArticleServiceLocal {
 
-	void deleteArticle(Integer articleId) throws Exception;
+	public void deleteArticle(Integer articleId) throws Exception;
 
-	ArticleVO getArticle(Integer articleId) throws Exception;
+	public ArticleVO getArticle(Integer articleId);
 
-	Article getArticleEntity(Integer articleId) throws Exception;
+	public ArticleVO createArticle(ArticleVO vo);
 
 }
