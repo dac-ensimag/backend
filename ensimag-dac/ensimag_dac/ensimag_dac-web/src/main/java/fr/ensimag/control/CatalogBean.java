@@ -30,6 +30,9 @@ public class CatalogBean implements Serializable {
 	private RepeatPaginator paginator;
 
 	private String error;
+        
+        private String searchString;
+
 
 	/*
 	 * Des articles pour tester
@@ -96,11 +99,30 @@ public class CatalogBean implements Serializable {
         }
         
         public void changeCategory(int num){
+                this.searchString = "";
                 if(num==0){
                     init();
                 } else {
                     this.products = categories.get(num-1).getArticleList();
                 }
         }
+        
+        public String getSearchString() {
+            return searchString;
+        }
 
+        public void setSearchString(String searchString) {
+            this.searchString = searchString;
+        }
+        
+        public void research() {
+            init();
+            List<ArticleVO> result = new ArrayList<ArticleVO>();
+            for (ArticleVO a : this.products){
+                if(a.getArticleLibele().contains(searchString) || a.getArticleDescription().contains(searchString)){
+                    result.add(a);
+                }
+            }
+            this.products = result;            
+        }
 }
