@@ -44,23 +44,8 @@
                                     </td>
                                 </tr>
                             </ui:repeat>
-                            
-                            
-                            
-                            <ui:repeat value="#{cartBean.cartContents.entrySet().toArray()}" var="p">
-                                <tr>
-                                    <td>
-                                        <img src="#{p.key.articleImg}" alt="" class="img-rounded"/>
-                                    </td>
-                                    <td>#{p.key.articleLibele}</td>
-                                    <td>#{p.key.articlePrix} €</td>
-                                    <td>
-                                        <h:form>
-                                            <h:commandButton value="Supprimer" class="btn btn-danger" action="#{cartBean.remove(p.key)}"/>
-                                        </h:form>
-                                    </td>
-                                </tr>
-                            </ui:repeat>
+
+                       
                         </tbody>
                         <tfoot>
                             <tr>
@@ -71,8 +56,12 @@
                                 
                                 <td>
                                         <h:form>
-                                            <h:commandButton value="AjouterCommande" class="btn btn-danger" action="#{commandeBean.confirmCommand()}" />
+                                       
+                                             <h:commandButton styleClass="btn btn-success btn-block" action="#{commandeBean.confirmCommand()}"
+                                             value="AjouterCommande"/>
                                         </h:form>
+                                        
+                                          
                                     </td>
                         
                                 

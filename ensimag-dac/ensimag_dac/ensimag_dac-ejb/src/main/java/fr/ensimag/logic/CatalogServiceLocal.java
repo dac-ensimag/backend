@@ -12,6 +12,6 @@ public interface CatalogServiceLocal {
 
 	List<ArticleVO> getAllProducts() throws Exception;
 
-        List<CategorieVO> getAllCategories() throws Exception;
+	List<CategorieVO> getAllCategories() throws Exception;
 
 }
