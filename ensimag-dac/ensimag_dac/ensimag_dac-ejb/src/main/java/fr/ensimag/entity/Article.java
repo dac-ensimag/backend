@@ -22,7 +22,6 @@ public class Article implements Serializable, IEntity<ArticleVO> {
 
 	@Basic(optional = false)
 	@NotNull
-	@Lob
 	@Column(name = "ARTICLE_LIBELE")
 	private String articleLibele;
 
@@ -38,12 +37,10 @@ public class Article implements Serializable, IEntity<ArticleVO> {
 
 	@Basic(optional = false)
 	@NotNull
-	@Lob
-	@Column(name = "ARTICLE_DESCRIPTION")
+	@Column(name = "ARTICLE_DESCRIPTION", length = 10000)
 	private String articleDescription;
 
-	@Lob
-	@Column(name = "ARTICLE_IMG")
+	@Column(name = "ARTICLE_IMG", length = 2000)
 	private String articleImg;
 
 	@JoinTable(name = "ARTICLECOMMANDE", joinColumns = {

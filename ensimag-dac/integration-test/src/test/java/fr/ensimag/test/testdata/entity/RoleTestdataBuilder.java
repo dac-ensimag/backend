@@ -1,10 +1,12 @@
 package fr.ensimag.test.testdata.entity;
 
 import fr.ensimag.entity.Role;
+import fr.ensimag.entity.Utilisateur;
 import fr.ensimag.test.testdata.AbstractTestdataBuilder;
 
 import javax.persistence.EntityManager;
 import javax.transaction.UserTransaction;
+import java.util.ArrayList;
 
 public class RoleTestdataBuilder extends AbstractTestdataBuilder<Role> {
 
@@ -42,6 +44,7 @@ public class RoleTestdataBuilder extends AbstractTestdataBuilder<Role> {
 		final Role role = new Role();
 		role.setRoleDescription(getRoleDescription());
 		role.setRoleLibele(getRoleLibele());
+		role.setUtilisateurList(new ArrayList<Utilisateur>());
 
 		return role;
 	}

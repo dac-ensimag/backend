@@ -1,11 +1,13 @@
 package fr.ensimag.test.testdata.entity;
 
+import fr.ensimag.entity.Commande;
 import fr.ensimag.test.testdata.AbstractTestdataBuilder;
 import fr.ensimag.entity.Role;
 import fr.ensimag.entity.Utilisateur;
 
 import javax.persistence.EntityManager;
 import javax.transaction.UserTransaction;
+import java.util.ArrayList;
 
 public class UtilisateurTestdataBuilder extends AbstractTestdataBuilder<Utilisateur> {
 
@@ -77,8 +79,7 @@ public class UtilisateurTestdataBuilder extends AbstractTestdataBuilder<Utilisat
 			return withRole;
 		}
 
-		return hasEntityManager() ? new RoleTestdataBuilder(getEntityManager(), getUserTransaction())
-				.buildAndSave() : new RoleTestdataBuilder().build();
+		return hasEntityManager() ? new RoleTestdataBuilder(getEntityManager(), getUserTransaction()).buildAndSave() : new RoleTestdataBuilder().build();
 	}
 
 	private String getUtilisateurAdresse() {
@@ -125,6 +126,7 @@ public class UtilisateurTestdataBuilder extends AbstractTestdataBuilder<Utilisat
 		utilisateur.setUtilisateurPass(getUtilisateurPass());
 		utilisateur.setUtilisateurPrenom(getUtilisateurPrenom());
 		utilisateur.setUtilisateurTel(getUtilisateurTel());
+		utilisateur.setCommandeList(new ArrayList<Commande>());
 
 		return utilisateur;
 	}

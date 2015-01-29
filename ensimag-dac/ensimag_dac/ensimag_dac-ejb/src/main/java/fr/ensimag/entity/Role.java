@@ -17,20 +17,17 @@ public class Role implements Serializable, IEntity<RoleVO> {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional = false)
-	@NotNull
 	@Column(name = "ROLE_ID")
 	private Integer roleId;
 
 	@Basic(optional = false)
 	@NotNull
-	@Lob
 	@Column(name = "ROLE_LIBELE")
 	private String roleLibele;
 
 	@Basic(optional = false)
 	@NotNull
-	@Lob
-	@Column(name = "ROLE_DESCRIPTION")
+	@Column(name = "ROLE_DESCRIPTION", length = 1024)
 	private String roleDescription;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "role")

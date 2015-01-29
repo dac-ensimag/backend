@@ -22,7 +22,6 @@ public class Categorie implements Serializable, IEntity<CategorieVO> {
 
 	@Basic(optional = false)
 	@NotNull
-	@Lob
 	@Column(name = "CATEGORIE_LIBELE")
 	private String categorieLibele;
 
@@ -109,5 +108,14 @@ public class Categorie implements Serializable, IEntity<CategorieVO> {
 
 		return vo;
 	}
+        
+        public static List<CategorieVO> toVo(List<Categorie> cats) {
+		List<CategorieVO> vo = new ArrayList<>();
 
+		for (Categorie c : cats) {
+			vo.add(c.toVO());
+		}
+
+		return vo;
+	}
 }
