@@ -92,7 +92,7 @@ public class CatalogBean implements Serializable {
         
         public String getCategoryName(int num){
                 if(num==0){
-                        return "All";
+                        return "Tous";
                 } else {
                         return categories.get(num-1).getCategorieLibele();
                 }
