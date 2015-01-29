@@ -1,11 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 template="./WEB-INF/templates/default.xhtml"
                 xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
                 xmlns:f="http://java.sun.com/jsf/core">
 
     <f:metadata>
@@ -13,39 +14,13 @@
     </f:metadata>
 
     <ui:define name="content">
-        
-        <div class="container">
-        	<div class="row">
-           	 	<div class="col-md-6 pull-right">
-                	<ul class="pager">
-                        <h:form>
-                            <li>
-                                <a>
-                                    <span class="glyphicon glyphicon-left"></span> 
-                                    <h:commandButton value="Précédente" action="#{catalogBean.paginator.prev}"/>
-                                </a>
-                            </li>
-                            <li class="page">
-       						   <h:outputText value="Page #{catalogBean.paginator.pageIndex} sur #{catalogBean.paginator.pages}"/>
-                            </li>
-                            <li>
-                                <a>
-       						       <h:commandButton value="Suivante" action="#{catalogBean.paginator.next}"/> 
-                                   <span class="glyphicon glyphicon-right"></span>
-                                </a>
-                            </li>
- 						   <h:inputHidden value="#{catalogBean.paginator.pageIndex}"/>
-   						</h:form>
-                	</ul>
-            	</div>
-        	</div>
-        </div>
 
-
-
-        <div class="container">
- 			<ui:repeat value="#{catalogBean.paginator.model}" var="product">
-            	<div class="col-sm-6 col-md-3">
+        <h:form id="form">
+            <div class="container">
+                <p:dataGrid var="product" value="#{catalogBean.products}" columns="4" layout="grid"
+                            rows="8" paginator="true" id="cars"
+                            paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                            rowsPerPageTemplate="8,12,16">
                     <div class="thumbnail">
                         <img src="#{product.articleImg}" alt="" class="img-rounded"/>
 
@@ -70,39 +45,9 @@
                             </h:form>
                         </div>
                     </div>
-                </div>
-        	</ui:repeat>
-        </div>
-
-
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 pull-right">
-                    <ul class="pager">
-                        <h:form>
-                            <li>
-                                <a>
-                                    <span class="glyphicon glyphicon-left"></span> 
-                                    <h:commandButton value="Précédente" action="#{catalogBean.paginator.prev}"/>
-                                </a>
-                            </li>
-                            <li class="page">
-                               <h:outputText value="Page #{catalogBean.paginator.pageIndex} sur #{catalogBean.paginator.pages}"/>
-                            </li>
-                            <li>
-                                <a>
-                                   <h:commandButton value="Suivante" action="#{catalogBean.paginator.next}"/> 
-                                   <span class="glyphicon glyphicon-right"></span>
-                                </a>
-                            </li>
-                           <h:inputHidden value="#{catalogBean.paginator.pageIndex}"/>
-                        </h:form>
-                    </ul>
-                </div>
+                </p:dataGrid>
             </div>
-        </div>
-
-
+        </h:form>
     </ui:define>
 
 </ui:composition>
