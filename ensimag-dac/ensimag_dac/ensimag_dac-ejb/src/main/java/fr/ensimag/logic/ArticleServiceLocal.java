@@ -12,7 +12,7 @@ public interface ArticleServiceLocal {
 
 	ArticleVO getArticle(Integer articleId) throws Exception;
 
-	public ArticleVO createArticle(ArticleVO vo) throws Exception;
+	public ArticleVO createArticle(ArticleVO vo);
 
 	Article getArticleEntity(Integer articleId) throws Exception;
 
