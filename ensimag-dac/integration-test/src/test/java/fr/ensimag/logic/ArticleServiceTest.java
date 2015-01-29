@@ -9,7 +9,6 @@ import org.jboss.shrinkwrap.api.Archive;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,8 +24,6 @@ import javax.transaction.UserTransaction;
 public class ArticleServiceTest {
 	@EJB
 	private ArticleServiceLocal service;
-
-
 
 	@PersistenceContext
 	private EntityManager em;
@@ -91,5 +88,25 @@ public class ArticleServiceTest {
 		// Article inexistant
 		article = this.service.getArticle(-1);
 		Assert.assertNull(article);
+	}
+
+	/**
+	 * Method: createArticle(ArticleVO vo)
+	 */
+	@Test
+	public void testCreateArticle() throws Exception {
+		//Verification que la table est vide
+		ArticleVO vo = this.service.getArticle(1);
+		Assert.assertNull(vo);
+
+		//Ajout d'article
+		ArticleVO toCreate = new ArticleTestdataBuilder(em, utx).build().toVO();
+		ArticleVO created = this.service.createArticle(toCreate);
+		ArticleVO fromDB  = this.service.getArticle(created.getArticleId());
+
+		Assert.assertNotNull(fromDB);
+		Assert.assertNotSame(created, fromDB);
+		Assert.assertEquals(created.getArticleId(), fromDB.getArticleId());
+		Assert.assertEquals(created.getArticleLibele(), fromDB.getArticleLibele());
 	}
 } 
