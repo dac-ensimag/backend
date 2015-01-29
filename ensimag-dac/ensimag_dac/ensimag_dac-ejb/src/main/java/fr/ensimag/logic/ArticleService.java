@@ -34,7 +34,7 @@ public class ArticleService implements ArticleServiceLocal {
 	}
 
 	@Override
-	public ArticleVO createArticle(ArticleVO vo) throws Exception {
+	public ArticleVO createArticle(ArticleVO vo) {
 		Article entity = new Article();
 		entity.setArticleLibele(vo.getArticleLibele());
 		entity.setArticlePrix(vo.getArticlePrix());
@@ -47,9 +47,13 @@ public class ArticleService implements ArticleServiceLocal {
 			cat.getArticleList().add(entity);
 		}
 
-		entity = articleDAO.create(entity);
-
-		return entity.toVO();
+		try {
+			entity = articleDAO.create(entity);
+			return entity.toVO();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	@Override
