@@ -1,14 +1,109 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                template="./../WEB-INF/templates/default.xhtml">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../WEB-INF/templates/default.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
 
+    <f:metadata>
+        <f:event type="preRenderView" listener="#{userManagementBean.init()}" />
+    </f:metadata>
+    
     <ui:define name="title">
         Admin Page
     </ui:define>
 
     <ui:define name="content">
-        <h2>Admin Page</h2>
+        <h2>Gestion d'utilisateurs</h2>
+        <h:form id="gestion" role="form">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-md-6">
+                        <h:dataTable style="height: 100px;overflow: scroll;"
+                                     value="#{userManagementBean.users}" var="user"
+                                     styleClass="table table-hover">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Nom d'utilisateur" />
+                                </f:facet>
+                                <p:commandLink value="#{user.utilisateurLogin}" actionListener="#{userManagementBean.fillFields}" update=":gestion:userInfo">
+                                    <f:setPropertyActionListener target="#{userManagementBean.selectedUser}" value="#{user}" />
+                                </p:commandLink>
+                            </h:column>
+                        </h:dataTable>
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+                        <p:panel id="userInfo">
+                            <div class="form-group">
+                                <label for="inputLastname">Nom</label>
+                                <h:inputText value="#{userManagementBean.selectedUser.utilisateurNom}" styleClass="form-control" required="true"
+                                             requiredMessage="Veuillez compléter ce champ" id="inputLastname"/>
+                                <p:message id="lastnameMessage" for="inputLastname"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputFirstname">Prenom</label>
+                                <h:inputText value="#{userManagementBean.selectedUser.utilisateurPrenom}" styleClass="form-control" required="true"
+                                             requiredMessage="Veuillez compléter ce champ" id="inputFirstname"/>
+                                <p:message id="firstnameMessage" for="inputFirstname"/> 
+                            </div>
+                            <div class="form-group">
+                                <label for="inputMail">Mail</label>
+                                <h:inputText value="#{userManagementBean.selectedUser.utilisateurMail}" styleClass="form-control" required="true"
+                                             requiredMessage="Veuillez compléter ce champ" id="inputMail"/>
+                                <p:message id="mailMessage" for="inputMail"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputTel">Téléphone</label>
+                                <h:inputText value="#{userManagementBean.selectedUser.utilisateurTel}" styleClass="form-control" required="true"
+                                             requiredMessage="Veuillez compléter ce champ" id="inputTel"/>
+                                <p:message id="telMessage" for="inputTel"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputAdress">Adresse</label>
+                                <h:inputText value="#{userManagementBean.selectedUser.utilisateurAdresse}" styleClass="form-control"
+                                             required="true"
+                                             requiredMessage="Veuillez compléter ce champ" id="inputAdress"/>
+                                <p:message id="adressMessage" for="inputAdress"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputCP">CP</label>
+                                <h:inputText value="#{userManagementBean.selectedUser.utilisateurCp}" styleClass="form-control" required="true"
+                                             requiredMessage="Veuillez compléter ce champ" id="inputCP"/>
+                                <p:message id="cpMessage" for="inputCP"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputUsername">Login</label>
+                                <h:inputText value="#{userManagementBean.selectedUser.utilisateurLogin}" styleClass="form-control" required="true"
+                                             requiredMessage="Veuillez compléter ce champ" id="inputUsername"/>
+                                <p:message id="usernameMessage" for="inputUsername"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPassword">Mot de Passe</label>
+                                <h:inputSecret value="#{userManagementBean.selectedUser.utilisateurPass}" styleClass="form-control" required="false"
+                                               requiredMessage="Veuillez compléter ce champ" id="inputPassword"/>
+                                <p:message id="passwordMessage" for="inputPassword"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputRole">Role</label>
+                                <h:selectOneMenu value="#{userManagementBean.selectedUser.roleId}" id="inputRole" styleClass="form-control">
+                                    <f:selectItem itemLabel="Admin" itemValue="1"/>
+                                    <f:selectItem itemLabel="Fournisseur" itemValue="2"/>
+                                    <f:selectItem itemLabel="User" itemValue="3"/>
+                                </h:selectOneMenu>
+                            </div>
+                            <div class="row">                                
+                                <h:commandButton id="update2" value="Modifier" actionListener="#{userManagementBean.update()}" 
+                                                 styleClass="btn btn-success btn-block"/>
+                                <h:commandButton id="remove2" value="Suprimmer" actionListener="#{userManagementBean.remove()}" 
+                                                 styleClass="btn btn-danger btn-block"/>
+                            </div>
+                        </p:panel>
+                    </div>
+                </div>
+            </div>
+        </h:form>
     </ui:define>
 
 </ui:composition>

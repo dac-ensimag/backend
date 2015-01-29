@@ -37,39 +37,39 @@ public class UtilisateurService implements UtilisateurServiceLocal {
 		return null;
 	}
 
-	@Override
-	public UtilisateurVO signUp(UtilisateurVO vo) throws ExistingUserException, InvalidEmailException {
-		Utilisateur entity = new Utilisateur();
-		entity.setUtilisateurNom(vo.getUtilisateurNom());
-		entity.setUtilisateurPrenom(vo.getUtilisateurPrenom());
-		entity.setUtilisateurMail(vo.getUtilisateurMail());
-		entity.setUtilisateurTel(vo.getUtilisateurTel());
-		entity.setUtilisateurAdresse(vo.getUtilisateurAdresse());
-		entity.setUtilisateurCp(vo.getUtilisateurCp());
+    @Override
+    public UtilisateurVO signUp(UtilisateurVO vo) throws ExistingUserException, InvalidEmailException {
+        Utilisateur entity = new Utilisateur();
+        entity.setUtilisateurNom(vo.getUtilisateurNom());
+        entity.setUtilisateurPrenom(vo.getUtilisateurPrenom());
+        entity.setUtilisateurMail(vo.getUtilisateurMail());
+        entity.setUtilisateurTel(vo.getUtilisateurTel());
+        entity.setUtilisateurAdresse(vo.getUtilisateurAdresse());
+        entity.setUtilisateurCp(vo.getUtilisateurCp());
 
-		entity.setUtilisateurLogin(vo.getUtilisateurLogin());
-		entity.setUtilisateurPass(BCrypt.hashpw(vo.getUtilisateurPass(), BCrypt.gensalt(12)));
+        entity.setUtilisateurLogin(vo.getUtilisateurLogin());
+        entity.setUtilisateurPass(BCrypt.hashpw(vo.getUtilisateurPass(), BCrypt.gensalt(12)));
 
-		if (isValidEmail(vo.getUtilisateurMail())) {
-                    try {
-                        Utilisateur findByLogin = utilisateurDAO.findByLogin(vo.getUtilisateurLogin());
-                        if (findByLogin == null) {
-                            Role role = roleDAO.find(INames.ROLE_USER_ID);
-                            entity.setRole(role);
-                            entity = utilisateurDAO.create(entity);
-                            return entity.toVO();
-                        } else {
-                            throw new ExistingUserException();
-                        }
-                    } catch (ExistingUserException ex) {
-                        throw ex;
-                    } catch (Exception ex) {
-                        return null;
-                    }
+        if (isValidEmail(vo.getUtilisateurMail())) {
+            try {
+                Utilisateur findByLogin = utilisateurDAO.findByLogin(vo.getUtilisateurLogin());
+                if (findByLogin == null) {
+                    Role role = roleDAO.find(INames.ROLE_USER_ID);
+                    entity.setRole(role);
+                    entity = utilisateurDAO.create(entity);
+                    return entity.toVO();
                 } else {
-                    throw new InvalidEmailException();
+                    throw new ExistingUserException();
                 }
-	}
+            } catch (ExistingUserException ex) {
+                throw ex;
+            } catch (Exception ex) {
+                return null;
+            }
+        } else {
+            throw new InvalidEmailException();
+        }
+    }
         
     @Override
     public List<UtilisateurVO> getAllUsers() throws Exception {
@@ -83,16 +83,23 @@ public class UtilisateurService implements UtilisateurServiceLocal {
 
     @Override
     public void updateUser(UtilisateurVO vo) throws Exception {
-        Utilisateur user = new Utilisateur(vo.getUtilisateurId());
+        Utilisateur user = utilisateurDAO.find(vo.getUtilisateurId());
         Role role = roleDAO.find(vo.getRoleId());
         user.setRole(role);
+        role.getUtilisateurList().add(user);
+        user.setUtilisateurId(vo.getUtilisateurId());
         user.setUtilisateurNom(vo.getUtilisateurNom());
         user.setUtilisateurPrenom(vo.getUtilisateurPrenom());
         user.setUtilisateurMail(vo.getUtilisateurMail());
-        user.setUtilisateurTel(vo.getUtilisateurTel());
-        user.setUtilisateurLogin(vo.getUtilisateurLogin());
+        user.setUtilisateurTel(vo.getUtilisateurTel());        
         user.setUtilisateurAdresse(vo.getUtilisateurAdresse());
         user.setUtilisateurCp(vo.getUtilisateurCp());
+        
+        user.setUtilisateurLogin(vo.getUtilisateurLogin());
+        if (!vo.getUtilisateurPass().trim().isEmpty()) {
+            user.setUtilisateurPass(BCrypt.hashpw(vo.getUtilisateurPass(), BCrypt.gensalt(12)));
+        }
+        
         utilisateurDAO.edit(user);
     }
 
@@ -105,6 +112,11 @@ public class UtilisateurService implements UtilisateurServiceLocal {
                 + "[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x5"
                 + "3-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])";
         return email.matches(re);
+    }
+
+    @Override
+    public void removeUser(Integer userId) throws Exception {
+        utilisateurDAO.remove(utilisateurDAO.find(userId));
     }
 
 }
