@@ -75,19 +75,21 @@
                                                 </h:form>
                                             </a>
                                         </li>
-                                        <li class="divider"></li>
-                                        <!-- Liens fournisseur ici -->
-                                        <li>
-                                            <a href="#{request.contextPath}/admin/ajout_item.xhtml">Ajouter un article</a>
+                                        <ui:fragment rendered="#{utilisateurBean.user.getRoleId() == 2 || utilisateurBean.user.getRoleId() == 1}">
+                                            <li class="divider"></li>
+                                            <!-- Liens fournisseur ici -->
+                                            <li>
+                                                <a href="#{request.contextPath}/admin/ajout_item.xhtml">Ajouter un article</a>
 
-                                        </li>
-
-                                        <li class="divider"></li>
-                                        <!-- Liens admin ici -->
-                                        <li>
-                                            <a href="#">Lien admin</a>
-                                        </li>
-
+                                            </li>
+                                        </ui:fragment>
+                                        <ui:fragment rendered="#{utilisateurBean.user.getRoleId() == 1}">
+                                            <li class="divider"></li>
+                                            <!-- Liens admin ici -->
+                                            <li>
+                                                <a href="#">Lien admin</a>
+                                            </li>
+                                        </ui:fragment>
                                     </ul>
                                 </li>
                             </ui:fragment>
