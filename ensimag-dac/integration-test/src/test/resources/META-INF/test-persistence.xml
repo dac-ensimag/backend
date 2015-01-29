@@ -19,6 +19,7 @@
             <property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver" />
 
             <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
+            <property name="eclipselink.ddl-generation.output-mode" value="both" />
             <property name="eclipselink.logging.level.sql" value="FINE"/>
             <property name="eclipselink.logging.parameters" value="true"/>
         </properties>
