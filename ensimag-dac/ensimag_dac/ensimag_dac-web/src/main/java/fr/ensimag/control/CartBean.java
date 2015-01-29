@@ -18,13 +18,7 @@ import fr.ensimag.vo.ArticleVO;
 @SessionScoped
 public class CartBean implements Serializable {
 
-	// AB: QUE pour tester -- a supprimer
-	@EJB
-	private CatalogServiceLocal catalog;
 
-	private List<ArticleVO> articlesCatalog;
-
-	// FIN AB:
 
 	private List<ArticleVO> articles = new ArrayList<ArticleVO>();
 
@@ -45,17 +39,14 @@ public class CartBean implements Serializable {
 
 	@PostConstruct
 	public void init() {
-		articlesCatalog = new ArrayList<ArticleVO>();
+
 		try {
-			this.articlesCatalog.addAll(this.catalog.getAllProducts());
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		articles.add(this.articlesCatalog.get(1));
-		articles.add(this.articlesCatalog.get(2));
-		articles.add(this.articlesCatalog.get(3));
 
 	}
 

@@ -25,7 +25,7 @@ public class CommandeBean implements Serializable {
 	@EJB
 	private CommandeServiceLocal commandeService;
 	private List<CommandeVO> commandes;
-	private List<ArticleVO> articles;
+	private List<ArticleVO> articles = new ArrayList<ArticleVO>();
 	private CommandeVO cmd;
 
 	@EJB
@@ -72,10 +72,6 @@ public class CommandeBean implements Serializable {
 	@PostConstruct
 	public void init() {
 		try {
-			this.cmd = new CommandeVO();
-			this.articles = new ArrayList<ArticleVO>();
-			this.articles = this.cartBean.getArticles();
-
 			this.commandes = new ArrayList<CommandeVO>();
 			this.commandes = this.commandeService.getAllCommands();
 
@@ -95,7 +91,9 @@ public class CommandeBean implements Serializable {
 		utilisateurCourant = new UtilisateurVO();
 		utilisateurCourant = utilisateurBean.getUser();
 		Map<CommandeVO, Integer> commandeContents = new HashMap<CommandeVO, Integer>();
-		for (CommandeVO obj : this.utilisateurCourant.getCommandeList()) {
+		List<CommandeVO> userCmdList = new ArrayList<CommandeVO>();
+		userCmdList = utilisateurCourant.getCommandeList();
+		for (CommandeVO obj : userCmdList) {
 			commandeContents.put(obj, 1);
 		}
 		return commandeContents;
@@ -117,7 +115,8 @@ public class CommandeBean implements Serializable {
 		 * success = this.commandeService.addCommande(this.getCmd()); if
 		 * (success != null) { return "index"; } else { return "error"; }
 		 */
-
+		this.cmd = new CommandeVO();
+		this.articles = this.cartBean.getArticles();
 		this.cmd.setCommandeDate(new Date());
 		this.cmd.setArticleList(this.articles);
 		this.cmd.setCommandeDescription("description");
