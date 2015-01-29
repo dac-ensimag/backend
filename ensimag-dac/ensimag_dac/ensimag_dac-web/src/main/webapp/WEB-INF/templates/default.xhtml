@@ -36,7 +36,13 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="#{request.contextPath}/catalogue.xhtml"> Catalogue <span class="sr-only">(current)</span></a></li>
+                            <ui:fragment rendered="#{request.requestURI == '/catalogue.xhtml'}">
+                                <li class="active"><a href="#{request.contextPath}/catalogue.xhtml"> Catalogue <span class="sr-only">(current)</span></a></li>
+                            </ui:fragment>
+                            <ui:fragment rendered="#{request.requestURI != '/catalogue.xhtml'}">
+                                <li><a href="#{request.contextPath}/catalogue.xhtml"> Catalogue <span class="sr-only">(current)</span></a></li>
+                            </ui:fragment>
+                                
                         </ul>
                         <!--<form class="navbar-form navbar-left" role="search">
                             <div class="form-search search-only">
@@ -69,19 +75,21 @@
                                                 </h:form>
                                             </a>
                                         </li>
+                                        <ui:fragment rendered="#{utilisateurBean.user.getRoleId() == 2 || utilisateurBean.user.getRoleId() == 1}">
                                             <li class="divider"></li>
                                             <!-- Liens fournisseur ici -->
                                             <li>
                                                 <a href="#{request.contextPath}/admin/ajout_item.xhtml">Ajouter un article</a>
 
                                             </li>
-
+                                        </ui:fragment>
+                                        <ui:fragment rendered="#{utilisateurBean.user.getRoleId() == 1}">
                                             <li class="divider"></li>
                                             <!-- Liens admin ici -->
                                             <li>
                                                 <a href="#">Lien admin</a>
                                             </li>
-
+                                        </ui:fragment>
                                     </ul>
                                 </li>
                             </ui:fragment>
