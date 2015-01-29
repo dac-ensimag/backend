@@ -12,57 +12,32 @@
     <!--<f:metadata>
         <f:event type="preRenderView" listener="#{catalogBean.init()}"/>
     </f:metadata>-->
+    <ui:define name="search">
+        <h:form class="navbar-form navbar-left">
+            <div class="form-search search-only">
+                <i class="search-icon glyphicon glyphicon-search"></i>
+                <h:inputText value="#{catalogBean.searchString}" class="form-control search-query"/>
+                <h:commandButton value="Rechercher" action="#{catalogBean.research()}" class="btn btn-success"/>
+            </div>
+        </h:form>
+    </ui:define>
 
     <ui:define name="content">
         <!--Link pagination: http://www.primefaces.org/showcase/ui/data/dataGrid.xhtml-->
         
-            <div class="container">
-                <div class="row">
-                    <ul class="pager">
-                        <h:form>
-                            <li>
-                                <a>
-                                    <h:inputText value="#{catalogBean.searchString}"/>
-                                </a>
-                            </li>
-                            <li>
-                                <a>
-                                    <h:commandButton value="Rechercher" action="#{catalogBean.research()}"/>
-                                </a>
-                            </li>
+        <div class="container">
+            <h:form>
+                <div class="row categories">
+                    <div class="col-xs-12 pull-right">
+                        <h:commandButton class="btn btn-success" value="#{catalogBean.getCategoryName(0)}" action="#{catalogBean.changeCategory(0)}"/>
+                        <h:commandButton class="btn btn-success" value="#{catalogBean.getCategoryName(3)}" action="#{catalogBean.changeCategory(3)}"/>
+                        <h:commandButton class="btn btn-success" value="#{catalogBean.getCategoryName(2)}" action="#{catalogBean.changeCategory(2)}"/>
+                        <h:commandButton class="btn btn-success" value="#{catalogBean.getCategoryName(1)}" action="#{catalogBean.changeCategory(1)}"/>
+                    </div>
+                </div>
+            </h:form>
+        </div>
 
-                        </h:form>
-                    </ul>
-                </div>
-            </div>
-            <div class="container">
-                <div class="row">
-                    <ul class="pager">
-                        <h:form>
-                            <li>
-                                <a>
-                                    <h:commandButton value="#{catalogBean.getCategoryName(0)}" action="#{catalogBean.changeCategory(0)}"/>
-                                </a>
-                            </li>
-                            <li>
-                                <a>
-                                    <h:commandButton value="#{catalogBean.getCategoryName(3)}" action="#{catalogBean.changeCategory(3)}"/>
-                                </a>
-                            </li>
-                            <li>
-                                <a>
-                                    <h:commandButton value="#{catalogBean.getCategoryName(2)}" action="#{catalogBean.changeCategory(2)}"/>
-                                </a>
-                            </li>
-                            <li>
-                                <a>
-                                    <h:commandButton value="#{catalogBean.getCategoryName(1)}" action="#{catalogBean.changeCategory(1)}"/>
-                                </a>
-                            </li>
-                        </h:form>
-                    </ul>
-                </div>
-            </div>
         <div class="container">
         <h:form id="form">
                 <p:dataGrid var="product" value="#{catalogBean.products}" columns="4" layout="grid"

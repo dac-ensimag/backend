@@ -44,12 +44,9 @@
                             </ui:fragment>
                                 
                         </ul>
-                        <!--<form class="navbar-form navbar-left" role="search">
-                            <div class="form-search search-only">
-                                <i class="search-icon glyphicon glyphicon-search"></i>
-                                <input type="text" class="form-control search-query">
-                            </div>
-                        </form>-->
+
+                        <ui:insert name="search">Search</ui:insert>
+                         
                         <ul class="nav navbar-nav navbar-right">
                             <li>
                                 <h:outputLink value="panier.xhtml">
@@ -69,12 +66,14 @@
                                     <ul class="dropdown-menu" role="menu">
                                         <!-- Liens user ici -->
                                         <li>
-                                            <a>
-                                                <h:form>
-                                                    <h:commandLink action="#{utilisateurBean.logOut()}" value="LogOut" />
-                                                </h:form>
-                                            </a>
+                                            <h:form>
+                                                <h:commandLink action="#{utilisateurBean.logOut()}" value="Se déconnecter" />
+                                            </h:form>
                                         </li>
+                                        <li>
+                                                <a href="#{request.contextPath}/admin/ajout_item.xhtml">Ajouter un article</a>
+
+                                            </li>
                                         <ui:fragment rendered="#{utilisateurBean.user.getRoleId() == 2 || utilisateurBean.user.getRoleId() == 1}">
                                             <li class="divider"></li>
                                             <!-- Liens fournisseur ici -->
