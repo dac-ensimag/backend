@@ -15,7 +15,6 @@ public class Facture implements Serializable, IEntity<FactureVO> {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional = false)
-	@NotNull
 	@Column(name = "FACTURE_ID")
 	private Integer factureId;
 

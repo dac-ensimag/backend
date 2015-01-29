@@ -43,8 +43,7 @@ public class Commande implements Serializable, IEntity<CommandeVO> {
 
 	@Basic(optional = false)
 	@NotNull
-	@Lob
-	@Column(name = "COMMANDE_DESCRIPTION")
+	@Column(name = "COMMANDE_DESCRIPTION", length = 2000)
 	private String commandeDescription;
 
 	@Basic(optional = false)
