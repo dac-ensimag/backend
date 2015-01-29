@@ -112,4 +112,10 @@ html, body {
   text-align: right;
   padding-top: 15px; }
 
+/****************/
+/*  Admin page  */
+/****************/
+.ui-commandLink.ui-widget {
+  color: #434A54; }
+
 /*# sourceMappingURL=style.css.map */
