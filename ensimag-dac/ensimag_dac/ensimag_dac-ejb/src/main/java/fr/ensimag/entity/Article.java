@@ -41,10 +41,10 @@ public class Article implements Serializable, IEntity<ArticleVO> {
 	@Lob
 	@Column(name = "ARTICLE_DESCRIPTION")
 	private String articleDescription;
-        
-    @Lob
-    @Column(name = "ARTICLE_IMG")
-    private String articleImg;
+
+	@Lob
+	@Column(name = "ARTICLE_IMG")
+	private String articleImg;
 
 	@JoinTable(name = "ARTICLECOMMANDE", joinColumns = {
 			@JoinColumn(name = "ARTICLE_ID", referencedColumnName = "ARTICLE_ID")}, inverseJoinColumns = {
@@ -62,15 +62,25 @@ public class Article implements Serializable, IEntity<ArticleVO> {
 	public Article(Integer articleId) {
 		this.articleId = articleId;
 	}
-        
-        //articleImg peut être NULL
+
+	//articleImg peut être NULL
 	public Article(Integer articleId, String articleLibele, float articlePrix, boolean articleDisponibilite, String articleDescription, String articleImg) {
 		this.articleId = articleId;
 		this.articleLibele = articleLibele;
 		this.articlePrix = articlePrix;
 		this.articleDisponibilite = articleDisponibilite;
 		this.articleDescription = articleDescription;
-                this.articleImg = articleImg;
+		this.articleImg = articleImg;
+	}
+
+	public static List<ArticleVO> toVo(List<Article> articles) {
+		List<ArticleVO> vo = new ArrayList<>();
+
+		for (Article a : articles) {
+			vo.add(a.toVO());
+		}
+
+		return vo;
 	}
 
 	@Override
@@ -121,17 +131,17 @@ public class Article implements Serializable, IEntity<ArticleVO> {
 	public List<Commande> getCommandeList() {
 		return commandeList;
 	}
-        
-        public void setArticleImg(String articleImg){
-                this.articleImg = articleImg;
-        }
-        
-        public String getArticleImg(){
-                return articleImg;
-        }
 
 	public void setCommandeList(List<Commande> commandeList) {
 		this.commandeList = commandeList;
+	}
+
+	public String getArticleImg() {
+		return articleImg;
+	}
+
+	public void setArticleImg(String articleImg) {
+		this.articleImg = articleImg;
 	}
 
 	public Categorie getCategorie() {
@@ -175,25 +185,14 @@ public class Article implements Serializable, IEntity<ArticleVO> {
 		vo.setArticleDisponibilite(getArticleDisponibilite());
 		vo.setArticleLibele(getArticleLibele());
 		vo.setArticlePrix(getArticlePrix());
-                vo.setArticleImg(getArticleImg());
+		vo.setArticleImg(getArticleImg());
 
 		List<CommandeVO> commandVOList = new ArrayList<>();
 //		for (Commande commande : getCommandeList()) {
 //			commandVOList.add(commande.toVO());
 //		}
 		vo.setCommandeList(commandVOList);
-                
-                vo.setCategorieId(getCategorie().getCategorieId());
-
-		return vo;
-	}
-
-	public static List<ArticleVO> toVo(List<Article> articles) {
-		List<ArticleVO> vo = new ArrayList<>();
-
-		for (Article a : articles) {
-			vo.add(a.toVO());
-		}
+		vo.setCategorieId(getCategorie().getCategorieId());
 
 		return vo;
 	}

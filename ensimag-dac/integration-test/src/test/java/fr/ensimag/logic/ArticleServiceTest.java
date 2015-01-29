@@ -100,11 +100,13 @@ public class ArticleServiceTest {
 		Assert.assertNull(vo);
 
 		//Ajout d'article
-		ArticleVO article = new ArticleTestdataBuilder(em, utx).build().toVO();
+		ArticleVO toCreate = new ArticleTestdataBuilder(em, utx).build().toVO();
+		ArticleVO created = this.service.createArticle(toCreate);
+		ArticleVO fromDB  = this.service.getArticle(created.getArticleId());
 
-		this.service.createArticle(article);
-
-		vo = this.service.getArticle(article.getArticleId());
-		Assert.assertNotNull(vo);
+		Assert.assertNotNull(fromDB);
+		Assert.assertNotSame(created, fromDB);
+		Assert.assertEquals(created.getArticleId(), fromDB.getArticleId());
+		Assert.assertEquals(created.getArticleLibele(), fromDB.getArticleLibele());
 	}
 } 
