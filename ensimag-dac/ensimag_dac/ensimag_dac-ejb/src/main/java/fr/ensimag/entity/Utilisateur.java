@@ -28,44 +28,36 @@ public class Utilisateur implements Serializable, IEntity<UtilisateurVO> {
 
 	@Basic(optional = false)
 	@NotNull
-	@Lob
-	@Column(name = "UTILISATEUR_MAIL")
+	@Column(name = "UTILISATEUR_MAIL", length = 2000)
 	private String utilisateurMail;
 
 	@Basic(optional = false)
 	@NotNull
-	@Lob
 	@Column(name = "UTILISATEUR_LOGIN", unique = true)
 	private String utilisateurLogin;
 
 	@Basic(optional = false)
 	@NotNull
-	@Lob
-	@Column(name = "UTILISATEUR_PASS")
+	@Column(name = "UTILISATEUR_PASS", length = 2000)
 	private String utilisateurPass;
 
 	@Basic(optional = false)
 	@NotNull
-	@Lob
-	@Column(name = "UTILISATEUR_NOM")
+	@Column(name = "UTILISATEUR_NOM", length = 2000)
 	private String utilisateurNom;
 
 	@Basic(optional = false)
 	@NotNull
-	@Lob
-	@Column(name = "UTILISATEUR_PRENOM")
+	@Column(name = "UTILISATEUR_PRENOM", length = 2000)
 	private String utilisateurPrenom;
 
-	@Lob
-	@Column(name = "UTILISATEUR_TEL")
+	@Column(name = "UTILISATEUR_TEL", length = 2000)
 	private String utilisateurTel;
 
-	@Lob
-	@Column(name = "UTILISATEUR_ADRESSE")
+	@Column(name = "UTILISATEUR_ADRESSE", length = 2500)
 	private String utilisateurAdresse;
 
-	@Lob
-	@Column(name = "UTILISATEUR_CP")
+	@Column(name = "UTILISATEUR_CP", length = 2000)
 	private String utilisateurCp;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "utilisateur")

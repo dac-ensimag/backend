@@ -22,7 +22,6 @@ public class Categorie implements Serializable, IEntity<CategorieVO> {
 
 	@Basic(optional = false)
 	@NotNull
-	@Lob
 	@Column(name = "CATEGORIE_LIBELE")
 	private String categorieLibele;
 
