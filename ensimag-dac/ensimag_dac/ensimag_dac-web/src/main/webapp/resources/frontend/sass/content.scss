@@ -25,16 +25,86 @@
 /*  Pagination  */
 /****************/
 
-.pager li a input {
-	margin: 0;
-	padding: 0;
+.ui-datagrid {
 	background: none;
-	border: none;
+
+	.ui-widget-header {
+		background: none;
+	}
+
+	.ui-widget-content {
+		background: none;
+		border: none;
+		color: inherit;
+	}
+
+	.ui-paginator-pages {
+		margin: 0;
+		padding: 0;
+	}
+
+	.ui-paginator-page, .ui-paginator-next, .ui-paginator-prev, .ui-paginator-first, .ui-paginator-last {
+
+		&.ui-state-default {
+
+			padding: 6px 12px;
+			border-radius : 0;
+			box-shadow : none;
+			background: white;
+			border: 1px solid $mediumgray-light;
+			color: $darkgray-dark;
+			margin: 0;
+
+			&:hover {
+				background: $mediumgray-light;
+				color: white;
+			}
+
+			&.ui-state-active,  {
+				background: $grass-dark;
+				border-color : $grass-dark;
+				color : white;
+
+				&:hover {
+					background: $grass-light;
+				}
+			}
+
+			&.ui-state-disabled, &.ui-disabled:hover {
+				color: $lightgray-dark;
+				cursor: not-allowed;
+			}
+		}
+	}
+
+	.ui-paginator-next, .ui-paginator-prev, .ui-paginator-first, .ui-paginator-last {
+		&.ui-state-default {
+			background: $grass-dark;
+			border-color : $grass-dark;
+			color : white;
+
+			&:hover {
+					background: $grass-light;
+				}
+
+			&.ui-state-disabled, &.ui-disabled:hover {
+				color: $lightgray-dark;
+				cursor: not-allowed;
+			}
+		}
+	}
+
+	.ui-paginator-first.ui-state-default {
+		border-top-left-radius: 4px;
+		border-bottom-left-radius: 4px;
+	}	
+
+	.ui-paginator-last.ui-state-default {
+		border-top-right-radius: 4px;
+		border-bottom-right-radius: 4px;
+	}	
 }
 
-.page {
-	margin: 0 20px;
-}
 
 
 

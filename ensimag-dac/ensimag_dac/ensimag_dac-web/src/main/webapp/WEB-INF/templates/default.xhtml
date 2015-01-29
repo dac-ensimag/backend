@@ -69,12 +69,14 @@
                                     <ul class="dropdown-menu" role="menu">
                                         <!-- Liens user ici -->
                                         <li>
-                                            <a>
-                                                <h:form>
-                                                    <h:commandLink action="#{utilisateurBean.logOut()}" value="LogOut" />
-                                                </h:form>
-                                            </a>
+                                            <h:form>
+                                                <h:commandLink action="#{utilisateurBean.logOut()}" value="Se déconnecter" />
+                                            </h:form>
                                         </li>
+                                        <li>
+                                                <a href="#{request.contextPath}/admin/ajout_item.xhtml">Ajouter un article</a>
+
+                                            </li>
                                         <ui:fragment rendered="#{utilisateurBean.user.getRoleId() == 2 || utilisateurBean.user.getRoleId() == 1}">
                                             <li class="divider"></li>
                                             <!-- Liens fournisseur ici -->

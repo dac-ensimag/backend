@@ -1,3 +1,13 @@
 .navbar {
 	border-radius : 0;
+
+	.dropdown-menu form {
+		margin: 0;
+
+		a {
+			padding: 5px 20px;
+			display: block;
+			
+		}
+	}
 }
