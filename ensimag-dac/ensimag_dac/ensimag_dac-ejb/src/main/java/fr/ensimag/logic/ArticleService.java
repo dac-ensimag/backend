@@ -57,9 +57,4 @@ public class ArticleService implements ArticleServiceLocal {
 		}
 	}
 
-	@Override
-	public Article getArticleEntity(Integer articleId) throws Exception {
-		return articleDAO.find(articleId);
-	}
-
 }
