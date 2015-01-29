@@ -19,46 +19,24 @@
 
         <div class="container">
  			<ui:repeat value="#{commandeBean.commandeContents.entrySet().toArray()}" var="commande">
-                
-                
-                <div class="col-md-offset-3 col-md-6">
-            <div class="jumbotron">
-                <div class="jumbotron-photo">
-                    <img src="img/cats/thumb-1.png" alt=""/>
-                </div>
-                <div class="jumbotron-contents">
-                    <h4>Date : #{commande.key.commandeDate}</h4>
-                    <h4>Articles : </h4>
-                    <p>
-                    
-                  	  
-                  		  <ui:repeat value="#{commande.key.articleList.toArray()}" var="article">
+                <div class="col-xs-12 col-md-offset-3 col-md-6">
+                    <div class="panel panel-theme">
+                        <div class="panel-heading">
+                            Commande n°#{commande.key.commandeId}
+                        </div>
+                        <div class="panel-body">
+                            <p><b>Date :</b> #{commande.key.commandeDate}</p>
+                            <p><b>Articles :</b> </p>
+              		        <ui:repeat value="#{commande.key.articleList.toArray()}" var="article">
                       			<h:form>
-                                <div class="row view_item">
-                                    <div class="col-xs-12">
-                                        <h:link styleClass="btn btn-default btn-block" outcome="#{catalogBean.view()}" includeViewParams="true" value="#{article.getArticleLibele()}">
-                                            <f:param value="#{article.articleId}" name="id"/>
-                                        </h:link>
-                                    </div>
-                                </div>
-                                
-                            </h:form>
-                            
-                   		  </ui:repeat>
-                    
-                    
-                    
-                      
-                    </p>
+                                    <h:link class="list-group-item" outcome="#{catalogBean.view()}" includeViewParams="true" value="#{article.getArticleLibele()}">
+                                        <f:param value="#{article.articleId}" name="id"/>
+                                    </h:link>
+                                </h:form>
+                   		    </ui:repeat>
+                        </div>
+                    </div>
                 </div>
-            
-            </div>
-        </div>
-        
-        
-                
-                
-                
             </ui:repeat>
         </div>
 
