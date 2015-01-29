@@ -11,4 +11,6 @@ public interface CommandeServiceLocal {
 
 	List<CommandeVO> getAllCommands() throws Exception;
 
+	CommandeVO addCommande(CommandeVO vo) throws Exception;
+
 }

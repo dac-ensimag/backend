@@ -1,7 +1,6 @@
 package fr.ensimag.logic;
 
 import fr.ensimag.dao.ArticleDAOLocal;
-import fr.ensimag.dao.CategorieDAO;
 import fr.ensimag.dao.CategorieDAOLocal;
 import fr.ensimag.entity.Article;
 import fr.ensimag.entity.Categorie;
@@ -9,9 +8,6 @@ import fr.ensimag.vo.ArticleVO;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-import java.io.UnsupportedEncodingException;
 
 @Stateless
 public class ArticleService implements ArticleServiceLocal {
@@ -28,7 +24,7 @@ public class ArticleService implements ArticleServiceLocal {
 			articleDAO.remove(articleDAO.find(articleId));
 		} catch (Exception e) {
 			e.printStackTrace();
-                        throw e;
+			throw e;
 		}
 	}
 
@@ -54,6 +50,11 @@ public class ArticleService implements ArticleServiceLocal {
 		entity = articleDAO.create(entity);
 
 		return entity.toVO();
+	}
+
+	@Override
+	public Article getArticleEntity(Integer articleId) throws Exception {
+		return articleDAO.find(articleId);
 	}
 
 }

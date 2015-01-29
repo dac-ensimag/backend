@@ -23,7 +23,9 @@ html, body {
 /*  Thumbnails  */
 /****************/
 .thumbnail img {
-  padding: 10px; }
+  margin: 0 auto;
+  width: 200px;
+  height: 150px; }
 .thumbnail div p {
   height: 160px;
   overflow: hidden; }

@@ -182,6 +182,7 @@ public class Commande implements Serializable, IEntity<CommandeVO> {
 		   for (Article article : getArticleList()) { 
 		  articleVOList.add(article.toVO()); }
 		  vo.setArticleList(articleVOList);
+		  
 		 
 		return vo;
 	}
