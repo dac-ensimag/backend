@@ -16,15 +16,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-md-offset-3 col-md-6">
-                    <div class="panel panel-success">
-                        <div class="panel-heading">
-                            Paiement effectué avec succès.
-                        </div>
-                        <div class="panel-body">
-                            <h:outputLink value="telechargement.xhtml">
-                                <b><h:outputText value="Procedez au telechargement"/></b>
-                            </h:outputLink>
-                        </div>
+                    <div class="alert alert-success">
+                        <h4>Paiement effectué avec succès</h4>
+                        <h:outputLink value="telechargement.xhtml" class="btn btn-success">
+                                <h:outputText value="Procedez au telechargement"/>
+                        </h:outputLink>
                     </div>
                 </div>
             </div>

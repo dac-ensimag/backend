@@ -14,57 +14,74 @@
 
     <ui:define name="content">
         <div class="container">
-            <h2><h:outputText id="cartSize" value="Dans votre panier, vous avez #{cartBean.cartCount} article(s)"/></h2>
-            <br/><br/>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="pane panel-theme">
+                        <div class="panel-heading">
+                            Paiement
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-xs-12 col-md-6">
+                                    <b>#{cartBean.cartCount}  articles :</b>
 
-            <ui:repeat value="#{cartBean.cartContents.entrySet().toArray()}" var="p">
+                                    <ul class="list-group">
+                                        <ui:repeat value="#{cartBean.cartContents.entrySet().toArray()}" var="p">
+                                            <li class="list-group-item">
+                                                #{p.key.articleLibele} (#{p.key.articlePrix}€)
+                                                <h:form>
+                                                    <h:commandButton class="btn btn-danger btn-xs" value="Supprimer" action="#{cartBean.remove(p.key)}"/>
+                                                </h:form>
+                                            </li>
+                                        </ui:repeat>
+                                    </ul>
+                                    <b><h:outputText id="cartTotal" value="Le total à payer (TTC) est #{cartBean.cartTotalPrice} euros"/></b>
+                                </div>
+                                <div class="col-xs-12 col-md-6">
+                                    <h:form id="signUpForm" styleClass="form-signin span6" role="form">
+                                        Veuillez saisir les informations de payement :
 
-                Nom : #{p.key.articleLibele}, Prix : #{p.key.articlePrix}
-                <Br/>
-                <h:form>
-                    <h:commandButton value="Supprimer" action="#{cartBean.remove(p.key)}"/>
-                </h:form>
-                <br/>
+                                        <div class="form-group">
+                                            <label for="inputLastname" >Nom</label>
+                                            <h:inputText value="" styleClass="form-control" required="true"
+                                                     requiredMessage="Veuillez compléter ce champ" id="inputLastname"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputFirstname" >Prenom</label>
+                                            <h:inputText value="" styleClass="form-control" required="true"
+                                                     requiredMessage="Veuillez compléter ce champ" id="inputFirstname"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputMail" >Mail</label>
+                                            <h:inputText value="" styleClass="form-control" required="true"
+                                                     requiredMessage="Veuillez compléter ce champ" id="inputMail"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputTel" >Téléphone</label>
+                                            <h:inputText value="" styleClass="form-control" required="true"
+                                                     requiredMessage="Veuillez compléter ce champ" id="inputTel"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputAdress" >Adresse</label>
+                                            <h:inputText value="" styleClass="form-control" required="true"
+                                                     requiredMessage="Veuillez compléter ce champ" id="inputAdress"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputCP" >CP</label>
+                                            <h:inputText value="" styleClass="form-control" required="true"
+                                                     requiredMessage="Veuillez compléter ce champ" id="inputCP"/>
+                                        </div>
 
-            </ui:repeat>
-
-            <h2><h:outputText id="cartTotal" value="Le total à payer (TTC) est #{cartBean.cartTotalPrice} euros"/> <br/><br/>
-            </h2>
-
-
-            <h:form id="signUpForm" styleClass="form-signin span6" role="form">
-                Veuillez saisir les informations de payement :
-
-                <label for="inputLastname" class="sr-only">Nom</label>
-                <h:inputText value="" styleClass="form-control" required="true"
-                             requiredMessage="Veuillez compléter ce champ" id="inputLastname"/>
-                <br/><br/>
-                <label for="inputFirstname" class="sr-only">Prenom</label>
-                <h:inputText value="" styleClass="form-control" required="true"
-                             requiredMessage="Veuillez compléter ce champ" id="inputFirstname"/>
-                <br/><br/>
-                <label for="inputMail" class="sr-only">Mail</label>
-                <h:inputText value="" styleClass="form-control" required="true"
-                             requiredMessage="Veuillez compléter ce champ" id="inputMail"/>
-                <br/><br/>
-                <label for="inputTel" class="sr-only">Téléphone</label>
-                <h:inputText value="" styleClass="form-control" required="true"
-                             requiredMessage="Veuillez compléter ce champ" id="inputTel"/>
-                <br/><br/>
-                <label for="inputAdress" class="sr-only">Adresse</label>
-                <h:inputText value="" styleClass="form-control" required="true"
-                             requiredMessage="Veuillez compléter ce champ" id="inputAdress"/>
-                <br/><br/>
-                <label for="inputCP" class="sr-only">CP</label>
-                <h:inputText value="" styleClass="form-control" required="true"
-                             requiredMessage="Veuillez compléter ce champ" id="inputCP"/>
-            </h:form>
-
-
-            <h:outputLink value="confirmation.xhtml">
-                <h2><h:outputText value="Payez la commande"/></h2>
-            </h:outputLink>
-
+                                        <h:outputLink value="confirmation.xhtml">
+                                            <h:outputText value="Payez la commande" class="btn btn-success btn-block"/>
+                                        </h:outputLink>
+                                    </h:form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <!-- /container -->
     </ui:define>
