@@ -3,8 +3,7 @@ package fr.ensimag.control;
 import fr.ensimag.exception.ExistingUserException;
 import fr.ensimag.exception.InvalidEmailException;
 import fr.ensimag.vo.UtilisateurVO;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
@@ -14,7 +13,7 @@ import javax.faces.context.FacesContext;
 
 @ManagedBean(name = "utilisateurBean")
 @SessionScoped
-public class UtilisateurBean {
+public class UtilisateurBean implements Serializable {
 
     @EJB
     private fr.ensimag.logic.UtilisateurServiceLocal utilisateurService;

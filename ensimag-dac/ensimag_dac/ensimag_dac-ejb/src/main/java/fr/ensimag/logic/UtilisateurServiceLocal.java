@@ -16,4 +16,6 @@ public interface UtilisateurServiceLocal {
     List<UtilisateurVO> getAllUsers() throws Exception;
     
     void updateUser(UtilisateurVO vo) throws Exception;
+    
+    void removeUser(Integer userId) throws Exception;
 }

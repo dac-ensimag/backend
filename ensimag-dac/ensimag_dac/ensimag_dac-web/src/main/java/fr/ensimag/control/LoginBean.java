@@ -1,5 +1,6 @@
 package fr.ensimag.control;
 
+import fr.ensimag.foundation.INames;
 import fr.ensimag.vo.UtilisateurVO;
 import java.io.Serializable;
 import javax.ejb.EJB;
@@ -31,7 +32,10 @@ public class LoginBean implements Serializable {
         if (login != null) {
             utilisateur.setUser(login);
             utilisateur.setLoggedIn(true);
-            return "welcome";
+            if (utilisateur.getUser().getRoleId().equals(INames.ROLE_ADMIN_ID)) {
+                return "admin/adminPage?faces-redirect=true";
+            }
+            return "catalogue?faces-redirect=true";
         } else {
             FacesContext.getCurrentInstance().addMessage(
                     "loginForm:inputUsername", new FacesMessage(
