@@ -45,8 +45,6 @@ public class CatalogBean implements Serializable {
 	@PostConstruct
 	public void init() {
 		try {
-			this.products = new ArrayList<ArticleVO>();
-
 			this.products = this.catalog.getAllProducts();
 
 			this.paginator = new RepeatPaginator(this.products);
