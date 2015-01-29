@@ -1,9 +1,12 @@
-package fr.ensimag.entity.testdata;
+package fr.ensimag.test.testdata.entity;
 
-import de.akquinet.jbosscc.needle.db.testdata.AbstractTestdataBuilder;
+import fr.ensimag.entity.Article;
 import fr.ensimag.entity.Categorie;
+import fr.ensimag.test.testdata.AbstractTestdataBuilder;
 
 import javax.persistence.EntityManager;
+import javax.transaction.UserTransaction;
+import java.util.ArrayList;
 
 public class CategorieTestdataBuilder extends AbstractTestdataBuilder<Categorie> {
 
@@ -13,8 +16,8 @@ public class CategorieTestdataBuilder extends AbstractTestdataBuilder<Categorie>
 		super();
 	}
 
-	public CategorieTestdataBuilder(EntityManager entityManager) {
-		super(entityManager);
+	public CategorieTestdataBuilder(EntityManager entityManager, UserTransaction userTransaction) {
+		super(entityManager, userTransaction);
 	}
 
 	public CategorieTestdataBuilder withLibele(String libele) {
@@ -30,6 +33,7 @@ public class CategorieTestdataBuilder extends AbstractTestdataBuilder<Categorie>
 	public Categorie build() {
 		final Categorie categorie = new Categorie();
 		categorie.setCategorieLibele(getCategorieLibele());
+		categorie.setArticleList(new ArrayList<Article>());
 
 		return categorie;
 	}

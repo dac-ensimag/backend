@@ -1,14 +1,28 @@
 package fr.ensimag.entity;
 
-import fr.ensimag.vo.ArticleVO;
-import fr.ensimag.vo.CommandeVO;
-
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+
+import fr.ensimag.vo.ArticleVO;
+import fr.ensimag.vo.CommandeVO;
 
 @Entity
 @Table(name = "COMMANDE")
@@ -56,7 +70,8 @@ public class Commande implements Serializable, IEntity<CommandeVO> {
 		this.commandeId = commandeId;
 	}
 
-	public Commande(Integer commandeId, Date commandeDate, String commandeDescription, double commandeTotale) {
+	public Commande(Integer commandeId, Date commandeDate,
+			String commandeDescription, double commandeTotale) {
 		this.commandeId = commandeId;
 		this.commandeDate = commandeDate;
 		this.commandeDescription = commandeDescription;
@@ -133,12 +148,15 @@ public class Commande implements Serializable, IEntity<CommandeVO> {
 
 	@Override
 	public boolean equals(Object object) {
-		// TODO: Warning - this method won't work in the case the id fields are not set
+		// TODO: Warning - this method won't work in the case the id fields are
+		// not set
 		if (!(object instanceof Commande)) {
 			return false;
 		}
 		Commande other = (Commande) object;
-		if ((this.commandeId == null && other.commandeId != null) || (this.commandeId != null && !this.commandeId.equals(other.commandeId))) {
+		if ((this.commandeId == null && other.commandeId != null)
+				|| (this.commandeId != null && !this.commandeId
+						.equals(other.commandeId))) {
 			return false;
 		}
 		return true;
@@ -168,5 +186,13 @@ public class Commande implements Serializable, IEntity<CommandeVO> {
 		vo.setArticleList(articleVOList);
 
 		return vo;
+	}
+
+	public static List<CommandeVO> toVo(List<Commande> commandes) {
+	List<CommandeVO> vo = new ArrayList<>();
+	for (Commande a : commandes) {
+	vo.add(a.toVO());
+	}
+	return vo;
 	}
 }

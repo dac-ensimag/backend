@@ -12,18 +12,6 @@
         <f:event type="preRenderView" listener="#{catalogBean.init()}"/>
     </f:metadata>
 
-    <ui:define name="topmenu">
-        <li>
-            <h:outputLink value="panier.xhtml">
-                <span class="glyphicon glyphicon-shopping-cart"></span>
-                Panier
-                <span class="badge badge-success">
-                    #{cartBean.cartCount}
-                </span>
-            </h:outputLink>
-        </li>
-    </ui:define>
-
     <ui:define name="content">
         
         <div class="container">
