@@ -10,9 +10,27 @@
     </ui:define>
 
     <ui:define name="content">
-        <h2>Welcome!</h2>
-
-        <h3>#{utilisateurBean.user.utilisateurLogin}</h3>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-md-6 col-md-offset-3">
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            Connexion réussie !
+                        </div>
+                        <div class="panel-body">
+                            <h4>Bienvenue #{utilisateurBean.user.utilisateurLogin} !</h4>
+                            <a class="list-group-item" href="#{request.contextPath}/catalogue.xhtml"> Consultez le catalogue</a>
+                            <a href="#{request.contextPath}/panier.xhtml" class="list-group-item">
+                                Consultez votre panier
+                                <span class="badge badge-success">
+                                    #{cartBean.cartCount}
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </ui:define>
 
 </ui:composition>
