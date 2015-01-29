@@ -9,14 +9,62 @@
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:f="http://java.sun.com/jsf/core">
 
-    <f:metadata>
+    <!--<f:metadata>
         <f:event type="preRenderView" listener="#{catalogBean.init()}"/>
-    </f:metadata>
+    </f:metadata>-->
 
     <ui:define name="content">
         <!--Link pagination: http://www.primefaces.org/showcase/ui/data/dataGrid.xhtml-->
-        <h:form id="form">
+        
             <div class="container">
+                <div class="row">
+                    <ul class="pager">
+                        <h:form>
+                            <li>
+                                <a>
+                                    <h:inputText value="#{catalogBean.searchString}"/>
+                                </a>
+                            </li>
+                            <li>
+                                <a>
+                                    <h:commandButton value="Rechercher" action="#{catalogBean.research()}"/>
+                                </a>
+                            </li>
+
+                        </h:form>
+                    </ul>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <ul class="pager">
+                        <h:form>
+                            <li>
+                                <a>
+                                    <h:commandButton value="#{catalogBean.getCategoryName(0)}" action="#{catalogBean.changeCategory(0)}"/>
+                                </a>
+                            </li>
+                            <li>
+                                <a>
+                                    <h:commandButton value="#{catalogBean.getCategoryName(3)}" action="#{catalogBean.changeCategory(3)}"/>
+                                </a>
+                            </li>
+                            <li>
+                                <a>
+                                    <h:commandButton value="#{catalogBean.getCategoryName(2)}" action="#{catalogBean.changeCategory(2)}"/>
+                                </a>
+                            </li>
+                            <li>
+                                <a>
+                                    <h:commandButton value="#{catalogBean.getCategoryName(1)}" action="#{catalogBean.changeCategory(1)}"/>
+                                </a>
+                            </li>
+                        </h:form>
+                    </ul>
+                </div>
+            </div>
+        <div class="container">
+        <h:form id="form">
                 <p:dataGrid var="product" value="#{catalogBean.products}" columns="4" layout="grid"
                             rows="8" paginator="true" id="cars"
                             paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
@@ -46,8 +94,8 @@
                         </div>
                     </div>
                 </p:dataGrid>
-            </div>
-        </h:form>
+            </h:form>
+        </div>
     </ui:define>
 
 </ui:composition>
