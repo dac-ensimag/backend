@@ -3,31 +3,41 @@ package fr.ensimag.dao;
 import fr.ensimag.entity.IEntity;
 import fr.ensimag.foundation.INames;
 
+import javax.annotation.Resource;
+import javax.ejb.EJBContext;
+import javax.ejb.TransactionManagement;
+import javax.ejb.TransactionManagementType;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.transaction.UserTransaction;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
-import javax.transaction.UserTransaction;
 
 /**
  * @param <E> The type of Entity for this DAO
  */
+@TransactionManagement(TransactionManagementType.BEAN)
 public abstract class AbstractDAO<E extends IEntity> implements AbstractLocal<E> {
 	protected final Class<E> entityClass;
 
 	@PersistenceContext(unitName = INames.PU_NAME)
 	private EntityManager entityManager;
-        
-        protected abstract UserTransaction getUserTransaction();
+
+	@Resource
+	private EJBContext ctx;
 
 	@SuppressWarnings("unchecked")
 	protected AbstractDAO() {
 		super();
 		entityClass = (Class<E>) ((ParameterizedType) getClass()
 				.getGenericSuperclass()).getActualTypeArguments()[0];
+	}
+
+	protected UserTransaction getUserTransaction() {
+		return ctx.getUserTransaction();
 	}
 
 	protected E getSingleResult(final CriteriaQuery<E> query) {
@@ -54,23 +64,22 @@ public abstract class AbstractDAO<E extends IEntity> implements AbstractLocal<E>
 		return entityManager.getCriteriaBuilder();
 	}
 
-        @Override
-	public E create(final E instance) throws Exception{
-                UserTransaction utx = null;
-                try {
-                        utx = getUserTransaction();
-                        utx.begin();
-                        entityManager.persist(instance);
-                        entityManager.flush();
-                        utx.commit();
-                        return instance;
-                } catch (Exception e) {
+	@Override
+	public E create(final E instance) throws Exception {
+		UserTransaction utx = null;
+		try {
+			utx = getUserTransaction();
+			utx.begin();
+			entityManager.persist(instance);
+			entityManager.flush();
+			utx.commit();
+			return instance;
+		} catch (Exception e) {
 			if (utx != null) {
 				utx.rollback();
 			}
 			throw e;
 		}
-                
 	}
 
 	public E find(Object id) {
@@ -78,18 +87,18 @@ public abstract class AbstractDAO<E extends IEntity> implements AbstractLocal<E>
 	}
 
 	public void remove(final E instance) throws Exception {
-                UserTransaction utx = null;
-                try {
-                        utx = getUserTransaction();
-                        utx.begin();
-                        boolean contains = entityManager.contains(instance);
-                        E remove = instance;
-                        if (!contains) {
-                                remove = find(instance.getId());
-                        }
-                        entityManager.remove(remove);
-                        utx.commit();
-                } catch (Exception e) {
+		UserTransaction utx = null;
+		try {
+			utx = getUserTransaction();
+			utx.begin();
+			boolean contains = entityManager.contains(instance);
+			E remove = instance;
+			if (!contains) {
+				remove = find(instance.getId());
+			}
+			entityManager.remove(remove);
+			utx.commit();
+		} catch (Exception e) {
 			if (utx != null) {
 				utx.rollback();
 			}
@@ -97,17 +106,17 @@ public abstract class AbstractDAO<E extends IEntity> implements AbstractLocal<E>
 		}
 	}
 
-        @Override
+	@Override
 	public E edit(final E instance) throws Exception {
-                UserTransaction utx = null;
-                try {
-                        utx = getUserTransaction();
-                        utx.begin();
-                        E merge = entityManager.merge(instance);
-                        entityManager.flush();
-                        utx.commit();
-                        return merge;
-                } catch (Exception e) {
+		UserTransaction utx = null;
+		try {
+			utx = getUserTransaction();
+			utx.begin();
+			E merge = entityManager.merge(instance);
+			entityManager.flush();
+			utx.commit();
+			return merge;
+		} catch (Exception e) {
 			if (utx != null) {
 				utx.rollback();
 			}

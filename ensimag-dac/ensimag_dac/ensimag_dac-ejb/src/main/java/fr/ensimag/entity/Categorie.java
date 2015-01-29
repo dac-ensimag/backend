@@ -17,7 +17,6 @@ public class Categorie implements Serializable, IEntity<CategorieVO> {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional = false)
-	@NotNull
 	@Column(name = "CATEGORIE_ID")
 	private Integer categorieId;
 

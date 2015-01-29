@@ -1,13 +1,11 @@
 package fr.ensimag.logic;
 
 import fr.ensimag.dao.ArticleDAOLocal;
+import fr.ensimag.entity.Article;
 import fr.ensimag.vo.ArticleVO;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-import java.io.UnsupportedEncodingException;
 
 @Stateless
 public class ArticleService implements ArticleServiceLocal {
@@ -16,17 +14,18 @@ public class ArticleService implements ArticleServiceLocal {
 	ArticleDAOLocal articleDAO;
 
 	@Override
-	public void deleteArticle(Integer articleId) {
-		try {
-			articleDAO.remove(articleDAO.find(articleId));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	public void deleteArticle(Integer articleId) throws Exception {
+		articleDAO.remove(articleDAO.find(articleId));
 	}
 
 	@Override
-	public ArticleVO getArticle(Integer articleId) throws Exception {
-		return articleDAO.find(articleId).toVO();
+	public ArticleVO getArticle(Integer articleId) {
+		Article article = articleDAO.find(articleId);
+		if (article != null) {
+			return article.toVO();
+		}
+
+		return null;
 	}
 
 }
