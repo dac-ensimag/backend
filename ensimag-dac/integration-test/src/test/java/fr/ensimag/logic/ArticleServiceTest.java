@@ -89,4 +89,22 @@ public class ArticleServiceTest {
 		article = this.service.getArticle(-1);
 		Assert.assertNull(article);
 	}
+
+	/**
+	 * Method: createArticle(ArticleVO vo)
+	 */
+	@Test
+	public void testCreateArticle() throws Exception {
+		//Verification que la table est vide
+		ArticleVO vo = this.service.getArticle(1);
+		Assert.assertNull(vo);
+
+		//Ajout d'article
+		ArticleVO article = new ArticleTestdataBuilder(em, utx).build().toVO();
+
+		this.service.createArticle(article);
+
+		vo = this.service.getArticle(article.getArticleId());
+		Assert.assertNotNull(vo);
+	}
 } 
