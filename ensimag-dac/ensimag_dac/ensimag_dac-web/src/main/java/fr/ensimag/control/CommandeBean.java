@@ -115,7 +115,7 @@ public class CommandeBean implements Serializable {
 		 * CommandeVO success = null;
 		 * 
 		 * success = this.commandeService.addCommande(this.getCmd()); if
-		 * (success != null) { return "index"; } else { return "error"; }
+		 * (success != null) { return "login"; } else { return "error"; }
 		 */
 		this.cmd = new CommandeVO();
 		this.articles = this.cartBean.getArticles();
@@ -133,10 +133,10 @@ public class CommandeBean implements Serializable {
 			cartBean.clear();
 			return "/confirmation";
 		} else {
-			return "/index?faces-redirect=true";
+			return "/login?faces-redirect=true";
 		}
                 } else {
-                    return "/index?faces-redirect=true";
+                    return "/login?faces-redirect=true";
                 }
 
 	}

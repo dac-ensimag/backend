@@ -26,7 +26,7 @@ public class AdminFilter implements Filter {
         UtilisateurBean userBean = (UtilisateurBean) httpServletrequest.getSession().getAttribute("utilisateurBean");
         String contextPath = httpServletrequest.getContextPath();
         if (userBean == null || !userBean.isLoggedIn()) {
-            String redirect = contextPath + "/index.xhtml";
+            String redirect = contextPath + "/login.xhtml";
             ((HttpServletResponse) response).sendRedirect(redirect);
         } else if (userBean.getUser().getRoleId().equals(INames.ROLE_USER_ID)) {
             String redirect = contextPath + "/catalogue.xhtml";

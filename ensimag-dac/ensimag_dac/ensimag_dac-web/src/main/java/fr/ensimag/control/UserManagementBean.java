@@ -37,7 +37,7 @@ public class UserManagementBean {
             }
         } catch (Exception ex) {
             try {
-                FacesContext.getCurrentInstance().getExternalContext().redirect("/index.xhtml");
+                FacesContext.getCurrentInstance().getExternalContext().redirect("/login.xhtml");
             } catch (IOException ex1) {
                 
             }

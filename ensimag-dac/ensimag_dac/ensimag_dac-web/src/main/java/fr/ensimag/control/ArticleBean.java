@@ -112,7 +112,7 @@ public class ArticleBean implements Serializable {
 		if (res != null) {
 			return "/catalogue?faces-redirect=true";
 		} else {
-			return "/index?faces-redirect=true";
+			return "/login?faces-redirect=true";
 		}
 	}
 
