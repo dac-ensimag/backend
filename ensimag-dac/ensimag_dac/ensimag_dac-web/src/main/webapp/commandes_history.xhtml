@@ -28,11 +28,9 @@
                             <p><b>Date :</b> #{commande.key.commandeDate}</p>
                             <p><b>Articles :</b> </p>
               		        <ui:repeat value="#{commande.key.articleList.toArray()}" var="article">
-                      			<h:form>
-                                    <h:link class="list-group-item" outcome="#{catalogBean.view()}" includeViewParams="true" value="#{article.getArticleLibele()}">
-                                        <f:param value="#{article.articleId}" name="id"/>
-                                    </h:link>
-                                </h:form>
+                                <h:link class="list-group-item" outcome="#{catalogBean.view()}" includeViewParams="true" value="#{article.getArticleLibele()}">
+                                    <f:param value="#{article.articleId}" name="id"/>
+                                </h:link>
                    		    </ui:repeat>
                         </div>
                     </div>
