@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./WEB-INF/templates/default.xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+    <f:metadata>
+        <f:event type="preRenderView" listener="#{commandeBean.init()}"/>
+    </f:metadata>
+
+    
+
+    <ui:define name="content">
+        
+
+        <div class="container">
+ 			<ui:repeat value="#{commandeBean.userCommandes.entrySet().toArray()}" var="commande">
+                <div class="col-xs-12 col-md-offset-3 col-md-6">
+                    <div class="panel panel-theme">
+                        <div class="panel-heading">
+                            Commande n°#{commande.key.commandeId}
+                        </div>
+                        <div class="panel-body">
+                            <p><b>Date :</b> #{commande.key.commandeDate}</p>
+                            <p><b>Articles :</b> </p>
+              		        <ui:repeat value="#{commande.key.articleList.toArray()}" var="article">
+                                <h:link class="list-group-item" outcome="#{catalogBean.view()}" includeViewParams="true" value="#{article.getArticleLibele()}">
+                                    <f:param value="#{article.articleId}" name="id"/>
+                                </h:link>
+                   		    </ui:repeat>
+                        </div>
+                    </div>
+                </div>
+            </ui:repeat>
+        </div>
+
+
+
+    </ui:define>
+
+</ui:composition>

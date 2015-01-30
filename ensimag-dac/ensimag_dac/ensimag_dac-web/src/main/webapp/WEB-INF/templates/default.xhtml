@@ -49,7 +49,7 @@
                          
                         <ul class="nav navbar-nav navbar-right">
                             <li>
-                                <h:outputLink value="panier.xhtml">
+                                <h:outputLink value="#{request.contextPath}/panier.xhtml">
                                     <span class="glyphicon glyphicon-shopping-cart"></span>
                                     Panier
                                     <span class="badge badge-success">
@@ -71,7 +71,7 @@
                                             </h:form>
                                         </li>
                                         <li>
-                                                <a href="#{request.contextPath}/admin/ajout_item.xhtml">Ajouter un article</a>
+                                                <a href="#{request.contextPath}/commandes.xhtml">Commandes</a>
 
                                             </li>
                                         <ui:fragment rendered="#{utilisateurBean.user.getRoleId() == 2 || utilisateurBean.user.getRoleId() == 1}">
@@ -86,7 +86,7 @@
                                             <li class="divider"></li>
                                             <!-- Liens admin ici -->
                                             <li>
-                                                <a href="#">Lien admin</a>
+                                                <a href="#{request.contextPath}/admin/adminPage.xhtml">Gestion d'utilisateurs</a>
                                             </li>
                                         </ui:fragment>
                                     </ul>

@@ -15,17 +15,38 @@
 
     <ui:define name="content">
         <div class="container">
-            <h2><h:outputText value="Liens de téléchargements :"/></h2> <br/><br/>
-
-            <ui:repeat value="#{cartBean.cartContents.entrySet().toArray()}" var="p">
-                Nom : #{p.key.articleLibele}, Prix : #{p.key.articlePrix}
-                <h:outputLink value="#{p.key.articleLibele}.zip">
-                    <h4><h:outputText value="#{p.key.articleLibele}"/></h4>
-                </h:outputLink>
-                <br/>
-            </ui:repeat>
-
-
+            <h1>Téléchargements</h1>
+            <div class="panel panel-theme">
+                <div class="panel-heading">Téléchargez vos articles achetés</div>
+                <div class="table-responsive cart">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Article</th>
+                                <th>Prix</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ui:repeat value="#{cartBean.cartContents.entrySet().toArray()}" var="p">
+                                <tr>
+                                    <td>
+                                        <img src="#{p.key.articleImg}" alt="" class="img-rounded"/>
+                                    </td>
+                                    <td>#{p.key.articleLibele}</td>
+                                    <td>#{p.key.articlePrix} €</td>
+                                    <td>
+                                        <h:outputLink class="btn btn-success" value="#{p.key.articleLibele}.zip">
+                                            <h:outputText value="Télécharger"/>
+                                        </h:outputLink>
+                                    </td>
+                                </tr>
+                            </ui:repeat>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
         <!-- /container -->
     </ui:define>

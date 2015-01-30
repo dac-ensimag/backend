@@ -189,7 +189,7 @@ public class Commande implements Serializable, IEntity<CommandeVO> {
 	public static List<CommandeVO> toVo(List<Commande> commandes) {
 	List<CommandeVO> vo = new ArrayList<>();
 	for (Commande a : commandes) {
-	vo.add(a.toVO());
+            vo.add(a.toVO());
 	}
 	return vo;
 	}

@@ -25,18 +25,20 @@
                                 <th></th>
                                 <th>Article</th>
                                 <th>Prix</th>
+                                <th>Quantité</th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
                          	
-                        <ui:repeat value="#{commandeBean.cartContents.entrySet().toArray()}" var="p">
+                        <ui:repeat value="#{cartBean.cartContents.entrySet().toArray()}" var="p">
                                 <tr>
                                     <td>
                                         <img src="#{p.key.articleImg}" alt="" class="img-rounded"/>
                                     </td>
                                     <td>#{p.key.articleLibele}</td>
                                     <td>#{p.key.articlePrix} €</td>
+                                    <td>#{p.value} </td>
                                     <td>
                                         <h:form>
                                             <h:commandButton value="Supprimer" class="btn btn-danger" action="#{cartBean.remove(p.key)}"/>
@@ -44,42 +46,18 @@
                                     </td>
                                 </tr>
                             </ui:repeat>
-                            
-                            
-                            
-                            <ui:repeat value="#{cartBean.cartContents.entrySet().toArray()}" var="p">
-                                <tr>
-                                    <td>
-                                        <img src="#{p.key.articleImg}" alt="" class="img-rounded"/>
-                                    </td>
-                                    <td>#{p.key.articleLibele}</td>
-                                    <td>#{p.key.articlePrix} €</td>
-                                    <td>
-                                        <h:form>
-                                            <h:commandButton value="Supprimer" class="btn btn-danger" action="#{cartBean.remove(p.key)}"/>
-                                        </h:form>
-                                    </td>
-                                </tr>
-                            </ui:repeat>
+
+                       
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="3">
+                                <td colspan="2">
                                     <b>Montant TTC à payer : #{cartBean.cartTotalPrice}€</b>
                                 </td>
-                                
-                                
-                                <td>
-                                        <h:form>
-                                            <h:commandButton value="AjouterCommande" class="btn btn-danger" action="#{commandeBean.confirmCommand()}" />
-                                        </h:form>
-                                    </td>
-                        
-                                
-                                
+                                   
                                 
                                 <td>
-                                    <h:outputLink value="paiement.xhtml" class="btn btn-success">
+                                    <h:outputLink value="paiement.xhtml" class="btn btn-success" disabled="#{!utilisateurBean.loggedIn}">
                                         <h:outputText value="Payer la commande"/>
                                     </h:outputLink>
                                 </td>

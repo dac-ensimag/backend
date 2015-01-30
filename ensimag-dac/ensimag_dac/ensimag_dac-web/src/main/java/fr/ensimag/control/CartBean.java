@@ -15,6 +15,7 @@ import fr.ensimag.vo.ArticleVO;
 @ManagedBean(name = "cartBean")
 @SessionScoped
 public class CartBean implements Serializable {
+
 	private List<ArticleVO> articles = new ArrayList<ArticleVO>();
 
 	public List<ArticleVO> getArticles() {
@@ -34,10 +35,18 @@ public class CartBean implements Serializable {
 
 	@PostConstruct
 	public void init() {
+
 		try {
 
 		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+
+	}
+
+	public void clear() {
+		this.articles = new ArrayList<ArticleVO>();
 	}
 
 	public void add(ArticleVO articlevo) {
@@ -50,9 +59,13 @@ public class CartBean implements Serializable {
 
 	public Map<ArticleVO, Integer> getCartContents() {
 
-		Map<ArticleVO, Integer> cartContents = new HashMap<ArticleVO, Integer>();
+		Map<ArticleVO, Integer> cartContents = new HashMap<>();
 		for (ArticleVO obj : articles) {
-			cartContents.put(obj, 1);
+            if (cartContents.containsKey(obj)) {
+                cartContents.put(obj, cartContents.get(obj) + 1);
+            } else {
+                cartContents.put(obj, 1);
+            }
 		}
 		return cartContents;
 	}

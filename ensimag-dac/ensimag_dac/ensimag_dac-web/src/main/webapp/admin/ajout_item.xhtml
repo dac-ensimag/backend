@@ -14,40 +14,51 @@
 
     <ui:define name="content">
         <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-md-6">
-                    <h2>Ajouter un article</h2>
-                    <h:form id="additemForm" role="form">
-                        <p:focus context="additemForm"/>
-                        <div class="form-group">
-                            <label for="inputArticleLibele">Libele</label>
-                            <h:inputText value="#{articleBean.articleLibele}" styleClass="form-control" required="true"
-                             requiredMessage="Veuillez compléter ce champ" id="inputArticleLibele"/>
-                            <p:message id="articleLibeleMessage" for="inputArticleLibele"/>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-md-6 col-md-offset-3">
+                        <div class="panel panel-theme">
+                            <div class="panel-heading">
+                                <h4>Ajouter un article</h4>
+                            </div>
+                            <div class="panel-body">
+                                <h:form id="additemForm" role="form">
+                                    <p:focus context="additemForm"/>
+                                    <div class="form-group">
+                                        <label for="inputArticleLibele">Libele</label>
+                                        <h:inputText value="#{articleBean.articleLibele}" styleClass="form-control" required="true"
+                                         requiredMessage="Veuillez compléter ce champ" id="inputArticleLibele"/>
+                                        <p:message id="articleLibeleMessage" for="inputArticleLibele"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputArticleDescription">Description</label>
+                                        <h:inputText value="#{articleBean.articleDescription}" styleClass="form-control" required="true"
+                                                     requiredMessage="Veuillez compléter ce champ" id="inputArticleDescription"/>
+                                        <p:message id="articleDescriptionMessage" for="inputArticleDescription"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputArticlePrix">Prix (€)</label>
+                                        <div class="input-group">
+                                            <h:inputText value="#{articleBean.articlePrix}" styleClass="form-control" required="true"
+                                                     requiredMessage="Veuillez compléter ce champ" id="inputArticlePrix" />
+                                            <span class="input-group-addon">€</span>
+                                        </div>
+                                        <p:message id="articlePrixMessage" for="inputArticlePrix"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputArticleImg">Image</label>
+                                        <h:inputText value="#{articleBean.articleImg}" styleClass="form-control" required="false"
+                                                    id="inputArticleImg"/>
+                                        <p:message id="articleImgMessage" for="inputArticleImg"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <h:commandButton styleClass="btn btn-success btn-block" action="#{articleBean.createArticle()}"
+                                                         value="Ajouter"/>
+                                    </div>
+                                </h:form>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="inputArticleDescription">Description</label>
-                            <h:inputText value="#{articleBean.articleDescription}" styleClass="form-control" required="true"
-                                         requiredMessage="Veuillez compléter ce champ" id="inputArticleDescription"/>
-                            <p:message id="articleDescriptionMessage" for="inputArticleDescription"/>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputArticlePrix">Prix (€)</label>
-                            <h:inputText value="#{articleBean.articlePrix}" styleClass="form-control" required="true"
-                                         requiredMessage="Veuillez compléter ce champ" id="inputArticlePrix" />
-                            <p:message id="articlePrixMessage" for="inputArticlePrix"/>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputArticleImg">Image</label>
-                            <h:inputText value="#{articleBean.articleImg}" styleClass="form-control" required="false"
-                                    id="inputArticleImg"/>
-                            <p:message id="articleImgMessage" for="inputArticleImg"/>
-                        </div>
-                        <div class="form-group">
-                            <h:commandButton styleClass="btn btn-success btn-block" action="#{articleBean.createArticle()}"
-                                             value="Ajouter"/>
-                        </div>
-                    </h:form>
+                    </div>
                 </div>
             </div>
         </div>

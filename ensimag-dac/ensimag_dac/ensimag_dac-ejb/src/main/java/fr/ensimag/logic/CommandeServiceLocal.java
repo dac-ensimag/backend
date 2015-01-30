@@ -13,4 +13,6 @@ public interface CommandeServiceLocal {
 
 	CommandeVO addCommande(CommandeVO vo) throws Exception;
 
+	CommandeVO getCommande(Integer commandeId);
+
 }
