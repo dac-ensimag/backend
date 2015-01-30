@@ -110,6 +110,7 @@ public class CommandeBean implements Serializable {
 
 	public String confirmCommand() throws Exception {
 
+		if (utilisateurBean.isLoggedIn()) {
 		/*
 		 * CommandeVO success = null;
 		 * 
@@ -134,6 +135,9 @@ public class CommandeBean implements Serializable {
 		} else {
 			return "/index?faces-redirect=true";
 		}
+                } else {
+                    return "/index?faces-redirect=true";
+                }
 
 	}
 
