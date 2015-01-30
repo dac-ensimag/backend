@@ -1,5 +1,6 @@
 package fr.ensimag.control;
 
+import fr.ensimag.foundation.INames;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -109,29 +110,33 @@ public class CommandeBean implements Serializable {
 
 	public String confirmCommand() throws Exception {
 
-		/*
-		 * CommandeVO success = null;
-		 * 
-		 * success = this.commandeService.addCommande(this.getCmd()); if
-		 * (success != null) { return "index"; } else { return "error"; }
-		 */
-		this.cmd = new CommandeVO();
-		this.articles = this.cartBean.getArticles();
-		this.cmd.setCommandeDate(new Date());
-		this.cmd.setArticleList(this.articles);
-		this.cmd.setCommandeDescription("description");
-		this.cmd.setCommandeTotale(223);
+		if (utilisateurBean.isLoggedIn()) {
+                    /*
+                     * CommandeVO success = null;
+                     * 
+                     * success = this.commandeService.addCommande(this.getCmd()); if
+                     * (success != null) { return "index"; } else { return "error"; }
+                     */
+                    this.cmd = new CommandeVO();
+                    this.articles = this.cartBean.getArticles();
+                    this.cmd.setCommandeDate(new Date());
+                    this.cmd.setArticleList(this.articles);
+                    this.cmd.setCommandeDescription("description");
+                    this.cmd.setCommandeTotale(223);
 
-		this.cmd.setUtilisateurId(utilisateurBean.getUser().getUtilisateurId());
+                    this.cmd.setUtilisateurId(utilisateurBean.getUser().getUtilisateurId());
 
-		CommandeVO res = null;
-		res = this.commandeService.addCommande(this.cmd);
-		this.cmd = new CommandeVO();
-		if (res != null) {
-			return "/catalogue?faces-redirect=true";
-		} else {
-			return "/index?faces-redirect=true";
-		}
+                    CommandeVO res = null;
+                    res = this.commandeService.addCommande(this.cmd);
+                    this.cmd = new CommandeVO();
+                    if (res != null) {
+                            return "/catalogue?faces-redirect=true";
+                    } else {
+                            return "/index?faces-redirect=true";
+                    }
+                } else {
+                    return "/index?faces-redirect=true";
+                }
 
 	}
 

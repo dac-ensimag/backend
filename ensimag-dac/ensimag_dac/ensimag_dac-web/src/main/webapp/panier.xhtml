@@ -68,7 +68,7 @@
                                 
                                 
                                 <td>
-                                    <h:outputLink value="paiement.xhtml" class="btn btn-success">
+                                    <h:outputLink value="paiement.xhtml" class="btn btn-success" disabled="#{!utilisateurBean.loggedIn}">
                                         <h:outputText value="Payer la commande"/>
                                     </h:outputLink>
                                 </td>
