@@ -128,8 +128,8 @@ public class CommandeBean implements Serializable {
 		res = this.commandeService.addCommande(this.cmd);
 		this.cmd = new CommandeVO();
 		if (res != null) {
-            cartBean.clear();
-			return "/catalogue?faces-redirect=true";
+			cartBean.clear();
+			return "/confirmation";
 		} else {
 			return "/index?faces-redirect=true";
 		}
