@@ -35,7 +35,7 @@ public class UtilisateurBean implements Serializable {
             signUp = utilisateurService.signUp(getUser());
             user = new UtilisateurVO();
             if (signUp != null) {
-                return "index";
+                return "login";
             } else {
                 return "error";
             }
@@ -44,13 +44,13 @@ public class UtilisateurBean implements Serializable {
                     "signUpForm:inputUsername", new FacesMessage(FacesMessage.SEVERITY_ERROR,
                             "Login non valide","Le nom d'utilisateur est déjà utilisé"));
             user.setUtilisateurLogin("");
-            return "index";
+            return "login";
         } catch (InvalidEmailException ex) {
             FacesContext.getCurrentInstance().addMessage(
                     "signUpForm:inputMail", new FacesMessage(FacesMessage.SEVERITY_ERROR,
                             "Mail non valid","Veuillez écrire un mail valid"));
             //user.setUtilisateurMail("");
-            return "index";
+            return "login";
         }
     }
 
