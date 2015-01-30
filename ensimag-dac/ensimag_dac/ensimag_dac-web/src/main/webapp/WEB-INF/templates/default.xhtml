@@ -57,6 +57,14 @@
                                     </span>
                                 </h:outputLink>
                             </li>
+                            <ui:fragment rendered="#{!utilisateurBean.loggedIn}">
+                                    <ui:fragment rendered="#{request.requestURI == '/login.xhtml'}">
+                                    <li class="active"><a href="#{request.contextPath}/login.xhtml">Se connecter</a></li>
+                                </ui:fragment>
+                                <ui:fragment rendered="#{request.requestURI != '/login.xhtml'}">
+                                    <li><a href="#{request.contextPath}/login.xhtml">Se connecter</a></li>
+                                </ui:fragment>
+                            </ui:fragment>
                             <ui:fragment rendered="#{utilisateurBean.loggedIn}">
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
