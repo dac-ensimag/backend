@@ -211,7 +211,7 @@ public class Utilisateur implements Serializable, IEntity<UtilisateurVO> {
 		vo.setUtilisateurLogin(getUtilisateurLogin());
 		vo.setUtilisateurMail(getUtilisateurMail());
 		vo.setUtilisateurNom(getUtilisateurNom());
-//        vo.setUtilisateurPass(getUtilisateurPass());
+//                vo.setUtilisateurPass(getUtilisateurPass());
 		vo.setUtilisateurPrenom(getUtilisateurPrenom());
 		vo.setUtilisateurTel(getUtilisateurTel());
                 if (getRole() != null) {
