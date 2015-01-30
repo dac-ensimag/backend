@@ -7,11 +7,9 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
-import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-import fr.ensimag.logic.CatalogServiceLocal;
 import fr.ensimag.vo.ArticleVO;
 
 @ManagedBean(name = "cartBean")
@@ -50,6 +48,10 @@ public class CartBean implements Serializable {
 
 	}
 
+    public void clear() {
+        this.articles = new ArrayList<ArticleVO>();
+    }
+
 	public void add(ArticleVO articlevo) {
 		articles.add(articlevo);
 	}
@@ -60,9 +62,13 @@ public class CartBean implements Serializable {
 
 	public Map<ArticleVO, Integer> getCartContents() {
 
-		Map<ArticleVO, Integer> cartContents = new HashMap<ArticleVO, Integer>();
+		Map<ArticleVO, Integer> cartContents = new HashMap<>();
 		for (ArticleVO obj : articles) {
-			cartContents.put(obj, 1);
+            if (cartContents.containsKey(obj)) {
+                cartContents.put(obj, cartContents.get(obj) + 1);
+            } else {
+                cartContents.put(obj, 1);
+            }
 		}
 		return cartContents;
 	}

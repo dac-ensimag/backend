@@ -28,7 +28,7 @@
                                     <ul class="list-group">
                                         <ui:repeat value="#{cartBean.cartContents.entrySet().toArray()}" var="p">
                                             <li class="list-group-item">
-                                                #{p.key.articleLibele} (#{p.key.articlePrix}€)
+                                                #{p.key.articleLibele} x#{p.value} (#{p.key.articlePrix}€)
                                                 <h:form>
                                                     <h:commandButton class="btn btn-danger btn-xs" value="Supprimer" action="#{cartBean.remove(p.key)}"/>
                                                 </h:form>

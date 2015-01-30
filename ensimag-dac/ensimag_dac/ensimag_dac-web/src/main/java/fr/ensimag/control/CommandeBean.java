@@ -91,7 +91,7 @@ public class CommandeBean implements Serializable {
 		utilisateurCourant = new UtilisateurVO();
 		utilisateurCourant = utilisateurBean.getUser();
 		Map<CommandeVO, Integer> commandeContents = new HashMap<CommandeVO, Integer>();
-		List<CommandeVO> userCmdList = new ArrayList<CommandeVO>();
+		List<CommandeVO> userCmdList;
 		userCmdList = utilisateurCourant.getCommandeList();
 		for (CommandeVO obj : userCmdList) {
 			commandeContents.put(obj, 1);
@@ -128,6 +128,7 @@ public class CommandeBean implements Serializable {
 		res = this.commandeService.addCommande(this.cmd);
 		this.cmd = new CommandeVO();
 		if (res != null) {
+            cartBean.clear();
 			return "/catalogue?faces-redirect=true";
 		} else {
 			return "/index?faces-redirect=true";
