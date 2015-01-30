@@ -29,7 +29,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <ui:repeat value="#{cartBean.cartContents.entrySet().toArray()}" var="p">
+                            <ui:repeat value="#{commandeBean.downloadLinks.entrySet().toArray()}" var="p">
                                 <tr>
                                     <td>
                                         <img src="#{p.key.articleImg}" alt="" class="img-rounded"/>
