@@ -25,6 +25,7 @@
                                 <th></th>
                                 <th>Article</th>
                                 <th>Prix</th>
+                                <th>Quantité</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -37,6 +38,7 @@
                                     </td>
                                     <td>#{p.key.articleLibele}</td>
                                     <td>#{p.key.articlePrix} €</td>
+                                    <td>#{p.value} €</td>
                                     <td>
                                         <h:form>
                                             <h:commandButton value="Supprimer" class="btn btn-danger" action="#{cartBean.remove(p.key)}"/>

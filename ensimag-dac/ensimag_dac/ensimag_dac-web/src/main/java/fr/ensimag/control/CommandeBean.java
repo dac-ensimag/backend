@@ -92,7 +92,7 @@ public class CommandeBean implements Serializable {
 		utilisateurCourant = new UtilisateurVO();
 		utilisateurCourant = utilisateurBean.getUser();
 		Map<CommandeVO, Integer> commandeContents = new HashMap<CommandeVO, Integer>();
-		List<CommandeVO> userCmdList = new ArrayList<CommandeVO>();
+		List<CommandeVO> userCmdList;
 		userCmdList = utilisateurCourant.getCommandeList();
 		for (CommandeVO obj : userCmdList) {
 			commandeContents.put(obj, 1);
@@ -110,33 +110,30 @@ public class CommandeBean implements Serializable {
 
 	public String confirmCommand() throws Exception {
 
-		if (utilisateurBean.isLoggedIn()) {
-                    /*
-                     * CommandeVO success = null;
-                     * 
-                     * success = this.commandeService.addCommande(this.getCmd()); if
-                     * (success != null) { return "index"; } else { return "error"; }
-                     */
-                    this.cmd = new CommandeVO();
-                    this.articles = this.cartBean.getArticles();
-                    this.cmd.setCommandeDate(new Date());
-                    this.cmd.setArticleList(this.articles);
-                    this.cmd.setCommandeDescription("description");
-                    this.cmd.setCommandeTotale(223);
+		/*
+		 * CommandeVO success = null;
+		 * 
+		 * success = this.commandeService.addCommande(this.getCmd()); if
+		 * (success != null) { return "index"; } else { return "error"; }
+		 */
+		this.cmd = new CommandeVO();
+		this.articles = this.cartBean.getArticles();
+		this.cmd.setCommandeDate(new Date());
+		this.cmd.setArticleList(this.articles);
+		this.cmd.setCommandeDescription("description");
+		this.cmd.setCommandeTotale(223);
 
-                    this.cmd.setUtilisateurId(utilisateurBean.getUser().getUtilisateurId());
+		this.cmd.setUtilisateurId(utilisateurBean.getUser().getUtilisateurId());
 
-                    CommandeVO res = null;
-                    res = this.commandeService.addCommande(this.cmd);
-                    this.cmd = new CommandeVO();
-                    if (res != null) {
-                            return "/catalogue?faces-redirect=true";
-                    } else {
-                            return "/index?faces-redirect=true";
-                    }
-                } else {
-                    return "/index?faces-redirect=true";
-                }
+		CommandeVO res = null;
+		res = this.commandeService.addCommande(this.cmd);
+		this.cmd = new CommandeVO();
+		if (res != null) {
+            cartBean.clear();
+			return "/catalogue?faces-redirect=true";
+		} else {
+			return "/index?faces-redirect=true";
+		}
 
 	}
 
