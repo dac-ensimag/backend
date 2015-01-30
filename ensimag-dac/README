@@ -1,0 +1,23 @@
+##############
+#   README   #
+##############
+
+Login VM : dac
+PASS VM  : 123456
+
+Glassfish :
+    - domaine : domain_dac
+    - master passw : adminadmin
+    - login admin : admin
+    - passw admin : adminadmin
+
+Deploiement : 
+    cd ~/DAC/backend/ensimag-dac/ensimag_dac/
+
+Pour creer un administrateur
+    Creer un utilisateur via l'url http://dac-vm/login.xhtml
+    lancer le script makeadmin.sh dans ~/DAC/backend en donnant le login de l'utilisateur
+
+Depot github :
+    https://github.com/dac-ensimag/backend
+
