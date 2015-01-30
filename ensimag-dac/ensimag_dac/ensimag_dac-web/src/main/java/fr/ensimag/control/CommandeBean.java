@@ -1,5 +1,6 @@
 package fr.ensimag.control;
 
+import fr.ensimag.foundation.INames;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -109,6 +110,7 @@ public class CommandeBean implements Serializable {
 
 	public String confirmCommand() throws Exception {
 
+		if (utilisateurBean.isLoggedIn()) {
 		/*
 		 * CommandeVO success = null;
 		 * 
@@ -133,6 +135,9 @@ public class CommandeBean implements Serializable {
 		} else {
 			return "/index?faces-redirect=true";
 		}
+                } else {
+                    return "/index?faces-redirect=true";
+                }
 
 	}
 
