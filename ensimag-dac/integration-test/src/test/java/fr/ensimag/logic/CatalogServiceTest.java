@@ -56,11 +56,11 @@ public class CatalogServiceTest {
     @Test
     public void testGetAllProducts() throws Exception {
         Article article1 = new ArticleTestdataBuilder(em, utx).buildAndSave();
-        Article article2 = new ArticleTestdataBuilder(em, utx).buildAndSave();;
+        Article article2 = new ArticleTestdataBuilder(em, utx).buildAndSave();
 
         List<ArticleVO> listeArticles = this.service.getAllProducts();
         Assert.assertNotNull(listeArticles);
-        Assert.assertEquals(listeArticles.size(),2);
+        Assert.assertEquals(2,listeArticles.size());
 
         //On vérifie que les ids sont bons
         Assert.assertTrue((article1.getArticleId() == listeArticles.get(0).getArticleId()
@@ -73,11 +73,11 @@ public class CatalogServiceTest {
     @Test
     public void testGetAllCategories() throws Exception {
         Categorie categorie1 = new CategorieTestdataBuilder(em, utx).buildAndSave();
-        Categorie categorie2 = new CategorieTestdataBuilder(em, utx).buildAndSave();;
+        Categorie categorie2 = new CategorieTestdataBuilder(em, utx).buildAndSave();
 
         List<CategorieVO> listeCategories = this.service.getAllCategories();
         Assert.assertNotNull(listeCategories);
-        Assert.assertEquals(listeCategories.size(),2);
+        Assert.assertEquals(2,listeCategories.size());
 
         //On vérifie que les ids sont bons
         Assert.assertTrue((categorie1.getCategorieId() == listeCategories.get(0).getCategorieId()
