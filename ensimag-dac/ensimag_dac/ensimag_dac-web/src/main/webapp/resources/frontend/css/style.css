@@ -118,4 +118,18 @@ html, body {
 .ui-commandLink.ui-widget {
   color: #434A54; }
 
+/***************/
+/*  Item view  */
+/***************/
+.item_view img {
+  margin: 0 auto;
+  width: 200px;
+  height: 150px; }
+.item_view .price {
+  font-size: 30px;
+  display: block;
+  margin: 20px auto; }
+.item_view p {
+  margin-top: 10px; }
+
 /*# sourceMappingURL=style.css.map */

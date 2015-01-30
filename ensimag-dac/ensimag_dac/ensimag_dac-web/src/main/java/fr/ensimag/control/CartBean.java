@@ -19,10 +19,10 @@ public class CartBean implements Serializable {
 	private List<ArticleVO> articles = new ArrayList<ArticleVO>();
 
 	public List<ArticleVO> getArticles() {
-		return articles;
+		return this.articles;
 	}
 
-	public void setArticles(List<ArticleVO> articles) {
+	public void setArticles(final List<ArticleVO> articles) {
 		this.articles = articles;
 	}
 
@@ -38,7 +38,7 @@ public class CartBean implements Serializable {
 
 		try {
 
-		} catch (Exception e) {
+		} catch (final Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -49,34 +49,34 @@ public class CartBean implements Serializable {
 		this.articles = new ArrayList<ArticleVO>();
 	}
 
-	public void add(ArticleVO articlevo) {
-		articles.add(articlevo);
+	public void add(final ArticleVO articlevo) {
+		this.articles.add(articlevo);
 	}
 
-	public void remove(ArticleVO articlevo) {
-		articles.remove(articlevo);
+	public void remove(final ArticleVO articlevo) {
+		this.articles.remove(articlevo);
 	}
 
 	public Map<ArticleVO, Integer> getCartContents() {
 
-		Map<ArticleVO, Integer> cartContents = new HashMap<>();
-		for (ArticleVO obj : articles) {
-            if (cartContents.containsKey(obj)) {
-                cartContents.put(obj, cartContents.get(obj) + 1);
-            } else {
-                cartContents.put(obj, 1);
-            }
+		final Map<ArticleVO, Integer> cartContents = new HashMap<>();
+		for (final ArticleVO obj : this.articles) {
+			if (cartContents.containsKey(obj)) {
+				cartContents.put(obj, cartContents.get(obj) + 1);
+			} else {
+				cartContents.put(obj, 1);
+			}
 		}
 		return cartContents;
 	}
 
 	public int getCartCount() {
-		return articles.size();
+		return this.articles.size();
 	}
 
 	public float getCartTotalPrice() {
 		float sum = 0;
-		for (ArticleVO obj : articles) {
+		for (final ArticleVO obj : this.articles) {
 			sum = sum + obj.getArticlePrix();
 		}
 		return sum;

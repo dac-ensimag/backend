@@ -1,6 +1,5 @@
 package fr.ensimag.control;
 
-import fr.ensimag.foundation.INames;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -27,6 +26,7 @@ public class CommandeBean implements Serializable {
 	private CommandeServiceLocal commandeService;
 	private List<CommandeVO> commandes;
 	private List<ArticleVO> articles = new ArrayList<ArticleVO>();
+	private List<ArticleVO> articlesLinks = new ArrayList<ArticleVO>();
 	private CommandeVO cmd;
 
 	@EJB
@@ -38,7 +38,7 @@ public class CommandeBean implements Serializable {
 	private UtilisateurBean utilisateurBean;
 
 	public UtilisateurBean getUtilisateurBean() {
-		return utilisateurBean;
+		return this.utilisateurBean;
 	}
 
 	public void setUtilisateurBean(UtilisateurBean utilisateurBean) {
@@ -89,13 +89,15 @@ public class CommandeBean implements Serializable {
 	}
 
 	public Map<CommandeVO, Integer> getUserCommandes() {
-		utilisateurCourant = new UtilisateurVO();
-		utilisateurCourant = utilisateurBean.getUser();
+		this.utilisateurCourant = new UtilisateurVO();
+		this.utilisateurCourant = this.utilisateurBean.getUser();
 		Map<CommandeVO, Integer> commandeContents = new HashMap<CommandeVO, Integer>();
-		List<CommandeVO> userCmdList;
-		userCmdList = utilisateurCourant.getCommandeList();
-		for (CommandeVO obj : userCmdList) {
-			commandeContents.put(obj, 1);
+		// List<CommandeVO> userCmdList;
+		// userCmdList = this.utilisateurCourant.getCommandeList();
+		for (CommandeVO obj : commandes) {
+			if (obj.getUtilisateurId() == utilisateurCourant.getUtilisateurId()) {
+				commandeContents.put(obj, 1);
+			}
 		}
 		return commandeContents;
 	}
@@ -108,8 +110,51 @@ public class CommandeBean implements Serializable {
 		return cartContents;
 	}
 
+	public Map<ArticleVO, Integer> getDownloadLinks() {
+
+		  Map<ArticleVO, Integer> cartContents = new HashMap<>();
+		for (  ArticleVO obj : this.articlesLinks) {
+			if (cartContents.containsKey(obj)) {
+				cartContents.put(obj, cartContents.get(obj) + 1);
+			} else {
+				cartContents.put(obj, 1);
+			}
+		}
+		return cartContents;
+	}
+
 	public String confirmCommand() throws Exception {
 
+<<<<<<< HEAD
+		if (this.utilisateurBean.isLoggedIn()) {
+			/*
+			 * CommandeVO success = null;
+			 * 
+			 * success = this.commandeService.addCommande(this.getCmd()); if
+			 * (success != null) { return "index"; } else { return "error"; }
+			 */
+			this.cmd = new CommandeVO();
+			this.articles = this.cartBean.getArticles();
+			this.cmd.setCommandeDate(new Date());
+			this.cmd.setArticleList(this.articles);
+			this.cmd.setCommandeDescription("description");
+			this.cmd.setCommandeTotale(223);
+
+			this.cmd.setUtilisateurId(this.utilisateurBean.getUser()
+					.getUtilisateurId());
+
+			CommandeVO res = null;
+			res = this.commandeService.addCommande(this.cmd);
+			this.cmd = new CommandeVO();
+			if (res != null) {
+				this.articlesLinks.clear();
+				this.articlesLinks.addAll(this.cartBean.getArticles());
+				this.cartBean.clear();
+				return "/confirmation";
+			} else {
+				return "/index?faces-redirect=true";
+			}
+=======
 		if (utilisateurBean.isLoggedIn()) {
 		/*
 		 * CommandeVO success = null;
@@ -132,12 +177,16 @@ public class CommandeBean implements Serializable {
 		if (res != null) {
 			cartBean.clear();
 			return "/confirmation";
+>>>>>>> 6d1c20f53c0a4d55f0b7e15e5f9121699bb823e2
 		} else {
 			return "/login?faces-redirect=true";
 		}
+<<<<<<< HEAD
+=======
                 } else {
                     return "/login?faces-redirect=true";
                 }
+>>>>>>> 6d1c20f53c0a4d55f0b7e15e5f9121699bb823e2
 
 	}
 
