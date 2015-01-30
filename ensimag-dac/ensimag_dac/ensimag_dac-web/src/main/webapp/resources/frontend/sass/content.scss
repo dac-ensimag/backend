@@ -147,10 +147,35 @@
 }
 
 
+
 /****************/
 /*  Admin page  */
 /****************/
 
 .ui-commandLink.ui-widget {
 	color: $darkgray-dark;
+}
+
+
+
+/***************/
+/*  Item view  */
+/***************/
+
+.item_view {
+	img {
+		margin: 0 auto;
+		width: 200px;
+		height : 150px;		
+	}
+
+	.price {
+		font-size: 30px;
+		display: block;
+		margin : 20px auto;
+	}
+
+	p {
+		margin-top: 10px;
+	}
 }

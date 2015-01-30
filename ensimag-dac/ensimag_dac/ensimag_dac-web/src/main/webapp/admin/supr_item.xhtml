@@ -14,19 +14,28 @@
     </ui:define>
 
     <ui:define name="content">
-        <div class="col-md-offset-3 col-md-6">
-            <div class="jumbotron">
-                <h:form>
-                    <div class="jumbotron-photo">
-                        <img src="img/cats/thumb-1.png" alt=""/>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-md-6 col-md-offset-3">
+                    <div class="panel panel-danger">
+                        <div class="panel-heading">
+                            Confirmation de suppression
+                        </div>
+                        <div class="panel-body">
+                            <p>
+                                Voulez-vous vraiment supprimer #{suprArticleBean.getArticleLibele()} du catalogue ?
+                            </p>
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <h:button styleClass="btn btn-success btn-block" value="Annuler" outcome="/catalogue?faces-redirect=true" />
+                                </div>
+                                <div class="col-xs-6">
+                                    <h:commandButton styleClass="btn btn-danger btn-block" value="Supprimer" action="#{suprArticleBean.deleteArticle()}" />
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="jumbotron-contents">
-                        <h1>Voulez-vous vraiment supprimer #{suprArticleBean.getArticleLibele()} du catalogue ?</h1>
-
-                    </div>
-                    <h:commandButton styleClass="btn btn-lg btn-primary btn-block" value="Supprimer" action="#{suprArticleBean.deleteArticle()}" />
-                    <h:button styleClass="btn btn-lg btn-primary btn-block" value="Annuler" outcome="/catalogue?faces-redirect=true" />
-                </h:form>
+                </div>
             </div>
         </div>
     </ui:define>
