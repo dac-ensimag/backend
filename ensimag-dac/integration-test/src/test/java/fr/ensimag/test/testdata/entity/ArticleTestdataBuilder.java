@@ -11,7 +11,6 @@ import java.util.ArrayList;
 
 public class ArticleTestdataBuilder extends AbstractTestdataBuilder<Article> {
 
-	private static final String DEFAULT_PASSWORD = "secret";
 	private Categorie withCategorie;
 	private String    withDescription;
 	private String    withLibele;

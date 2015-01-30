@@ -16,8 +16,6 @@ import fr.ensimag.vo.ArticleVO;
 @SessionScoped
 public class CartBean implements Serializable {
 
-
-
 	private List<ArticleVO> articles = new ArrayList<ArticleVO>();
 
 	public List<ArticleVO> getArticles() {
@@ -45,12 +43,11 @@ public class CartBean implements Serializable {
 			e.printStackTrace();
 		}
 
-
 	}
 
-    public void clear() {
-        this.articles = new ArrayList<ArticleVO>();
-    }
+	public void clear() {
+		this.articles = new ArrayList<ArticleVO>();
+	}
 
 	public void add(ArticleVO articlevo) {
 		articles.add(articlevo);

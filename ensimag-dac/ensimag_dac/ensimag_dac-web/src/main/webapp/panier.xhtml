@@ -38,7 +38,7 @@
                                     </td>
                                     <td>#{p.key.articleLibele}</td>
                                     <td>#{p.key.articlePrix} €</td>
-                                    <td>#{p.value} €</td>
+                                    <td>#{p.value} </td>
                                     <td>
                                         <h:form>
                                             <h:commandButton value="Supprimer" class="btn btn-danger" action="#{cartBean.remove(p.key)}"/>
@@ -54,23 +54,10 @@
                                 <td colspan="2">
                                     <b>Montant TTC à payer : #{cartBean.cartTotalPrice}€</b>
                                 </td>
-                                
-                                
-                                <td>
-                                        <h:form>
-                                       
-                                             <h:commandButton styleClass="btn btn-success btn-block" action="#{commandeBean.confirmCommand()}"
-                                             value="Ajouter la commande"/>
-                                        </h:form>
-                                        
-                                          
-                                    </td>
-                        
-                                
-                                
+                                   
                                 
                                 <td>
-                                    <h:outputLink value="paiement.xhtml" class="btn btn-success">
+                                    <h:outputLink value="paiement.xhtml" class="btn btn-success" disabled="#{!utilisateurBean.loggedIn}">
                                         <h:outputText value="Payer la commande"/>
                                     </h:outputLink>
                                 </td>

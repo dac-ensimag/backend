@@ -31,7 +31,8 @@
                         #{articleBean.getArticleDescription()}
                     </p>
                 </div>
-                <h:button styleClass="btn btn-lg btn-primary btn-block" value="Supprimer" outcome="#{articleBean.deleteArticle()}" includeViewParams="true">
+                <h:button styleClass="btn btn-lg btn-primary btn-block" value="Supprimer" outcome="#{articleBean.deleteArticle()}" includeViewParams="true"
+                          rendered="#{utilisateurBean.user.roleId == 1}">
                     <f:param value="#{articleBean.getId()}" name="articleId"/>
                 </h:button>
             </div>

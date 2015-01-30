@@ -72,10 +72,11 @@
                                                      requiredMessage="Veuillez compléter ce champ" id="inputCP"/>
                                         </div>
 
-                                        <h:outputLink value="confirmation.xhtml">
-                                            <h:outputText value="Payez la commande" class="btn btn-success btn-block"/>
-                                        </h:outputLink>
                                     </h:form>
+                                    <h:form>
+                                            <h:commandButton styleClass="btn btn-success btn-block" action="#{commandeBean.confirmCommand()}"
+                                             value="Effectuer le paiement"/>
+										 </h:form>
                                 </div>
                             </div>
                         </div>
