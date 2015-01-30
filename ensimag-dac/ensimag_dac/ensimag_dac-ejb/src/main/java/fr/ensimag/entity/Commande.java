@@ -27,8 +27,6 @@ import fr.ensimag.vo.CommandeVO;
 @Entity
 @Table(name = "COMMANDE")
 public class Commande implements Serializable, IEntity<CommandeVO> {
-	private static final long serialVersionUID = 1L;
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional = false)

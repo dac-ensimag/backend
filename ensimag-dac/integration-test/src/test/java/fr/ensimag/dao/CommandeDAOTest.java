@@ -78,15 +78,16 @@ public class CommandeDAOTest {
 	@Test
 	public void testRemove() throws Exception {
 		Commande commande;
+		Utilisateur utilisateur = new UtilisateurTestdataBuilder(em, utx).buildAndSave();
 
 		// Delete an existing entity
-		commande = new CommandeTestdataBuilder(em, utx).buildAndSave();
+		commande = new CommandeTestdataBuilder(em, utx).withUtilisateur(utilisateur).buildAndSave();
 		utilisateurDAO.remove(commande);
 		Commande commandeFromDb = utilisateurDAO.find(commande.getCommandeId());
 		Assert.assertNull(commandeFromDb);
 
 		// Delete a non existent entity
-		commande = new CommandeTestdataBuilder(em, utx).build();
+		commande = new CommandeTestdataBuilder(em, utx).withUtilisateur(utilisateur).build();
 		try {
 			commande.setCommandeId(-1);
 			utilisateurDAO.remove(commande);
@@ -96,7 +97,7 @@ public class CommandeDAOTest {
 		}
 
 		// Delete a manually crafted entity (nont managed)
-		Commande commande2 = new CommandeTestdataBuilder(em, utx).buildAndSave();
+		Commande commande2 = new CommandeTestdataBuilder(em, utx).withUtilisateur(utilisateur).buildAndSave();
 		commandeFromDb = utilisateurDAO.find(commande2.getCommandeId());
 		Assert.assertNotNull(commandeFromDb);
 
@@ -121,7 +122,7 @@ public class CommandeDAOTest {
 
 	@Test
 	public void testFindAll() throws Exception {
-        Utilisateur utilisateur = new UtilisateurTestdataBuilder().buildAndSave();
+        Utilisateur utilisateur = new UtilisateurTestdataBuilder(em, utx).buildAndSave();
         new CommandeTestdataBuilder(em, utx).withUtilisateur(utilisateur).buildAndSave();
         new CommandeTestdataBuilder(em, utx).withUtilisateur(utilisateur).buildAndSave();
 
@@ -132,7 +133,7 @@ public class CommandeDAOTest {
 
 	@Test
 	public void testCount() throws Exception {
-        Utilisateur utilisateur = new UtilisateurTestdataBuilder().buildAndSave();
+        Utilisateur utilisateur = new UtilisateurTestdataBuilder(em,utx).buildAndSave();
 		new CommandeTestdataBuilder(em, utx).withUtilisateur(utilisateur).buildAndSave();
 		new CommandeTestdataBuilder(em, utx).withUtilisateur(utilisateur).buildAndSave();
 
