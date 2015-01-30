@@ -125,7 +125,7 @@ public class CommandeBean implements Serializable {
 
 	public String confirmCommand() throws Exception {
 
-<<<<<<< HEAD
+
 		if (this.utilisateurBean.isLoggedIn()) {
 			/*
 			 * CommandeVO success = null;
@@ -152,41 +152,11 @@ public class CommandeBean implements Serializable {
 				this.cartBean.clear();
 				return "/confirmation";
 			} else {
-				return "/index?faces-redirect=true";
+				return "/catalogue?faces-redirect=true";
 			}
-=======
-		if (utilisateurBean.isLoggedIn()) {
-		/*
-		 * CommandeVO success = null;
-		 * 
-		 * success = this.commandeService.addCommande(this.getCmd()); if
-		 * (success != null) { return "login"; } else { return "error"; }
-		 */
-		this.cmd = new CommandeVO();
-		this.articles = this.cartBean.getArticles();
-		this.cmd.setCommandeDate(new Date());
-		this.cmd.setArticleList(this.articles);
-		this.cmd.setCommandeDescription("description");
-		this.cmd.setCommandeTotale(223);
-
-		this.cmd.setUtilisateurId(utilisateurBean.getUser().getUtilisateurId());
-
-		CommandeVO res = null;
-		res = this.commandeService.addCommande(this.cmd);
-		this.cmd = new CommandeVO();
-		if (res != null) {
-			cartBean.clear();
-			return "/confirmation";
->>>>>>> 6d1c20f53c0a4d55f0b7e15e5f9121699bb823e2
 		} else {
 			return "/login?faces-redirect=true";
 		}
-<<<<<<< HEAD
-=======
-                } else {
-                    return "/login?faces-redirect=true";
-                }
->>>>>>> 6d1c20f53c0a4d55f0b7e15e5f9121699bb823e2
 
 	}
 
